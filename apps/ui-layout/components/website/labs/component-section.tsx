@@ -1,22 +1,15 @@
 'use client';
 
-import React, {
-  useEffect,
-  useState,
-  useCallback,
-  useMemo,
-  Suspense,
-} from 'react';
 import {
-  useSelectedComponentStore,
-  useStateChange,
-} from '@/hooks/useZustStore';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@radix-ui/react-tooltip';
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/website/ui/dropdown';
+import Slider from '@/components/website/ui/slider';
+import { AllComponents, DocsNavigationCategories } from '@/configs/docs';
+import { useSelectedComponentStore, useStateChange } from '@/hooks/useZustStore';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@radix-ui/react-tooltip';
 import {
   Component,
   GalleryHorizontalEnd,
@@ -29,29 +22,20 @@ import {
   X,
 } from 'lucide-react';
 import { useTheme } from 'next-themes';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/website/ui/dropdown';
-import Slider from '@/components/website/ui/slider';
-import LabSidebar from './labs-sidebar';
-import { AllComponents, DocsNavigationCategories } from '@/configs/docs';
+import type React from 'react';
+import { Suspense, useCallback, useEffect, useMemo, useState } from 'react';
 import { ScrollArea } from '../ui/scroll-area';
+import LabSidebar from './labs-sidebar';
 
 const ComponentSection = () => {
   const { theme, setTheme } = useTheme();
   const { toggleSidebar, isSidebarOpen } = useStateChange();
-  const recentComponents = useSelectedComponentStore(
-    (state) => state.recentComponents
-  );
+  const recentComponents = useSelectedComponentStore((state) => state.recentComponents);
   const currentComponent = recentComponents[0];
   const currentComponentData = useMemo(
     () =>
       AllComponents.find(
-        (component) =>
-          component.componentName === currentComponent?.componentName
+        (component) => component.componentName === currentComponent?.componentName
       ),
     [currentComponent]
   );
@@ -116,24 +100,17 @@ const ComponentSection = () => {
                         padding: `${compPadding}px`,
                       }}
                       loading='lazy'
-                     title='Lab component preview' />
+                      title='Lab component preview'
+                    />
                   </>
                 ) : (
                   <>
                     {currentComponentData?.componentSrc ? (
                       <>
-                        <div
-                          className={`${
-                            currentComponentData?.center ? 'w-fit' : ' w-full '
-                          }`}
-                        >
+                        <div className={`${currentComponentData?.center ? 'w-fit' : ' w-full '}`}>
                           <div
                             style={{
-                              width: `${
-                                currentComponentData?.center
-                                  ? 100
-                                  : comWidthPercentage
-                              }%`,
+                              width: `${currentComponentData?.center ? 100 : comWidthPercentage}%`,
                               padding: `${compPadding}px`,
                               scale: scalePercentage,
                             }}
@@ -142,11 +119,7 @@ const ComponentSection = () => {
                             {currentComponentData ? (
                               <>
                                 <Suspense
-                                  fallback={
-                                    <div className='flex justify-center'>
-                                      Loading...
-                                    </div>
-                                  }
+                                  fallback={<div className='flex justify-center'>Loading...</div>}
                                 >
                                   <currentComponentData.componentSrc />
                                 </Suspense>
@@ -169,7 +142,8 @@ const ComponentSection = () => {
                               scale: scalePercentage,
                             }}
                             loading='lazy'
-                           title='Lab component preview' />
+                            title='Lab component preview'
+                          />
                         }
                       </>
                     )}
@@ -193,8 +167,7 @@ const ComponentSection = () => {
                     <Slider
                       value={[widthPercentage]}
                       onValueChange={([widthPercentage]) =>
-                        widthPercentage != null &&
-                        setWidthPercentage(widthPercentage)
+                        widthPercentage != null && setWidthPercentage(widthPercentage)
                       }
                       min={0}
                       max={100}
@@ -210,8 +183,7 @@ const ComponentSection = () => {
                       numclass='-right-[10%] text-sm'
                       value={[heightPercentage]}
                       onValueChange={([heightPercentage]) =>
-                        heightPercentage != null &&
-                        setHeightPercentage(heightPercentage)
+                        heightPercentage != null && setHeightPercentage(heightPercentage)
                       }
                     />
                   </div>
@@ -220,8 +192,7 @@ const ComponentSection = () => {
                     <Slider
                       value={[fontSizePercentage]}
                       onValueChange={([fontSizePercentage]) =>
-                        fontSizePercentage != null &&
-                        setFontSizePercentage(fontSizePercentage)
+                        fontSizePercentage != null && setFontSizePercentage(fontSizePercentage)
                       }
                       max={150}
                       tooltip={false}
@@ -236,8 +207,7 @@ const ComponentSection = () => {
                     <Slider
                       value={[comWidthPercentage]}
                       onValueChange={([comWidthPercentage]) =>
-                        comWidthPercentage != null &&
-                        setComWidthPercentage(comWidthPercentage)
+                        comWidthPercentage != null && setComWidthPercentage(comWidthPercentage)
                       }
                       tooltip={false}
                       numclass='-right-[10%] text-sm'
@@ -263,8 +233,7 @@ const ComponentSection = () => {
                     <Slider
                       value={[scalePercentage]}
                       onValueChange={([scalePercentage]) =>
-                        scalePercentage != null &&
-                        seScalePercentage(scalePercentage)
+                        scalePercentage != null && seScalePercentage(scalePercentage)
                       }
                       tooltip={false}
                       numclass='-right-[10%] text-sm'
@@ -290,7 +259,7 @@ const ComponentSection = () => {
                   >
                     <Component />
                   </TooltipTrigger>
-                  <TooltipContent className='dark:bg-primary-base bg-neutral-50 text-primary border p-2 rounded-md -translate-y-1'>
+                  <TooltipContent className='bg-card text-primary border p-2 rounded-md -translate-y-1'>
                     <p className='capitalize'>Components</p>
                   </TooltipContent>
                 </Tooltip>
@@ -324,7 +293,7 @@ const ComponentSection = () => {
                       <path d='M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z' />
                     </svg>
                   </TooltipTrigger>
-                  <TooltipContent className='dark:bg-primary-base bg-neutral-50 text-primary border p-2 rounded-md -translate-y-1'>
+                  <TooltipContent className='bg-card text-primary border p-2 rounded-md -translate-y-1'>
                     <p className='capitalize'>Home</p>
                   </TooltipContent>
                 </Tooltip>
@@ -338,10 +307,7 @@ const ComponentSection = () => {
                     <span className='sr-only'>Toggle theme</span>
                   </button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent
-                  align='center'
-                  className='dark:bg-neutral-800 bg-neutral-50'
-                >
+                <DropdownMenuContent align='center' className='dark:bg-neutral-800 bg-neutral-50'>
                   <DropdownMenuItem onClick={() => setTheme('light')}>
                     <Sun className='mr-2 h-4 w-4' /> Light
                   </DropdownMenuItem>
@@ -357,16 +323,12 @@ const ComponentSection = () => {
                 <Tooltip delayDuration={200}>
                   <TooltipTrigger
                     className='group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-md dark:bg-primary-foreground bg-neutral-100   border px-3 font-medium dark:text-white text-black transition-all duration-200 hover:translate-x-[-3px] translate-x-[0px] hover:translate-y-[-3px] translate-y-[0px] hover:[box-shadow:5px_5px_rgb(28_39_56)] dark:hover:[box-shadow:5px_5px_rgb(229_231_235)] '
-                    onClick={() =>
-                      window.open(href, '_blank', 'noopener,noreferrer')
-                    }
+                    onClick={() => window.open(href, '_blank', 'noopener,noreferrer')}
                   >
                     View Component
                   </TooltipTrigger>
-                  <TooltipContent className='dark:bg-primary-base bg-neutral-50 text-primary border p-2 rounded-md -translate-y-1'>
-                    <p className='capitalize'>
-                      {currentComponentData?.componentName}
-                    </p>
+                  <TooltipContent className='bg-card text-primary border p-2 rounded-md -translate-y-1'>
+                    <p className='capitalize'>{currentComponentData?.componentName}</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
@@ -378,7 +340,7 @@ const ComponentSection = () => {
                   >
                     <Settings2 />
                   </TooltipTrigger>
-                  <TooltipContent className='dark:bg-primary-base bg-neutral-50 text-primary border p-2 rounded-md -translate-y-1'>
+                  <TooltipContent className='bg-card text-primary border p-2 rounded-md -translate-y-1'>
                     <p className='capitalized'>Style Component</p>
                   </TooltipContent>
                 </Tooltip>
@@ -397,7 +359,7 @@ const ComponentSection = () => {
                       </>
                     )}
                   </TooltipTrigger>
-                  <TooltipContent className='dark:bg-primary-base bg-neutral-50 text-primary  border p-2 rounded-md -translate-y-1'>
+                  <TooltipContent className='bg-card text-primary  border p-2 rounded-md -translate-y-1'>
                     <p className='capitalized'>
                       {isSidebarOpen ? <>Get Sidebar</> : <>Close Sidebar</>}
                     </p>

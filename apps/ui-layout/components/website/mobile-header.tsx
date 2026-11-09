@@ -1,29 +1,20 @@
-import {
-  AppWindowMac,
-  LayoutPanelTop,
-  MousePointerClick,
-  Rocket,
-  X,
-} from 'lucide-react';
-import React, { useState } from 'react';
-import { ScrollArea } from './ui/scroll-area';
-import { usePathname, useRouter } from 'next/navigation';
+import { DocsNavigationCategories } from '@/configs/docs';
+import { DOCS_CATEGORY_GROUP } from '@/const/docs';
+import { cn } from '@/lib/utils';
+import { AppWindowMac, LayoutPanelTop, MousePointerClick, Rocket, X } from 'lucide-react';
 import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
+import React, { useState } from 'react';
 import { DirectionalDrawer, DrawerContent } from '../ui/directional-drawer';
 import { basePath } from './sidebar';
-import { DocsNavigationCategories } from '@/configs/docs';
-import { cn } from '@/lib/utils';
-import { DOCS_CATEGORY_GROUP } from '@/const/docs';
+import { ScrollArea } from './ui/scroll-area';
 
 function MobileHeader({ classname }: { classname?: string }) {
   const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
     <>
-      <button
-        className={cn(classname, 'text-3xl')}
-        onClick={() => setSidebarOpen(true)}
-      >
+      <button className={cn(classname, 'text-3xl')} onClick={() => setSidebarOpen(true)}>
         {/* <HiOutlineMenuAlt2 /> */}
         <svg
           width='642'
@@ -33,21 +24,9 @@ function MobileHeader({ classname }: { classname?: string }) {
           xmlns='http://www.w3.org/2000/svg'
           className=' stroke-primary w-9 h-9'
         >
-          <path
-            d='M52.333 359H252.333'
-            strokeWidth='66.6667'
-            strokeLinecap='round'
-          />
-          <path
-            d='M52.333 212H452.333'
-            strokeWidth='66.6667'
-            strokeLinecap='round'
-          />
-          <path
-            d='M52.333 65H585.666'
-            strokeWidth='66.6667'
-            strokeLinecap='round'
-          />
+          <path d='M52.333 359H252.333' strokeWidth='66.6667' strokeLinecap='round' />
+          <path d='M52.333 212H452.333' strokeWidth='66.6667' strokeLinecap='round' />
+          <path d='M52.333 65H585.666' strokeWidth='66.6667' strokeLinecap='round' />
         </svg>
       </button>
       <DirectionalDrawer
@@ -83,10 +62,7 @@ function MobileHeader({ classname }: { classname?: string }) {
               </svg>
             </Link>
 
-            <button
-              className='md:hidden flex'
-              onClick={() => setSidebarOpen(false)}
-            >
+            <button className='md:hidden flex' onClick={() => setSidebarOpen(false)}>
               <X />
             </button>
           </figure>
@@ -101,18 +77,18 @@ function MobileHeader({ classname }: { classname?: string }) {
                       <Link
                         href={link.href}
                         onClick={() => setSidebarOpen(false)}
-                        className={`flex gap-2 group font-medium items-center py-1  transition-all ${
+                        className={`flex gap-2 group font-medium items-center py-1 transition-all ${
                           link.href === pathname
                             ? 'active-nav'
-                            : 'text-slate-600 hover:text-slate-900  dark:text-slate-400 dark:hover:text-white'
+                            : 'text-muted-foreground hover:text-foreground'
                         }`}
                       >
                         {React.cloneElement(link?.icon, {
                           className: `${
                             link.href === pathname
-                              ? 'dark:text-black dark:bg-white bg-black text-white'
-                              : 'dark:bg-zinc-800 dark:text-white group-hover:bg-black group-hover:text-white  dark:group-hover:bg-white dark:group-hover:text-black'
-                          } h-7 w-7 border transition-all  rounded-xs p-1.5`,
+                              ? 'bg-primary text-primary-foreground'
+                              : 'bg-secondary text-secondary-foreground group-hover:bg-primary group-hover:text-primary-foreground'
+                          } h-7 w-7 border transition-all rounded-xs p-1.5`,
                         })}
 
                         {link.name}
@@ -146,9 +122,10 @@ function MobileHeader({ classname }: { classname?: string }) {
                         href={item.url}
                         target='_blank'
                         className='flex gap-2 group font-medium items-center py-1  transition-all'
+                        rel='noreferrer noopener'
                       >
                         {React.cloneElement(item?.icon, {
-                          className: `${'dark:bg-zinc-800 dark:text-white group-hover:bg-black group-hover:text-white  dark:group-hover:bg-white dark:group-hover:text-black'} h-7 w-7 border transition-all  rounded-xs p-1.5`,
+                          className: `${'bg-secondary text-secondary-foreground group-hover:bg-primary group-hover:text-primary-foreground'} h-7 w-7 border transition-all rounded-xs p-1.5`,
                         })}
                         {item.name}
                       </a>
@@ -161,6 +138,7 @@ function MobileHeader({ classname }: { classname?: string }) {
               href='https://discord.gg/4bySmj75'
               target='_blank'
               className='pb-2 flex gap-2 items-center'
+              rel='noreferrer noopener'
             >
               <span className='w-6 h-6 p-1 bg-black/20 border dark:border-white/10 border-black/10 dark:bg-white/20 fill-primary rounded-md '>
                 <svg
@@ -190,7 +168,7 @@ function MobileHeader({ classname }: { classname?: string }) {
                 return (
                   <li key={groupName} className='mb-4'>
                     {/* Category Title */}
-                    <h3 className='text-sm font-semibold uppercase text-black dark:text-white px-2'>
+                    <h3 className='text-sm font-semibold uppercase text-foreground px-2'>
                       {groupName}
                     </h3>
 
@@ -200,19 +178,17 @@ function MobileHeader({ classname }: { classname?: string }) {
                         <li key={link.href}>
                           <Link
                             href={link.href}
-                            className={`font-normal py-1 pl-4 border-l border-primary/20 transition-all block ${
+                            className={`font-normal py-1 pl-4 border-l border-border transition-all block ${
                               link.href === pathname
-                                ? 'dark:border-white border-black text-black dark:text-white font-medium'
-                                : 'dark:text-slate-400 hover:border-black/60 dark:hover:border-white/50 text-slate-500 hover:text-slate-900'
+                                ? 'border-foreground text-foreground font-medium'
+                                : 'text-muted-foreground hover:border-foreground/60 hover:text-foreground'
                             }`}
                             onClick={() => setSidebarOpen(false)}
                           >
                             {link.name}
                             {/* Optional badge for new/updated */}
                             {link.new && (
-                              <span className='ml-2 text-xs text-green-500 font-medium'>
-                                New
-                              </span>
+                              <span className='ml-2 text-xs text-green-500 font-medium'>New</span>
                             )}
                             {link.updated && (
                               <span className='ml-2 text-xs text-blue-500 font-medium'>

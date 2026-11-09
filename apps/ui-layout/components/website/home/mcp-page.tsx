@@ -1,16 +1,16 @@
 'use client';
-import React, { useState } from 'react';
+import { Container } from '@/components/ui/container';
+import { GapPattern } from '@/components/ui/gap-pattern';
+import { type Colors, Liquid } from '@/components/ui/liquid-gradient';
 import { profiles } from '@/components/website/home/hero-sec';
 import HomeFooter from '@/components/website/home/home-footer';
 import HomeHeader from '@/components/website/home/home-header';
-import { ArrowUpRight, Component, LayoutPanelTop } from 'lucide-react';
-import Image from 'next/image';
 import { Banner } from '@/components/website/ui/banner';
-import { Github, Star } from 'lucide-react';
-import { Colors, Liquid } from '@/components/ui/liquid-gradient';
-import { Container } from '@/components/ui/container';
 import { cn } from '@/lib/utils';
-import { GapPattern } from '@/components/ui/gap-pattern';
+import { ArrowUpRight, Component, LayoutPanelTop, Star } from 'lucide-react';
+import { Github } from '@repo/ui';
+import Image from 'next/image';
+import React, { useState } from 'react';
 
 const COLORS: Colors = {
   color1: '#FFFFFF',
@@ -39,7 +39,7 @@ function McpPage() {
       <div className='relative bg-black'>
         <div
           className={cn(
-            'border-b dark:border-neutral-700 w-full dark:bg-neutral-900 bg-white h-12',
+            'border-b w-full bg-card h-12',
             'absolute top-0 left-0 ',
             'dark:bg-[repeating-linear-gradient(135deg,#2f2f2f_0px_1px,transparent_1px_10px)] bg-[repeating-linear-gradient(135deg,#f0f0f0_0px_1px,transparent_1px_10px)]'
           )}
@@ -62,8 +62,7 @@ function McpPage() {
                 height='32'
               />
             </picture>
-            Ship faster with{' '}
-            <span className='font-semibold'>UI-Layouts Pro</span>
+            Ship faster with <span className='font-semibold'>UI-Layouts Pro</span>
             <span className='md:inline-block hidden'>
               – 100+ production-ready blocks waiting for you
             </span>
@@ -111,11 +110,10 @@ function McpPage() {
                 </span>
               </h1>
 
-              <p className='mx-auto 2xl:w-[680px] lg:w-[520px] text-center sm:text-base text-sm text-neutral-600 dark:text-neutral-400'>
-                UI-Layouts MCP lets AI assistants like Cursor, Claude, and other
-                AI IDEs search real UI components, read documentation, extract
-                metadata, and retrieve actual React/TypeScript source code,
-                instead of guessing UI.
+              <p className='mx-auto 2xl:w-[680px] lg:w-[520px] text-center sm:text-base text-sm text-muted-foreground'>
+                UI-Layouts MCP lets AI assistants like Cursor, Claude, and other AI IDEs search real
+                UI components, read documentation, extract metadata, and retrieve actual
+                React/TypeScript source code, instead of guessing UI.
               </p>
 
               <div className='flex gap-3 justify-center items-center pt-6'>
@@ -135,7 +133,8 @@ function McpPage() {
                 <a
                   href='https://github.com/ui-layouts/mcp'
                   target='_blank'
-                  className='relative inline-block md:w-40 w-12 h-[3em] group dark:bg-black bg-white dark:border-white border-black border-2 rounded-lg'
+                  className='relative inline-block md:w-40 w-12 h-[3em] group bg-background border-foreground border-2 rounded-lg'
+                  rel='noreferrer noopener'
                 >
                   <div className='absolute w-[112.81%] h-[128.57%] top-[8.57%] left-1/2 -translate-x-1/2 filter blur-[19px] opacity-70'>
                     <span className='absolute inset-0 rounded-lg bg-[#d9d9d9] filter blur-[6.5px]'></span>
@@ -152,11 +151,7 @@ function McpPage() {
                       <span
                         key={i}
                         className={`absolute inset-0 rounded-lg border-solid border-[3px] border-gradient-to-b from-transparent to-white mix-blend-overlay filter ${
-                          i <= 2
-                            ? 'blur-[3px]'
-                            : i === 3
-                              ? 'blur-[5px]'
-                              : 'blur-xs'
+                          i <= 2 ? 'blur-[3px]' : i === 3 ? 'blur-[5px]' : 'blur-xs'
                         }`}
                       ></span>
                     ))}
@@ -187,7 +182,7 @@ function McpPage() {
                       key={profile.href}
                       href={profile.href}
                       target='_block'
-                      className={`dark:bg-neutral-800 bg-neutral-50 p-1 shrink-0 rounded-full relative z-1 hover:z-2 ${profile.translateX}`}
+                      className={`bg-card p-1 shrink-0 rounded-full relative z-1 hover:z-2 ${profile.translateX}`}
                     >
                       <Image
                         src={profile.src}
@@ -272,9 +267,7 @@ function McpPage() {
                       ></path>
                     </svg>
                   </div>
-                  <div className='sm:text-sm text-xs font-medium'>
-                    Trusted by 1000+ users
-                  </div>
+                  <div className='sm:text-sm text-xs font-medium'>Trusted by 1000+ users</div>
                 </div>
               </div>
             </article>
@@ -302,10 +295,10 @@ function McpPage() {
             ].map((item, i) => (
               <div
                 key={item.title}
-                className='rounded-xl border font-dmSans dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/60 backdrop-blur p-4 text-center'
+                className='rounded-xl border font-dmSans bg-card/70 backdrop-blur p-4 text-center'
               >
                 <div className='font-semibold'>{item.title}</div>
-                <div className='text-sm dark:text-neutral-300 text-neutral-500 mt-1'>
+                <div className='text-sm text-muted-foreground mt-1'>
                   {item.desc}
                 </div>
               </div>

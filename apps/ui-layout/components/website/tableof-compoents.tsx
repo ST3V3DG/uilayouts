@@ -1,17 +1,14 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
 import { useMediaQuery } from '@/hooks/use-media-query';
 import BuyMeCoffee from '@/registry/components/buy-me-coffee';
+import { Bug, Lightbulb, Pencil, SquareArrowOutUpRight } from 'lucide-react';
 import { motion, useScroll, useSpring, useTransform } from 'motion/react';
-import { ScrollArea } from './ui/scroll-area';
 import Image from 'next/image';
-import { SquareArrowOutUpRight } from 'lucide-react';
-import { Bug } from 'lucide-react';
-import { Lightbulb } from 'lucide-react';
-import { Pencil } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 import CarbonAd from './carbon-ads';
+import { ScrollArea } from './ui/scroll-area';
 
 interface TocItem {
   title: string;
@@ -190,6 +187,7 @@ export default function TableOfContents({ toc }: TableOfContentsProps) {
                       key={nav?.label}
                       target='_blank'
                       className='hover:text-primary text-muted-foreground flex items-center gap-1'
+                      rel='noreferrer noopener'
                     >
                       {nav?.icon}
                       {nav?.label}
@@ -200,7 +198,7 @@ export default function TableOfContents({ toc }: TableOfContentsProps) {
 
               <div className='mt-auto relative pt-10'>
                 {/* add something for the pro version */}
-                {/* <div className='m-0 mt-3 text-[0.8em] space-y-2 text-muted-foreground mb-6 p-3 rounded-xl bg-codebg dark:border-neutral-800 backdrop-blur-md border'>
+                {/* <div className='m-0 mt-3 text-[0.8em] space-y-2 text-muted-foreground mb-6 p-3 rounded-xl bg-muted dark:border-neutral-800 backdrop-blur-md border'>
                   <p className='text-primary font-semibold'>
                     Unlock advanced{' '}
                     <a

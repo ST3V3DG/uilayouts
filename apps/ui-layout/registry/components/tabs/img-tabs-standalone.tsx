@@ -1,7 +1,8 @@
 'use client';
-import React, { useState } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
 import { useMediaQuery } from '@/hooks/use-media-query';
+import { AnimatePresence, motion } from 'motion/react';
+import React, { useState } from 'react';
+
 const tabs = [
   {
     title: 'How do UI components improve UX?',
@@ -16,8 +17,7 @@ const tabs = [
     id: 'important',
     description:
       'Some common challenges include maintaining consistency across different devices and screen sizes, ensuring compatibility with various browsers and assistive technologies, and balancing flexibility with ease of use.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1548192746-dd526f154ed9?q=80&w=1200&auto=format',
+    imageUrl: 'https://images.unsplash.com/photo-1548192746-dd526f154ed9?q=80&w=1200&auto=format',
   },
   {
     title: 'Is UI and UX Same?',
@@ -52,10 +52,10 @@ function ImageTabsStandalone() {
               onClick={() => handleClick(index)}
             >
               <h3
-                className={`p-4 cursor-pointer transition-all font-semibold    dark:text-white text-black dark:hover:bg-[#1e2a78] hover:bg-[#F2F2F2] dark:hover:text-white hover:text-black flex justify-between items-center ${
+                className={`p-4 cursor-pointer transition-all font-semibold    text-foreground dark:hover:bg-[#1e2a78] hover:bg-[#F2F2F2] flex justify-between items-center ${
                   activeIndex === index
                     ? 'active  dark:bg-[#1e2a78] bg-[#F2F2F2] '
-                    : 'dark:bg-[#11112b] bg-white'
+                    : 'dark:bg-[#11112b] bg-background'
                 }
                `}
               >
@@ -73,9 +73,7 @@ function ImageTabsStandalone() {
                       delay: 0.14,
                     }}
                   >
-                    <p className={`dark:bg-white bg-[#F2F2F2] text-black p-3`}>
-                      {tab.description}
-                    </p>
+                    <p className={`dark:bg-white bg-[#F2F2F2] text-foreground p-3`}>{tab.description}</p>
                     <img
                       src={tab.imageUrl}
                       alt={tab.title}

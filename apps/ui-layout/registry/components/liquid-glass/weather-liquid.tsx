@@ -1,12 +1,5 @@
 import { LiquidGlassCard } from '@/components/ui/liquid-glass';
-import {
-  Cloud,
-  CloudSun,
-  CloudRain,
-  Sun,
-  MapPin,
-  CloudSunRain,
-} from 'lucide-react';
+import { Cloud, CloudRain, CloudSun, CloudSunRain, MapPin, Sun } from 'lucide-react';
 
 const WeatherLiquid = () => {
   return (

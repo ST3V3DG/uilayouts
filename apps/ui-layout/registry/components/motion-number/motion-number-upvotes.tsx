@@ -1,8 +1,9 @@
 'use client';
 import NumberFlow from '@number-flow/react';
-import { motion } from 'motion/react';
 import { ArrowDown, ArrowUp } from 'lucide-react';
-import React, { useState } from 'react';
+import { motion } from 'motion/react';
+import type React from 'react';
+import { useState } from 'react';
 
 const UpvoteDownvote: React.FC = () => {
   const [votes, setVotes] = useState(14); // Initial votes
@@ -25,7 +26,7 @@ const UpvoteDownvote: React.FC = () => {
           ? 'dark:bg-green-950 bg-green-300 border-green-600 text-white'
           : activeVote === 'down'
             ? 'dark:bg-red-950 bg-red-300 border-red-600 text-white'
-            : 'dark:bg-neutral-950 bg-neutral-50 text-primary'
+            : 'bg-muted text-primary'
       }`}
     >
       <div className='  text-lg font-medium'>

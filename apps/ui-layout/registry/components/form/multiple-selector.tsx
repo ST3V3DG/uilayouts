@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Cat, Dog, Fish, Rabbit, Turtle } from 'lucide-react';
 import { MultiSelect } from '@/components/ui/multi-selector';
+import { Cat, Dog, Fish, Rabbit, Turtle } from 'lucide-react';
+import React, { useState } from 'react';
 
 const frameworksList = [
   { value: 'react', label: 'React', icon: Turtle, disable: true },
@@ -13,10 +13,7 @@ const frameworksList = [
 ];
 
 function Home() {
-  const [selectedFrameworks, setSelectedFrameworks] = useState<string[]>([
-    'nextjs',
-    'svelte',
-  ]);
+  const [selectedFrameworks, setSelectedFrameworks] = useState<string[]>(['nextjs', 'svelte']);
 
   return (
     <div className='py-20 w-96 mx-auto'>

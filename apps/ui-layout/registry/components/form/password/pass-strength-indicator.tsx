@@ -1,6 +1,6 @@
 'use client';
-import React, { useState, useMemo } from 'react';
 import { Check, Eye, EyeOff, X } from 'lucide-react';
+import React, { useMemo, useState } from 'react';
 
 // Constants
 const PASSWORD_REQUIREMENTS = [
@@ -8,7 +8,7 @@ const PASSWORD_REQUIREMENTS = [
   { regex: /[0-9]/, text: 'At least 1 number' },
   { regex: /[a-z]/, text: 'At least 1 lowercase letter' },
   { regex: /[A-Z]/, text: 'At least 1 uppercase letter' },
-  { regex: /[!-\/:-@[-`{-~]/, text: 'At least 1 special characters' },
+  { regex: /[!-/:-@[-`{-~]/, text: 'At least 1 special characters' },
 ] as const;
 
 type StrengthScore = 0 | 1 | 2 | 3 | 4 | 5;
@@ -75,7 +75,7 @@ const PasswordInput = () => {
             placeholder='Password'
             aria-invalid={calculateStrength.score < 4}
             aria-describedby='password-strength'
-            className='w-full p-2 border-2 rounded-md dark:bg-neutral-950 bg-neutral-50 outline-hidden focus-within:border-blue-700 transition'
+            className='w-full p-2 border-2 rounded-md bg-muted outline-hidden focus-within:border-blue-700 transition'
           />
           <button
             type='button'
@@ -89,7 +89,7 @@ const PasswordInput = () => {
       </form>
 
       <div
-        className='mt-3 mb-2 h-1 rounded-full dark:bg-neutral-950 bg-neutral-50 overflow-hidden'
+        className='mt-3 mb-2 h-1 rounded-full bg-muted overflow-hidden'
         role='progressbar'
         aria-valuenow={calculateStrength.score}
         aria-valuemin={0}
@@ -103,18 +103,12 @@ const PasswordInput = () => {
         />
       </div>
 
-      <p
-        id='password-strength'
-        className='mb-2 text-sm font-medium flex justify-between'
-      >
+      <p id='password-strength' className='mb-2 text-sm font-medium flex justify-between'>
         <span>Must contain:</span>
         <span>
           {
             STRENGTH_CONFIG.texts[
-              Math.min(
-                calculateStrength.score,
-                4
-              ) as keyof typeof STRENGTH_CONFIG.texts
+              Math.min(calculateStrength.score, 4) as keyof typeof STRENGTH_CONFIG.texts
             ]
           }
         </span>
@@ -128,11 +122,7 @@ const PasswordInput = () => {
             ) : (
               <X size={16} className='text-muted-foreground/80' />
             )}
-            <span
-              className={`text-xs ${
-                req.met ? 'text-emerald-600' : 'text-muted-foreground'
-              }`}
-            >
+            <span className={`text-xs ${req.met ? 'text-emerald-600' : 'text-muted-foreground'}`}>
               {req.text}
               <span className='sr-only'>
                 {req.met ? ' - Requirement met' : ' - Requirement not met'}

@@ -13,8 +13,8 @@ type Props = {
 
 export function Input({
   value = 0,
-  min = -Infinity,
-  max = Infinity,
+  min = Number.NEGATIVE_INFINITY,
+  max = Number.POSITIVE_INFINITY,
   onChange,
 }: Props) {
   const defaultValue = React.useRef(value);
@@ -23,20 +23,14 @@ export function Input({
   // Hide the caret during transitions so you can't see it shifting around:
   const [showCaret, setShowCaret] = React.useState(true);
 
-  const handleInput: React.ChangeEventHandler<HTMLInputElement> = ({
-    currentTarget: el,
-  }) => {
+  const handleInput: React.FormEventHandler<HTMLInputElement> = ({ currentTarget: el }) => {
     setAnimated(false);
     if (el.value === '') {
       onChange?.(defaultValue.current);
       return;
     }
-    const num = parseInt(el.value);
-    if (
-      isNaN(num) ||
-      (min != null && num < min) ||
-      (max != null && num > max)
-    ) {
+    const num = Number.parseInt(el.value);
+    if (isNaN(num) || (min != null && num < min) || (max != null && num > max)) {
       // Revert input's value:
       el.value = String(value);
     } else {
@@ -47,19 +41,18 @@ export function Input({
     }
   };
 
-  const handlePointerDown =
-    (diff: number) => (event: React.PointerEvent<HTMLButtonElement>) => {
-      setAnimated(true);
-      if (event.pointerType === 'mouse') {
-        event?.preventDefault();
-        inputRef.current?.focus();
-      }
-      const newVal = Math.min(Math.max(value + diff, min), max);
-      onChange?.(newVal);
-    };
+  const handlePointerDown = (diff: number) => (event: React.PointerEvent<HTMLButtonElement>) => {
+    setAnimated(true);
+    if (event.pointerType === 'mouse') {
+      event?.preventDefault();
+      inputRef.current?.focus();
+    }
+    const newVal = Math.min(Math.max(value + diff, min), max);
+    onChange?.(newVal);
+  };
 
   return (
-    <div className='group flex items-stretch rounded-md text-3xl font-semibold border w-fit mx-auto dark:bg-neutral-950 bg-neutral-50'>
+    <div className='group flex items-stretch rounded-md text-3xl font-semibold border w-fit mx-auto bg-muted'>
       <button
         aria-hidden
         tabIndex={-1}

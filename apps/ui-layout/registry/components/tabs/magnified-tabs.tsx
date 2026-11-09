@@ -1,34 +1,32 @@
 //@ts-nocheck
 'use client';
 
+import { Icons } from '@/assets/icons/Icons';
+import preview from '@/assets/preview/Preview';
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/magnified-doc';
+import { apps } from '@/components/website/constant';
 import {
+  AnimatePresence,
   type MotionValue,
   motion,
   useMotionValue,
   useSpring,
   useTransform,
-  AnimatePresence,
 } from 'motion/react';
 import Image from 'next/image';
-import React, { useState } from 'react';
-import { useRef } from 'react';
-import { Icons } from '@/assets/icons/Icons';
-import preview from '@/assets/preview/Preview';
-import { apps } from '@/components/website/constant';
-const Component = React.forwardRef((props, ref) => (
-  <Image {...props} ref={ref} alt='App' />
-));
+import React, { useRef, useState } from 'react';
+
+const Component = React.forwardRef((props, ref) => <Image {...props} ref={ref} alt='App' />);
 
 const MotionComponent = motion(Component);
 
 function MagnifiedDocOneFile() {
-  const mouseX = useMotionValue(Infinity);
+  const mouseX = useMotionValue(Number.POSITIVE_INFINITY);
   const [index, setIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState(0);
 
@@ -37,12 +35,11 @@ function MagnifiedDocOneFile() {
     setIndex(i);
   };
 
-  const isForward =
-    index > prevIndex || (index === 0 && prevIndex === apps.length - 1);
+  const isForward = index > prevIndex || (index === 0 && prevIndex === apps.length - 1);
 
   return (
     <>
-      <div className='relative [box-shadow] w-4/5 mx-auto  rounded-xl  dark:bg-neutral-950 bg-neutral-300  [box-shadow:inset_1px_-1px_4px_rgba(0_0_0,0.5)] overflow-hidden '>
+      <div className='relative [box-shadow] w-4/5 mx-auto  rounded-xl  bg-muted  [box-shadow:inset_1px_-1px_4px_rgba(0_0_0,0.5)] overflow-hidden '>
         <div className='relative'>
           {apps.map((app, i) => {
             return (
@@ -89,7 +86,7 @@ function MagnifiedDocOneFile() {
               <TooltipProvider delayDuration={0}>
                 <motion.div
                   onMouseMove={(e) => mouseX.set(e.pageX)}
-                  onMouseLeave={() => mouseX.set(Infinity)}
+                  onMouseLeave={() => mouseX.set(Number.POSITIVE_INFINITY)}
                   className='mx-auto flex sm:h-[57px] h-[52px] w-fit items-end gap-2 rounded-t-lg px-2 pb-2 dark:bg-neutral-800/80 bg-white/50 backdrop-blur-xs border-t border-l border-r  '
                 >
                   {apps.map((app, i) => {
@@ -99,10 +96,7 @@ function MagnifiedDocOneFile() {
                           <span className='sr-only'>{app.name}</span>
                           <AppIcon mouseX={mouseX} src={app.icon} />
                         </TooltipTrigger>
-                        <TooltipContent
-                          className='py-1 px-3 rounded-xs'
-                          sideOffset={8}
-                        >
+                        <TooltipContent className='py-1 px-3 rounded-xs' sideOffset={8}>
                           <p className='text-xs'>{app.name}</p>
                         </TooltipContent>
                       </Tooltip>

@@ -1,7 +1,7 @@
 'use client';
 
-import * as React from 'react';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
+import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -14,7 +14,7 @@ const TabsList = React.forwardRef<
   <TabsPrimitive.List
     ref={ref}
     className={cn(
-      'inline-flex h-10 items-center justify-center rounded-md dark:bg-muted bg-white p-1 text-muted-foreground border',
+      'inline-flex h-10 items-center justify-center rounded-md bg-input p-1 text-muted-foreground border',
       className
     )}
     {...props}
@@ -29,7 +29,7 @@ const TabsTrigger = React.forwardRef<
   <TabsPrimitive.Trigger
     ref={ref}
     className={cn(
-      'inline-flex items-center justify-center whitespace-nowrap  px-3 py-2 text-sm font-medium ring-offset-background transition-all focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:data-[state=active]:bg-black data-[state=active]:bg-zinc-200 data-[state=active]:text-foreground data-[state=active]:shadow-xs rounded-md',
+      'inline-flex items-center justify-center whitespace-nowrap  px-3 py-2 text-sm font-medium ring-offset-background transition-all focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-card data-[state=active]:text-foreground data-[state=active]:shadow-xs rounded-md',
       className
     )}
     {...props}
@@ -37,8 +37,7 @@ const TabsTrigger = React.forwardRef<
 ));
 TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
 
-interface TabsContentProps
-  extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content> {
+interface TabsContentProps extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content> {
   manualType?: boolean;
 }
 
@@ -51,11 +50,11 @@ const TabsContent = React.forwardRef<
     className={cn(
       'mt-2 ring-offset-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
       className,
-      manualType && 'p-3 bg-white border dark:bg-neutral-800 rounded-lg'
+      manualType && 'p-3 bg-muted border rounded-lg'
     )}
     {...props}
   />
 ));
 TabsContent.displayName = TabsPrimitive.Content.displayName;
 
-export { Tabs, TabsList, TabsTrigger, TabsContent };
+export { Tabs, TabsContent, TabsList, TabsTrigger };

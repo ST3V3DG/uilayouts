@@ -1,23 +1,19 @@
+import { AllComponents } from '@/configs/docs';
 import { notFound } from 'next/navigation';
 import React, { Suspense } from 'react';
-import { AllComponents } from '@/configs/docs';
 
 export const dynamic = 'force-static';
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const safe = AllComponents.filter(
-    (c: any) => c && typeof c.componentName === 'string'
-  );
+  const safe = AllComponents.filter((c) => c && typeof c.componentName === 'string');
 
-  return safe.map((c: any) => ({
+  return safe.map((c) => ({
     componentName: c.componentName,
   }));
 }
 
-export default async function SectionPage(props: {
-  params: Promise<{ componentName: string }>;
-}) {
+export default async function SectionPage(props: { params: Promise<{ componentName: string }> }) {
   const params = await props.params;
   const componentName = params.componentName;
 
@@ -25,8 +21,7 @@ export default async function SectionPage(props: {
 
   const component =
     AllComponents.find(
-      (c: any) =>
-        c?.slug === componentName || c?.componentName === componentName
+      (c: any) => c?.slug === componentName || c?.componentName === componentName
     ) ?? null;
 
   if (!component || !component.componentSrc) notFound();
@@ -38,7 +33,7 @@ export default async function SectionPage(props: {
     <section
       className={`${
         isFramerScrolling ? '' : 'flex justify-center items-center h-full'
-      } min-h-screen rounded-md bg-codebg`}
+      } min-h-screen rounded-md bg-muted`}
     >
       <div className='px-4 w-full'>
         <Suspense

@@ -1,6 +1,4 @@
 'use client';
-import React, { ReactNode } from 'react';
-import { EmblaOptionsType } from 'embla-carousel';
 import {
   Carousel,
   Slider,
@@ -8,7 +6,9 @@ import {
   SliderDotButton,
   ThumbsSlider,
 } from '@/components/ui/carousel';
+import type { EmblaOptionsType } from 'embla-carousel';
 import Autoplay from 'embla-carousel-autoplay';
+import React, { ReactNode } from 'react';
 
 function VerticalthumbsAutostartSlider() {
   const OPTIONS: EmblaOptionsType = {

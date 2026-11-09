@@ -1,6 +1,6 @@
-import React from 'react';
 import McpPage from '@/components/website/home/mcp-page';
 import type { Metadata } from 'next';
+import React from 'react';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.ui-layouts.com'),
@@ -75,11 +75,7 @@ export const metadata: Metadata = {
 };
 
 function page() {
-  return (
-    <>
-      <McpPage />
-    </>
-  );
+  return <McpPage />;
 }
 
 export default page;

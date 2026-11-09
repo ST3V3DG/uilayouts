@@ -1,9 +1,10 @@
 'use client';
-import { useState } from 'react';
+import { DrawerContent, HeaderDrawer } from '@/components/ui/responsive-header';
+import { useMediaQuery } from '@/hooks/use-media-query';
 import { MenuIcon, X } from 'lucide-react';
 import Link from 'next/link';
-import { useMediaQuery } from '@/hooks/use-media-query';
-import { DrawerContent, HeaderDrawer } from '@/components/ui/responsive-header';
+import { useState } from 'react';
+
 const items = [
   {
     id: 1,
@@ -24,7 +25,7 @@ export default function ResponsiveHeader() {
 
   return (
     <>
-      <header className='flex justify-between border items-center p-3 bg-white rounded-md dark:bg-black/45 backdrop-blur-md'>
+      <header className='flex justify-between border items-center p-3 bg-background/45 backdrop-blur-md rounded-md'>
         <h1>Logo</h1>
         <HeaderDrawer
           open={headerOpen}
@@ -40,14 +41,14 @@ export default function ResponsiveHeader() {
           <DrawerContent>
             {!isDesktop && (
               <div className='flex justify-center w-full absolute bottom-1 left-0 '>
-                <div className=' w-16 h-[0.30rem] shrink-0 rounded-full bg-neutral-600 my-4' />
+                <div className=' w-16 h-[0.30rem] shrink-0 rounded-full bg-muted-foreground my-4' />
               </div>
             )}
             <div className='container mx-auto  gap-4'>
               <div className='flex justify-between items-center border-b'>
                 {isDesktop && (
                   <button
-                    className='flex justify-start p-2 mb-2 rounded-md dark:bg-white dark:text-black bg-black text-white'
+                    className='flex justify-start p-2 mb-2 rounded-md bg-foreground text-background'
                     onClick={() => setHeaderOpen(false)}
                   >
                     <X />
@@ -61,8 +62,7 @@ export default function ResponsiveHeader() {
                     <li>
                       <Link
                         href='/'
-                        className='relative flex items-center gap-2 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 dark:after:bg-white 
-      after:bg-neutral-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100'
+                        className='relative flex items-center gap-2 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-foreground after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100'
                       >
                         Home
                       </Link>
@@ -70,8 +70,7 @@ export default function ResponsiveHeader() {
                     <li>
                       <Link
                         href='/components'
-                        className='relative flex gap-2 items-center after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 dark:after:bg-white 
-      after:bg-neutral-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100'
+                        className='relative flex gap-2 items-center after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-foreground after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100'
                       >
                         Components
                       </Link>
@@ -79,8 +78,7 @@ export default function ResponsiveHeader() {
                     <li>
                       <Link
                         href='/layouts'
-                        className='relative flex gap-2 items-center after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 dark:after:bg-white 
-      after:bg-neutral-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100'
+                        className='relative flex gap-2 items-center after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-foreground after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100'
                       >
                         Layouts
                       </Link>
@@ -88,8 +86,7 @@ export default function ResponsiveHeader() {
                     <li>
                       <Link
                         href='/templates'
-                        className='relative flex items-center gap-2 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 dark:after:bg-white 
-      after:bg-neutral-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100'
+                        className='relative flex items-center gap-2 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-foreground after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100'
                       >
                         Templates
                       </Link>
@@ -97,8 +94,7 @@ export default function ResponsiveHeader() {
                     <li>
                       <Link
                         href='/open-source'
-                        className='relative flex items-center gap-2 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 dark:after:bg-white 
-      after:bg-neutral-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100'
+                        className='relative flex items-center gap-2 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-foreground after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100'
                       >
                         Open Source
                       </Link>

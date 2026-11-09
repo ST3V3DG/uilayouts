@@ -2,7 +2,8 @@
 
 import { useMediaQuery } from '@/hooks/use-media-query';
 import { ArrowUpRight, MoveUpRight } from 'lucide-react';
-import React, { useState, useRef, useCallback, useEffect } from 'react';
+import type React from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 interface ImageData {
   id: number;
@@ -115,19 +116,17 @@ const ImageReveal2: React.FC = () => {
             />
           )}
           <h2
-            className={`newFont dark:text-neutral-300 uppercase md:text-5xl sm:text-2xl text-xl sm:py-6 py-2 leading-[100%] relative ${
+            className={`newFont text-muted-foreground uppercase md:text-5xl sm:text-2xl text-xl sm:py-6 py-2 leading-[100%] relative ${
               activeImage?.id === image?.id
                 ? 'mix-blend-difference z-20 text-neutral-300'
-                : 'text-neutral-700'
+                : ''
             }`}
           >
             {image.alt}
           </h2>
           <button
             className={`sm:block hidden p-2 rounded-full transition-all duration-300 ease-out ${
-              activeImage?.id === image?.id
-                ? 'mix-blend-difference z-20 bg-white text-black'
-                : ''
+              activeImage?.id === image?.id ? 'mix-blend-difference z-20 bg-white text-black' : ''
             }`}
           >
             <ArrowUpRight className='w-8 h-8' />
@@ -143,7 +142,7 @@ const ImageReveal2: React.FC = () => {
         <img
           src={activeImage.src}
           alt={activeImage.alt}
-          className={`fixed dark:bg-neutral-950 rotate-12 bg-white object-cover pointer-events-none z-10 w-[300px] h-[400px] rounded-lg`}
+          className={`fixed bg-background rotate-12 object-cover pointer-events-none z-10 w-[300px] h-[400px] rounded-lg`}
           style={{
             left: `${cursorPosition.x}px`,
             top: `${cursorPosition.y}px`,

@@ -1,8 +1,8 @@
 'use client';
+import { items } from '@/components/website/constant';
+import { motion, useInView } from 'motion/react';
 // inspired by tom is loading
 import React, { useRef, useState } from 'react';
-import { motion, useInView } from 'motion/react';
-import { items } from '@/components/website/constant';
 
 function UnsplashGrid() {
   const [selected, setSelected] = useState(null);
@@ -13,12 +13,7 @@ function UnsplashGrid() {
         <div className='columns-2 md:columns-3 2xl:columns-4 gap-4'>
           <>
             {items.map((item, index) => (
-              <ImageItem
-                key={item.id}
-                item={item}
-                index={index}
-                setSelected={setSelected}
-              />
+              <ImageItem key={item.id} item={item} index={index} setSelected={setSelected} />
             ))}
           </>
         </div>
@@ -48,7 +43,7 @@ function ImageItem({ item, index, setSelected }: ImageItemProps) {
       initial='hidden'
       animate={isInView && 'visible'}
       ref={ref}
-      className="inline-block group w-full rounded-md  relative dark:bg-black bg-white overflow-hidden before:absolute before:top-0 before:content-[''] before:h-full before:w-full hover:before:bg-linear-to-t dark:before:from-neutral-900  before:from-neutral-200/90 before:from-5% before:to-transparent before:to-90% cursor-pointer"
+      className="inline-block group w-full rounded-md  relative bg-background overflow-hidden before:absolute before:top-0 before:content-[''] before:h-full before:w-full hover:before:bg-linear-to-t dark:before:from-neutral-900  before:from-neutral-200/90 before:from-5% before:to-transparent before:to-90% cursor-pointer"
       onClick={() => setSelected(item)}
     >
       <motion.img

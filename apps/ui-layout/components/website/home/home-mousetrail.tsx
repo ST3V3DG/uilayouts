@@ -2,7 +2,7 @@
 'use client';
 import preview from '@/assets/preview/Preview';
 import Image from 'next/image';
-import React, { useRef, createRef, useState } from 'react';
+import React, { createRef, useRef, useState } from 'react';
 export const items = [
   {
     id: 1,
@@ -90,8 +90,7 @@ export default function HomeMouseTrail() {
     if (distanceFromLast(e.clientX, e.clientY) > window.innerWidth / 20) {
       const lead = refs.current[globalIndex % refs.current.length].current;
 
-      const tail =
-        refs.current[(globalIndex - 5) % refs.current.length]?.current;
+      const tail = refs.current[(globalIndex - 5) % refs.current.length]?.current;
 
       if (lead) activate(lead, e.clientX, e.clientY);
       if (tail) deactivate(tail);
@@ -119,7 +118,7 @@ export default function HomeMouseTrail() {
       {items.map((item, index) => (
         <figure key={item.src}>
           <Image
-            className="object-contain border dark:bg-black bg-neutral-50 z-10 w-32 h-32 scale-0 opacity:0 data-[status='active']:scale-100  data-[status='active']:opacity-100 transition-transform duration-500 data-[status='active']:ease-out-expo  absolute  -translate-y-[50%] -translate-x-[50%]"
+            className="object-contain border bg-card z-10 w-32 h-32 scale-0 opacity:0 data-[status='active']:scale-100  data-[status='active']:opacity-100 transition-transform duration-500 data-[status='active']:ease-out-expo  absolute  -translate-y-[50%] -translate-x-[50%]"
             data-index={index}
             data-status='inactive'
             src={item.url}
@@ -131,9 +130,7 @@ export default function HomeMouseTrail() {
         </figure>
       ))}
       <article className='relative z-20 dark:mix-blend-difference '>
-        <h1 className='text-3xl text-center font-semibold'>
-          ✨Experience Mouse Trails
-        </h1>
+        <h1 className='text-3xl text-center font-semibold'>✨Experience Mouse Trails</h1>
       </article>
     </section>
   );

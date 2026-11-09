@@ -349,7 +349,6 @@
         }
       ]
     },
-
     {
       "name": "noise-effect",
       "type": "registry:component",
@@ -521,12 +520,7 @@
       "name": "img-ripple-effect",
       "type": "registry:component",
       "devDependencies": [],
-      "dependencies": [
-        "three",
-        "@types/three",
-        "@react-three/fiber",
-        "@react-three/drei"
-      ],
+      "dependencies": ["three", "@types/three", "@react-three/fiber", "@react-three/drei"],
       "registryDependencies": [],
       "files": [
         {
@@ -559,12 +553,7 @@
       "name": "r3f-blob",
       "type": "registry:component",
       "devDependencies": [],
-      "dependencies": [
-        "three",
-        "@types/three",
-        "@react-three/fiber",
-        "@react-three/drei"
-      ],
+      "dependencies": ["three", "@types/three", "@react-three/fiber", "@react-three/drei"],
       "registryDependencies": [],
       "files": [
         {
@@ -590,12 +579,7 @@
       "name": "mesh-gradient-background3",
       "type": "registry:component",
       "devDependencies": [],
-      "dependencies": [
-        "three",
-        "@types/three",
-        "@react-three/fiber",
-        "@react-three/drei"
-      ],
+      "dependencies": ["three", "@types/three", "@react-three/fiber", "@react-three/drei"],
       "registryDependencies": [],
       "files": [
         {
@@ -608,12 +592,7 @@
       "name": "mesh-gradient-background2",
       "type": "registry:component",
       "devDependencies": [],
-      "dependencies": [
-        "three",
-        "@types/three",
-        "@react-three/fiber",
-        "@react-three/drei"
-      ],
+      "dependencies": ["three", "@types/three", "@react-three/fiber", "@react-three/drei"],
       "registryDependencies": [],
       "files": [
         {
@@ -626,12 +605,7 @@
       "name": "mesh-gradient-background",
       "type": "registry:component",
       "devDependencies": [],
-      "dependencies": [
-        "three",
-        "@types/three",
-        "@react-three/fiber",
-        "@react-three/drei"
-      ],
+      "dependencies": ["three", "@types/three", "@react-three/fiber", "@react-three/drei"],
       "registryDependencies": [],
       "files": [
         {
@@ -3640,6 +3614,65 @@
       ]
     },
     {
+      "name": "code-block",
+      "type": "registry:component",
+      "devDependencies": [],
+      "dependencies": ["shiki"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "./components/ui/code-block.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "./components/website/code-components/copy-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "tree-code-viewer",
+      "type": "registry:component",
+      "devDependencies": [],
+      "dependencies": ["shiki"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "./components/ui/tree-view-code.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "./components/website/code-components/client-pre-code.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "./components/website/code-components/copy-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "code-tabs-mdx",
+      "type": "registry:component",
+      "devDependencies": [],
+      "dependencies": ["shiki"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "./components/website/code-components/code-tabs-mdx.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "./lib/shiki-highlighter.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "./components/website/code-components/copy-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "hero-digital-success",
       "type": "registry:block",
       "devDependencies": [],
@@ -4158,7 +4191,7 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "../../packages/blocks/src/faq-section/faq-founder.tsx",
+          "path": "../../packages/blocks/src/team-section/team-clippath.tsx",
           "type": "registry:block"
         },
         {
@@ -4945,6 +4978,270 @@
         },
         {
           "path": "./components/ui/timeline-animation.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "btn-hover14",
+      "type": "registry:component",
+      "devDependencies": [],
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "./registry/components/button/btn-hover14.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "gradient-border",
+      "type": "registry:component",
+      "devDependencies": [],
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "./registry/components/card/gradient-border.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "framer-carousel1",
+      "type": "registry:component",
+      "devDependencies": [],
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "./registry/components/carousel/framer-carousel1.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "code-tabs",
+      "type": "registry:component",
+      "devDependencies": [],
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "./registry/components/code/code-tabs.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "code-block-comp",
+      "type": "registry:component",
+      "devDependencies": [],
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "./registry/components/code/code-block.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "code-tree-code-viewer",
+      "type": "registry:component",
+      "devDependencies": [],
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "./registry/components/code/tree-code-viewer.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "flipcountdown",
+      "type": "registry:component",
+      "devDependencies": [],
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "./registry/components/countdown/flipcountdown.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "special-offer",
+      "type": "registry:component",
+      "devDependencies": [],
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "./registry/components/countdown/special-offer.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "nested-vaul-drawer",
+      "type": "registry:component",
+      "devDependencies": [],
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "./registry/components/drawer/nested-vaul-drawer.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "unsplash-grid",
+      "type": "registry:component",
+      "devDependencies": [],
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "./registry/components/grid/unsplash-grid.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "sticky-hero-scroll",
+      "type": "registry:component",
+      "devDependencies": [],
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "./registry/components/scroll-animation/sticky-hero-scroll.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "shimmer-loader",
+      "type": "registry:component",
+      "devDependencies": [],
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "./registry/components/shimmer-loader.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "demo-spotlight-card2",
+      "type": "registry:component",
+      "devDependencies": [],
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "./registry/components/spotlight-cards/demo-spotlight-card2.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "demo-spotlight-card3",
+      "type": "registry:component",
+      "devDependencies": [],
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "./registry/components/spotlight-cards/demo-spotlight-card3.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "demo-spotlight-card4",
+      "type": "registry:component",
+      "devDependencies": [],
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "./registry/components/spotlight-cards/demo-spotlight-card4.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "spotlight-card-cruip",
+      "type": "registry:component",
+      "devDependencies": [],
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "./registry/components/spotlight-cards/spotlight-card-cruip.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "tools-tab",
+      "type": "registry:component",
+      "devDependencies": [],
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "./registry/components/tabs/tools-tab.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "terminal-ui",
+      "type": "registry:component",
+      "devDependencies": [],
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "./registry/components/terminal-ui.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "type-writter",
+      "type": "registry:component",
+      "devDependencies": [],
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "./registry/components/type-writter.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "mac-genie",
+      "type": "registry:component",
+      "devDependencies": [],
+      "dependencies": ["html-to-image","motion"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "./registry/components/mac/genie-effect.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "./components/ui/magnified-doc.tsx",
           "type": "registry:component"
         }
       ]

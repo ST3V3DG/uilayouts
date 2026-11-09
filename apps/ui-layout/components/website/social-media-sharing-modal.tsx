@@ -1,7 +1,7 @@
 // @ts-nocheck
 'use client';
-import React, { useState, useEffect } from 'react';
-import { X, Share2, Twitter, Linkedin, Github, Heart } from 'lucide-react';
+import { Github, Heart, Linkedin, Share2, Twitter, X } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
 
 const SocialShareModal = () => {
   const [showModal, setShowModal] = useState(false);
@@ -10,10 +10,8 @@ const SocialShareModal = () => {
   useEffect(() => {
     // Check different interaction types
     const hasShared = localStorage.getItem('ui-layouts-share-modal-shared');
-    const lastClosedDate = localStorage.getItem(
-      'ui-layouts-share-modal-closed-date'
-    );
-    const modalShowCount = parseInt(
+    const lastClosedDate = localStorage.getItem('ui-layouts-share-modal-closed-date');
+    const modalShowCount = Number.parseInt(
       localStorage.getItem('ui-layouts-share-modal-count') || '0'
     );
     const currentDate = new Date().getTime();
@@ -31,7 +29,7 @@ const SocialShareModal = () => {
       shouldShow = true;
     } else {
       // Check if 2 days have passed since last close
-      const lastClosed = parseInt(lastClosedDate);
+      const lastClosed = Number.parseInt(lastClosedDate);
       const twoDaysInMs = 1 * 24 * 60 * 60 * 1000; // 2 days
 
       if (currentDate - lastClosed >= twoDaysInMs) {
@@ -44,10 +42,7 @@ const SocialShareModal = () => {
       const timer = setTimeout(() => {
         setShowModal(true);
         // Increment show count
-        localStorage.setItem(
-          'ui-layouts-share-modal-count',
-          (modalShowCount + 1).toString()
-        );
+        localStorage.setItem('ui-layouts-share-modal-count', (modalShowCount + 1).toString());
       }, 10000);
 
       return () => clearTimeout(timer);
@@ -56,10 +51,7 @@ const SocialShareModal = () => {
 
   const handleClose = () => {
     setShowModal(false);
-    localStorage.setItem(
-      'ui-layouts-share-modal-closed-date',
-      new Date().getTime().toString()
-    );
+    localStorage.setItem('ui-layouts-share-modal-closed-date', new Date().getTime().toString());
   };
 
   const handleShare = (platform: string) => {
@@ -97,15 +89,12 @@ const SocialShareModal = () => {
               <Heart className='w-8 h-8 fill-white text-white' />
             </div>
 
-            <h2 className='text-2xl font-medium text-primary mb-2'>
-              Get All the blocks Free
-            </h2>
+            <h2 className='text-2xl font-medium text-primary mb-2'>Get All the blocks Free</h2>
 
             {/* Description */}
             <p className='text-primary/60 mb-6 leading-relaxed text-sm'>
-              Unlock premium blocks by sharing UI Layouts. Post on your favorite
-              platforms, get verified, and enjoy Pro blocks without a
-              subscription.
+              Unlock premium blocks by sharing UI Layouts. Post on your favorite platforms, get
+              verified, and enjoy Pro blocks without a subscription.
             </p>
 
             {/* <div className='space-y-3 mb-6'>

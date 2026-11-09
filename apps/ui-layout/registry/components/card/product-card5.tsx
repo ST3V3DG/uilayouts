@@ -1,8 +1,9 @@
 'use client';
-import React, { ReactNode, useState } from 'react';
-import Image from 'next/image';
 import { Heart, ShoppingCart } from 'lucide-react';
 import { motion } from 'motion/react';
+import Image from 'next/image';
+import React, { ReactNode, useState } from 'react';
+
 const sizes = ['7', '7.5', '8', '8.5'];
 function Card() {
   const [isActive, setIsActive] = useState(false);
@@ -47,13 +48,11 @@ function Card() {
             className={` h-52 w-full rounded-t-md  object-cover  `}
           />
         </div>
-        <article className='text-black pt-2 '>
-          <h1 className='font-semibold text-2xl text-black'>
-            Air Jordan 1 Mid SE
-          </h1>
+        <article className='text-foreground pt-2 '>
+          <h1 className='font-semibold text-2xl text-foreground'>Air Jordan 1 Mid SE</h1>
           <p className='text-xs'>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore
-            porro quos quae autem vel praesentium.
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore porro quos quae autem
+            vel praesentium.
           </p>
           <div className='py-1'>
             <p className='text-sm'>Select Size:</p>
@@ -61,8 +60,8 @@ function Card() {
               {sizes.map((size) => (
                 <motion.span
                   key={size}
-                  className={`border cursor-pointer hover:bg-neutral-800 hover:text-white w-8 grid place-content-center h-8 rounded-md ${
-                    selectedSize === size ? 'bg-neutral-800 text-white' : ''
+                  className={`border cursor-pointer hover:bg-foreground hover:text-background w-8 grid place-content-center h-8 rounded-md ${
+                    selectedSize === size ? 'bg-foreground text-background' : ''
                   }`}
                   onClick={() => handleSelectSize(size)}
                   whileHover={{ scale: 1.1 }}
@@ -74,7 +73,7 @@ function Card() {
             </div>
           </div>
           <div className='flex gap-2 items-center justify-between'>
-            <span className='font-medium text-2xl text-black'>$394</span>
+            <span className='font-medium text-2xl text-foreground'>$394</span>
 
             <button className='w-fit px-6 text-white flex justify-center items-center gap-2 bg-linear-to-r dark:from-[#070e41] dark:to-[#263381] from-[#3e5068] to-[#0c1970] py-3 rounded-md'>
               <ShoppingCart className='w-5 h-5' /> Add to cart

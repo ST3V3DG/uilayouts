@@ -1,25 +1,17 @@
-import { z } from 'zod';
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from '@/components/website/ui/tabs';
-
-import ComponentPreview from './component-preview';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/website/ui/tabs';
 import { AllComponents } from '@/configs/docs';
-import { Code, Eye } from 'lucide-react';
-import { ReactNode } from 'react';
 import { normalizeCodeChildren } from '@/lib/code';
+import { Code, Eye } from 'lucide-react';
+import type { ReactNode } from 'react';
+import { z } from 'zod';
+import ComponentPreview from './component-preview';
 import { PreCode } from './pre-code';
 
 function blocksToFiles(blocks: any[]) {
   return blocks.map((block, index) => {
     const blocksname = block.className?.replace('language-', '') ?? 'txt';
     const lang =
-      block.className?.split('.')?.[1] ||
-      block.className?.replace('language-', '') ||
-      'tsx';
+      block.className?.split('.')?.[1] || block.className?.replace('language-', '') || 'tsx';
 
     return {
       name: blocksname.toLowerCase(),
@@ -58,25 +50,15 @@ export default async function IframeComponentPrieview(
   props: unknown & IframeComponentPrieviewProps
 ) {
   // parse using Zod (no more CodeHike)
-  const {
-    name,
-    hasReTrigger,
-    responsive,
-    children,
-    isFitheight,
-    hideDeviceOpt,
-    previewComp,
-  } = parsePropsNoCodehike(props);
+  const { name, hasReTrigger, responsive, children, isFitheight, hideDeviceOpt, previewComp } =
+    parsePropsNoCodehike(props);
   const codeBlocks = normalizeCodeChildren(children);
 
   const files = blocksToFiles(codeBlocks);
 
-  const matchedComponent =
-    AllComponents?.find((file) => file.componentName === name) || null;
+  const matchedComponent = AllComponents?.find((file) => file.componentName === name) || null;
 
-  const currComponent = matchedComponent
-    ? JSON.parse(JSON.stringify(matchedComponent))
-    : null;
+  const currComponent = matchedComponent ? JSON.parse(JSON.stringify(matchedComponent)) : null;
 
   // console.log('component', name, currComponent);
 
@@ -86,21 +68,18 @@ export default async function IframeComponentPrieview(
 
   return (
     <div className='not-prose relative z-0 flex items-center justify-between pb-3'>
-      <Tabs
-        defaultValue={`${name}preview`}
-        className='relative mt-1 w-full rounded-lg'
-      >
-        <TabsList className='absolute left-0 pl-1 top-0 z-10 flex h-12 w-full justify-start rounded-b-none rounded-lg dark:bg-neutral-800'>
+      <Tabs defaultValue={`${name}preview`} className='relative mt-1 w-full rounded-lg'>
+        <TabsList className='absolute left-0 pl-1 top-0 z-10 flex h-12 w-full justify-start rounded-b-none rounded-lg bg-muted'>
           <TabsTrigger
             value={`${name}preview`}
-            className='flex gap-2 items-center data-[state=active]:bg-zinc-200 data-[state=active]:border-b-2'
+            className='flex gap-2 items-center data-[state=active]:bg-card data-[state=active]:border-b-2'
           >
             <Eye className='w-5 h-5' /> Preview
           </TabsTrigger>
 
           <TabsTrigger
             value={`${name}code`}
-            className='flex gap-2 items-center data-[state=active]:bg-zinc-200 data-[state=active]:border-b-2'
+            className='flex gap-2 items-center data-[state=active]:bg-card data-[state=active]:border-b-2'
           >
             <Code className='w-5 h-5' /> Code
           </TabsTrigger>

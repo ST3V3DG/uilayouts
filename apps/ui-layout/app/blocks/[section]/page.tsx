@@ -1,34 +1,26 @@
-import { notFound } from 'next/navigation';
-import { Blocks, Code, Component, Expand, Eye } from 'lucide-react';
-import Footer from '@/components/website/footer';
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from '@/components/website/ui/tabs';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from '@/components/website/ui/tooltip';
-import { Metadata } from 'next';
-import Link from 'next/link';
+import { Blocks, Code, Component, Expand, Eye, FileText } from 'lucide-react';
+import type { Metadata } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import { blocksDesign, getBlocksDesignMeta } from '@/blocks-docs';
-import { TreeCodeViewer } from '@/components/website/code-components/tree-view-code';
-import { transformCodeFiles } from '@/lib/transform-code-files';
-import { ClientPreCode } from '@/components/website/code-components/client-pre-code';
-
-import DynamicPreviewIframe from '@/components/website/blocks-components/dynamic-preview-Iframe';
-import { cn } from '@/lib/utils';
-import { TableOfContents } from '@/components/website/blocks-components/table-of-contents';
-import CliCopyBtn from '@/components/website/blocks-components/cli-copy-btn';
-import { Container } from '@/components/ui/container';
-import HomeFooter from '@/components/website/home/home-footer';
-import { StructuredData } from '@/components/seo/structured-data';
 import { BreadcrumbStructuredData } from '@/components/seo/breadcrumb-structured-data';
+import { StructuredData } from '@/components/seo/structured-data';
+import { Container } from '@/components/ui/container';
+import { TreeCodeViewer } from '@/components/ui/tree-view-code';
+import CliCopyBtn from '@/components/website/blocks-components/cli-copy-btn';
+import { DesignMarkdown } from '@/components/website/blocks-components/design-markdown';
+import DynamicPreviewIframe from '@/components/website/blocks-components/dynamic-preview-Iframe';
+import { TableOfContents } from '@/components/website/blocks-components/table-of-contents';
 import CarbonAd from '@/components/website/carbon-ads';
+import { ClientPreCode } from '@/components/website/code-components/client-pre-code';
+import HomeFooter from '@/components/website/home/home-footer';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/website/ui/tabs';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/website/ui/tooltip';
+import { getBlockDesignMarkdown } from '@/lib/block-design-documents';
+import { highlightCode } from '@/lib/shiki-highlighter';
+import { transformCodeFiles } from '@/lib/transform-code-files';
+import { cn } from '@/lib/utils';
 
 export const dynamic = 'force-static';
 export const dynamicParams = false;
@@ -93,20 +85,27 @@ export async function generateMetadata({
   };
 }
 
-export default async function SectionPage(props: {
-  params: Promise<{ section?: string }>;
-}) {
+export default async function SectionPage(props: { params: Promise<{ section?: string }> }) {
   const { section } = await props.params;
   const sectionData = blocksDesign.find((s) => s.id === section);
 
   if (!sectionData) return notFound();
 
   const blocksWithCode = await Promise.all(
-    sectionData.blocks.map(async (block) => ({
-      ...block,
-      transformedCodeFiles: await transformCodeFiles(block.filePath, block.id),
-    }))
+    sectionData.blocks.map(async (block) => {
+      const transformedCodeFiles = await transformCodeFiles(block.filePath, block.id);
+      const designMarkdown = getBlockDesignMarkdown(block.id);
+
+      return {
+        ...block,
+        transformedCodeFiles,
+        designMarkdown,
+        designHtml: await highlightCode(designMarkdown, 'markdown'),
+      };
+    })
   );
+
+  // console.log('blocksWithCode', blocksWithCode);
 
   return (
     <section className='dark:prose-invert max-w-full'>
@@ -155,14 +154,8 @@ export default async function SectionPage(props: {
             <div className='w-fit mx-auto xl:scale-90 scale-80 xl:translate-x-10 translate-x-20'>
               <CarbonAd />
             </div>
-            <a href='https://pro.ui-layouts.com/pricing' target='_blank'>
-              <Image
-                src='/get-pro.png'
-                className='w-72 h-full'
-                alt=''
-                width={288}
-                height={96}
-              />
+            <a href='https://pro.ui-layouts.com/pricing' target='_blank' rel='noreferrer noopener'>
+              <Image src='/20perc.png' className='w-72 h-full' alt='' width={288} height={96} />
             </a>
           </div>
         </article>
@@ -172,10 +165,7 @@ export default async function SectionPage(props: {
         <div className='space-y-5 pb-10 prose max-w-full relative'>
           {blocksWithCode.map((block, index) => {
             const isMultiple = block.transformedCodeFiles.length > 1;
-            const url = encodeURIComponent(
-              `https://www.ui-layouts.com/r/${block?.id}.json`
-            );
-            const finalUrl = `https://v0.dev/chat/api/open?url=${url}`;
+
             return (
               <div key={block.id} id={block.id} className='relative'>
                 <div
@@ -207,6 +197,13 @@ export default async function SectionPage(props: {
                           Preview
                         </TabsTrigger>
                         <TabsTrigger
+                          value='design'
+                          className='flex gap-1 px-2 h-8 text-md items-center cursor-pointer rounded-none'
+                        >
+                          <FileText className='w-4 h-4' />
+                          Design.md
+                        </TabsTrigger>
+                        <TabsTrigger
                           value='code'
                           className='flex gap-1 px-2 h-8 text-md items-center cursor-pointer rounded-none'
                         >
@@ -223,6 +220,7 @@ export default async function SectionPage(props: {
                               href={`/preview/${section}/${block.id}`}
                               target='_blank'
                               className='h-10 md:grid hidden place-items-center p-2 text-primary dark:bg-neutral-700 bg-neutral-100 border'
+                              rel='noreferrer noopener'
                             >
                               <Expand className='w-6 h-6' />
                             </a>
@@ -269,6 +267,14 @@ export default async function SectionPage(props: {
                         section={section || ''}
                       />
                     </TabsContent>
+                    {/* PORTABLE DESIGN SYSTEM */}
+                    <TabsContent value='design'>
+                      <DesignMarkdown
+                        id={block.id}
+                        html={block.designHtml}
+                        markdown={block.designMarkdown}
+                      />
+                    </TabsContent>
                     {/* CODE */}
                     <TabsContent value='code'>
                       {isMultiple ? (
@@ -288,7 +294,6 @@ export default async function SectionPage(props: {
             );
           })}
         </div>
-        {/* <Footer /> */}
         <HomeFooter
           className='bg-linear-to-t dark:from-neutral-800 from-neutral-200 to-transparent'
           isHideCollaboration={true}

@@ -1,9 +1,9 @@
 'use client';
-import { motion, AnimatePresence, MotionConfig } from 'motion/react';
+import { transition } from '@/lib/utils';
 import { XIcon } from 'lucide-react';
+import { AnimatePresence, MotionConfig, motion } from 'motion/react';
 import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { transition } from '@/lib/utils';
 
 export default function Dialog() {
   const [index, setIndex] = useState(5);
@@ -40,8 +40,7 @@ export default function Dialog() {
     },
     {
       id: 2,
-      videoSrc:
-        'https://videos.pexels.com/video-files/7710243/7710243-uhd_2560_1440_30fps.mp4',
+      videoSrc: 'https://videos.pexels.com/video-files/7710243/7710243-uhd_2560_1440_30fps.mp4',
     },
   ];
   const currentItem = items[index];
@@ -49,7 +48,7 @@ export default function Dialog() {
   const carousel = useRef(null);
   useEffect(() => {
     setCarouselWidth(
-      // @ts-ignore
+      // @ts-expect-error
       carousel.current.scrollWidth - carousel.current.offsetWidth
     );
   }, [carousel]);
@@ -69,9 +68,9 @@ export default function Dialog() {
             return (
               <>
                 <motion.div
-                  // @ts-ignore
+                  // @ts-expect-error
                   key={item}
-                  className='w-full flex relative  flex-col overflow-hidden border    dark:bg-black bg-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-950'
+                  className='w-full flex relative  flex-col overflow-hidden border    bg-muted hover:bg-muted/80'
                   layoutId={`dialog-${item?.id}`}
                   style={{
                     borderRadius: '12px',
@@ -83,10 +82,7 @@ export default function Dialog() {
                   }}
                 >
                   {item?.imgSrc && (
-                    <motion.div
-                      layoutId={`dialog-img-${item.id}`}
-                      className='w-full h-full'
-                    >
+                    <motion.div layoutId={`dialog-img-${item.id}`} className='w-full h-full'>
                       <img
                         src={item.imgSrc}
                         alt='A desk lamp designed by Edouard Wilfrid Buquet in 1925. It features a double-arm design and is made from nickel-plated brass, aluminium and varnished wood.'
@@ -95,16 +91,8 @@ export default function Dialog() {
                     </motion.div>
                   )}
                   {item?.videoSrc && (
-                    <motion.div
-                      layoutId={`dialog-video-${item.id}`}
-                      className='w-full h-full'
-                    >
-                      <video
-                        autoPlay
-                        muted
-                        loop
-                        className='h-full w-full object-cover  rounded-xs'
-                      >
+                    <motion.div layoutId={`dialog-video-${item.id}`} className='w-full h-full'>
+                      <video autoPlay muted loop className='h-full w-full object-cover  rounded-xs'>
                         <source src={item.videoSrc!} type='video/mp4' />
                       </video>
                     </motion.div>
@@ -133,7 +121,7 @@ export default function Dialog() {
                 className='pointer-events-none fixed inset-0 flex items-center justify-center z-50'
               >
                 <motion.div
-                  className='pointer-events-auto relative flex flex-col overflow-hidden   dark:bg-neutral-950 bg-neutral-200 border w-[80%] h-[90%] '
+                  className='pointer-events-auto relative flex flex-col overflow-hidden   bg-muted border w-[80%] h-[90%] '
                   layoutId={`dialog-${currentItem.id}`}
                   tabIndex={-1}
                   style={{
@@ -141,15 +129,8 @@ export default function Dialog() {
                   }}
                 >
                   {items[index]?.imgSrc && (
-                    <motion.div
-                      layoutId={`dialog-img-${currentItem.id}`}
-                      className='w-full h-full'
-                    >
-                      <img
-                        src={currentItem.imgSrc}
-                        alt=''
-                        className='h-full w-full object-cover'
-                      />
+                    <motion.div layoutId={`dialog-img-${currentItem.id}`} className='w-full h-full'>
+                      <img src={currentItem.imgSrc} alt='' className='h-full w-full object-cover' />
                     </motion.div>
                   )}
                   {items[index]?.videoSrc && (
@@ -171,7 +152,7 @@ export default function Dialog() {
 
                   <button
                     onClick={() => setIsOpen(false)}
-                    className='absolute right-6 top-6 p-3 text-zinc-50 cursor-pointer dark:bg-neutral-900 bg-neutral-400 hover:bg-neutral-500 rounded-full dark:hover:bg-neutral-800'
+                    className='absolute right-6 top-6 p-3 text-muted-foreground cursor-pointer bg-muted hover:bg-muted/80 rounded-full'
                     type='button'
                     aria-label='Close dialog'
                   >

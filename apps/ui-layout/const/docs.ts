@@ -9,6 +9,7 @@ export const DOCS_CATEGORY_GROUP = {
   AnimationMotion: 'Animation & Motion',
   VisualEffects: 'Visual Effects',
   Visual3D: '3D & Visuals',
+  Code: 'Code',
   Utilities: 'Utilities',
 } as const;
 
@@ -80,10 +81,19 @@ export const DOCS_CATEGORY_KEY = {
   'masonary-grid': 'masonary-grid',
   marquee: 'marquee',
   'infinity-brand': 'infinity-brand',
+  'shimmer-loader': 'shimmer-loader',
+  'type-writer': 'type-writer',
+  'terminal-ui': 'terminal-ui',
+  'code-block': 'code-block',
+  'tree-code-viewer': 'tree-code-viewer',
+  'code-tabs-mdx': 'code-tabs-mdx',
+  'code-tabs': 'code-tabs',
+  'mac-genie': 'mac-genie',
 } as const;
 
 export const COMPONENT_KEYS = {
   // Default category
+  MAC_GENIE: 'mac-genie',
   LIQUID_GLASS_SIDEBAR_MENU: 'liquid-glass-sidebar-menu',
   LIQUID_GLASS_MOBILE_ICONS: 'liquid-glass-mobile-icons',
   LIQUID_GLASS_WEATHER: 'liquid-glass-weather',
@@ -322,4 +332,18 @@ export const COMPONENT_KEYS = {
   IMAGE_TAB1: 'image-tab1',
   IMAGE_TAB2: 'image-tab2',
   IMAGE_TAB_STANDALONE: 'image-tab-standalone',
+
+  // Animation & Motion category
+  SHIMMER_LOADER: 'shimmer-loader',
+  TYPE_WRITER: 'type-writer',
+  TERMINAL_UI: 'terminal-ui',
+
+  // Code Display category
+  CODE_BLOCK: 'code-block',
+  TREE_CODE_VIEWER: 'tree-code-viewer',
+  CODE_TABS_MDX: 'code-tabs-mdx',
+  CODE_TABS: 'code-tabs',
+
+  // Mac category
+  MAC_GENIE_EFFECT: 'mac-genie-effect',
 } as const;

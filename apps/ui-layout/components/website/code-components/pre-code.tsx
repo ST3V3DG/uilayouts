@@ -1,17 +1,10 @@
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/website/ui/tabs';
 import { highlightCode } from '@/lib/shiki-highlighter';
+import { cn } from '@/lib/utils';
 import prettier from 'prettier';
 import ts from 'typescript';
-
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from '@/components/website/ui/tabs';
-
 import { CopyButton } from './copy-button';
 import { CopyNpmCommandButton } from './copy-npm-button';
-import { cn } from '@/lib/utils';
 
 export async function PreCode({
   codeblock,
@@ -42,12 +35,9 @@ export async function PreCode({
 
         <div className='relative'>
           {checkNpm ? (
-            <CopyNpmCommandButton
-              code={value}
-              classname='top-2.5 dark:bg-neutral-800 bg-white'
-            />
+            <CopyNpmCommandButton code={value} classname='top-2.5 bg-card' />
           ) : (
-            <CopyButton code={value} classname='top-3.5 bg-white' />
+            <CopyButton code={value} classname='top-3.5 bg-card' />
           )}
 
           <div
@@ -69,7 +59,7 @@ export async function PreCode({
     },
   });
 
-  let jsCode = result.outputText.replace(/"use strict";\s*/, '');
+  const jsCode = result.outputText.replace(/"use strict";\s*/, '');
 
   const formattedJsCode = await prettier.format(jsCode, {
     parser: 'babel',
@@ -90,7 +80,7 @@ export async function PreCode({
       )}
 
       <Tabs defaultValue={'typescript'} className='relative'>
-        <TabsList className='absolute dark:bg-zinc-800 right-14 top-2 z-1 h-9 p-0.5 border dark:border-background'>
+        <TabsList className='absolute bg-muted right-14 top-2 z-1 h-9 p-0.5 border dark:border-background'>
           <TabsTrigger value='typescript' className='h-8'>
             Ts
           </TabsTrigger>
@@ -102,10 +92,7 @@ export async function PreCode({
         {/* Typescript Block */}
         <TabsContent value='typescript'>
           <div className='relative'>
-            <CopyButton
-              code={value}
-              classname='right-2 dark:bg-zinc-800 border bg-white'
-            />
+            <CopyButton code={value} classname='right-2 bg-card border' />
             <div
               className='not-prose max-h-[550px] overflow-x-hidden rounded-md text-sm border dark:border-neutral-800'
               dangerouslySetInnerHTML={{ __html: tsHtml }}
@@ -118,7 +105,7 @@ export async function PreCode({
           <div className='relative'>
             <CopyButton
               code={formattedJsCode}
-              classname='right-2 dark:bg-zinc-800 border bg-white'
+              classname='right-2 bg-card border'
             />
             <div
               className='not-prose max-h-[550px] overflow-x-hidden rounded-md text-sm border dark:border-neutral-800'

@@ -3,7 +3,7 @@
 import { cn } from '@/lib/utils';
 import { ChevronDown } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
-import React, { ReactNode, useCallback } from 'react';
+import React, { type ReactNode, useCallback } from 'react';
 
 /**
  * Interface for AccordionContext values
@@ -42,9 +42,7 @@ export function AccordionContainer({
   children: ReactNode;
   className?: string;
 }) {
-  return (
-    <div className={cn('grid grid-cols-2 gap-1', className)}>{children}</div>
-  );
+  return <div className={cn('grid grid-cols-2 gap-1', className)}>{children}</div>;
 }
 
 /**
@@ -75,22 +73,12 @@ interface AccordionProps {
 /**
  * Accordion component
  */
-export function Accordion({
-  children,
-  multiple,
-  defaultValue,
-}: AccordionProps) {
+export function Accordion({ children, multiple, defaultValue }: AccordionProps) {
   /**
    * State for active index
    */
-  const [activeIndex, setActiveIndex] = React.useState<
-    string | string[] | null
-  >(
-    multiple
-      ? Array.isArray(defaultValue)
-        ? defaultValue
-        : []
-      : defaultValue || null
+  const [activeIndex, setActiveIndex] = React.useState<string | string[] | null>(
+    multiple ? (Array.isArray(defaultValue) ? defaultValue : []) : defaultValue || null
   );
 
   /**
@@ -151,17 +139,16 @@ interface AccordionItemProps {
 /**
  * Accordion item component
  */
-export function AccordionItem({
-  children,
-  value,
-  className,
-}: AccordionItemProps) {
+export function AccordionItem({ children, value, className }: AccordionItemProps) {
   const { isActive } = useAccordion();
 
   return (
     <div
       data-active={isActive || undefined}
-      className={cn('rounded-lg overflow-hidden mb-2 group', className)}
+      className={cn(
+        'rounded-lg overflow-hidden mb-2 group border',
+        className
+      )}
     >
       {children}
     </div>
@@ -186,11 +173,7 @@ interface AccordionHeaderProps {
 /**
  * Accordion header component
  */
-export function AccordionHeader({
-  children,
-  customIcon,
-  className,
-}: AccordionHeaderProps) {
+export function AccordionHeader({ children, customIcon, className }: AccordionHeaderProps) {
   const { isActive, value, onChangeIndex } = useAccordion();
 
   const handleClick = useCallback(() => {
@@ -205,7 +188,7 @@ export function AccordionHeader({
       data-active={isActive || undefined}
       aria-expanded={isActive}
       className={cn(
-        'p-4 cursor-pointer w-full transition-all font-semibold text-neutral-500 data-active:bg-neutral-100 hover:bg-neutral-100 hover:text-black flex justify-between gap-2 items-center text-left',
+        'p-4 cursor-pointer w-full transition-all font-semibold text-muted-foreground data-active:text-foreground data-active:bg-muted hover:bg-secondary hover:text-foreground flex justify-between gap-2 items-center text-left',
         className
       )}
       onClick={handleClick}
@@ -214,7 +197,7 @@ export function AccordionHeader({
       {!customIcon && (
         <ChevronDown
           className={cn(
-            'transition-transform shrink-0',
+            'transition-transform shrink-0 text-muted-foreground',
             isActive ? 'rotate-180' : 'rotate-0'
           )}
           aria-hidden='true'
@@ -244,11 +227,7 @@ interface AccordionPanelProps {
 /**
  * Accordion panel component
  */
-export function AccordionPanel({
-  children,
-  className,
-  articleClassName,
-}: AccordionPanelProps) {
+export function AccordionPanel({ children, className, articleClassName }: AccordionPanelProps) {
   const { isActive, value } = useAccordion();
 
   return (
@@ -264,7 +243,7 @@ export function AccordionPanel({
           exit={{ height: 0 }}
           transition={{ type: 'spring', duration: 0.3, bounce: 0 }}
           className={cn(
-            'bg-neutral-100 px-2 data-active:bg-neutral-100 text-black',
+            'bg-secondary px-2 data-active:bg-muted text-foreground',
             className
           )}
         >
@@ -279,10 +258,7 @@ export function AccordionPanel({
               duration: 0.4,
               bounce: 0,
             }}
-            className={cn(
-              'px-3 bg-transparent pb-4 space-y-2',
-              articleClassName
-            )}
+            className={cn('px-3 bg-transparent pb-4 space-y-2', articleClassName)}
           >
             {children}
           </motion.div>

@@ -1,12 +1,5 @@
 'use client';
-import { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
-import { SlotItemMapArray, Swapy, utils } from 'swapy';
-import {
-  DragHandle,
-  SwapyItem,
-  SwapyLayout,
-  SwapySlot,
-} from '@/components/ui/swapy';
+import { DragHandle, SwapyItem, SwapyLayout, SwapySlot } from '@/components/ui/swapy';
 import {
   BarChart2,
   Brain,
@@ -17,6 +10,8 @@ import {
   Users,
   Zap,
 } from 'lucide-react';
+import { type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
+import { type SlotItemMapArray, Swapy, utils } from 'swapy';
 
 type Item = {
   id: string;
@@ -98,16 +93,10 @@ function SwapyOpacity() {
               <SwapyItem
                 id={itemId}
                 dragItemOpacity={50}
-                className={`relative flex p-4 w-full items-center  rounded-lg gap-5 h-full border border-dashed border-neutral-300  ${item?.bgColor}`}
+                className={`relative flex p-4 w-full items-center  rounded-lg gap-5 h-full border border-dashed border-border  ${item?.bgColor}`}
               >
-                <div
-                  className={`rounded-full flex items-center justify-center`}
-                >
-                  {item?.icon}
-                </div>
-                <h3 className='text-xl text-neutral-900 font-medium '>
-                  {item?.title}
-                </h3>
+                <div className={`rounded-full flex items-center justify-center`}>{item?.icon}</div>
+                <h3 className='text-xl text-foreground font-medium '>{item?.title}</h3>
               </SwapyItem>
             </SwapySlot>
           );

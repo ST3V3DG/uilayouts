@@ -1,7 +1,7 @@
 'use client';
 import {
+  type MotionProps,
   motion,
-  MotionProps,
   useMotionValueEvent,
   useScroll,
   useTransform,
@@ -137,8 +137,7 @@ export default function FramerHorizontalScroll() {
   useEffect(() => {
     if (!carouselRef || !carouselRef.current) return;
     const parent = carouselRef.current.parentElement;
-    const scrollbarWidth =
-      window.innerWidth - document.documentElement.clientWidth;
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
 
     const resetCarouselEndPosition = () => {
       if (carouselRef && carouselRef.current) {
@@ -169,7 +168,7 @@ export default function FramerHorizontalScroll() {
                 <motion.div
                   {...slideAnimation}
                   key={item.id}
-                  className='group relative h-[300px] w-[300px] overflow-hidden bg-neutral-200'
+                  className='group relative h-[300px] w-[300px] overflow-hidden bg-muted'
                 >
                   <motion.img
                     key={item.id}

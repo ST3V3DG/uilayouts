@@ -1,11 +1,13 @@
 // @ts-nocheck
-import React, { useState, useEffect, ReactNode } from 'react';
-import dynamic from 'next/dynamic';
-import { cn } from '@/lib/utils';
 
+import { cn } from '@/lib/utils';
 // Dynamically import MotionNumber with SSR disabled
 // const MotionNumber = dynamic(() => import('motion-number'), { ssr: false });
 import NumberFlow, { useCanAnimate } from '@number-flow/react';
+import dynamic from 'next/dynamic';
+import type React from 'react';
+import { type ReactNode, useEffect, useState } from 'react';
+
 interface NumberFormat extends Intl.NumberFormatOptions {}
 interface MotionNumberProps {
   value: number;
@@ -47,7 +49,7 @@ const NumberShuffle: React.FC<NumberShuffleProps> = ({
   if (!isClient) {
     return (
       <div className='w-fit grid place-content-center mx-auto space-y-4 py-10'>
-        <div className='text-6xl dark:text-white text-black'>
+        <div className='text-6xl text-foreground'>
           {new Intl.NumberFormat('en-US', format).format(currentValue)}
         </div>
       </div>
@@ -77,7 +79,7 @@ const NumberShuffle: React.FC<NumberShuffleProps> = ({
         <NumberFlow
           value={currentValue}
           format={format}
-          className={cn('text-6xl dark:text-white text-black', clasname)}
+          className={cn('text-6xl text-foreground', clasname)}
           before={() => renderOption(before)}
           first={() => renderOption(first)}
           last={() => renderOption(last)}

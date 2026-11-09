@@ -1,7 +1,9 @@
 'use client';
-import React, { useState } from 'react';
-import { Github, Star } from 'lucide-react';
-import { Colors, Liquid } from '@/components/ui/liquid-gradient';
+import { type Colors, Liquid } from '@/components/ui/liquid-gradient';
+import { Star } from 'lucide-react';
+import { Github } from '@repo/ui';
+import type React from 'react';
+import { useState } from 'react';
 
 const COLORS: Colors = {
   color1: '#FFFFFF',
@@ -30,7 +32,8 @@ const GitHubButton: React.FC = () => {
       <a
         href='https://github.com/ui-layouts/uilayouts'
         target='_blank'
-        className='relative inline-block w-32 h-[2.7em] mx-auto group dark:bg-black bg-white dark:border-white border-black border-2 rounded-lg'
+        className='relative inline-block w-32 h-[2.7em] mx-auto group bg-background border-border border-2 rounded-lg'
+        rel='noreferrer noopener'
       >
         <div className='absolute w-[112.81%] h-[128.57%] top-[8.57%] left-1/2 -translate-x-1/2 filter blur-[19px] opacity-70'>
           <span className='absolute inset-0 rounded-lg bg-[#d9d9d9] filter blur-[6.5px]'></span>

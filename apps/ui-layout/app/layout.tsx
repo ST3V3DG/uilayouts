@@ -1,30 +1,30 @@
 import './globals.css';
-import type { Metadata } from 'next';
-import Script from 'next/script';
 import { ThemeProvider } from '@/components/website/theme-provider';
-import { siteConfig } from '@/lib/utils';
-import { Toaster } from 'sonner';
 import Progressbar from '@/lib/progressbar';
-import { DM_Sans, Manrope, Poppins, Space_Grotesk } from 'next/font/google';
+import { siteConfig } from '@/lib/utils';
 import { Analytics } from '@vercel/analytics/next';
+import type { Metadata } from 'next';
+import { DM_Sans, Manrope, Poppins, Space_Grotesk } from 'next/font/google';
+import Script from 'next/script';
+import { Toaster } from 'sonner';
 
-export const poppins = Poppins({
+const poppins = Poppins({
   subsets: ['latin'],
   weight: ['200', '300', '400', '500', '600', '700', '800', '900'],
   variable: '--font-poppins',
 });
 
-export const spaceGrotesk = Space_Grotesk({
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
   variable: '--font-spaceGrotesk',
 });
-export const dmSans = DM_Sans({
+const dmSans = DM_Sans({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700', '800', '900', '1000'],
   variable: '--font-dmSans',
 });
-export const manrope = Manrope({
+const manrope = Manrope({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700', '800'],
   variable: '--font-manrope',
@@ -138,49 +138,42 @@ export const metadata: Metadata = {
   manifest: `${siteConfig.url}/site.webmanifest`,
 };
 
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const isDev = process.env.NODE_ENV === 'development';
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <>
-      <html lang='en' suppressHydrationWarning>
-        <Script
-          src='https://www.googletagmanager.com/gtag/js?id=G-BH0GZ3L39R'
-          strategy='afterInteractive'
-        />
-        <Script id='google-analytics' strategy='afterInteractive'>
-          {`
+    <html lang='en' suppressHydrationWarning>
+      <Script
+        src='https://www.googletagmanager.com/gtag/js?id=G-BH0GZ3L39R'
+        strategy='afterInteractive'
+      />
+      <Script id='google-analytics' strategy='afterInteractive'>
+        {`
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', 'G-BH0GZ3L39R');
         `}
-        </Script>
+      </Script>
 
-        <body
-          className={`
+      <body
+        className={`
     ${poppins.variable}
     ${spaceGrotesk.variable}
     ${dmSans.variable}
     ${manrope.variable}
     font-poppins
   `}
-        >
-          <Analytics />
-          <Progressbar>
-            <ThemeProvider attribute='class'>
-              <div className='isolate min-h-screen' vaul-drawer-wrapper=''>
-                {/* <SocialShareModal /> */}
-                {children}
-              </div>
-              <Toaster />
-            </ThemeProvider>
-          </Progressbar>
-        </body>
-      </html>
-    </>
+      >
+        <Analytics />
+        <Progressbar>
+          <ThemeProvider attribute='class'>
+            <div className='isolate min-h-screen' vaul-drawer-wrapper=''>
+              {/* <SocialShareModal /> */}
+              {children}
+            </div>
+            <Toaster />
+          </ThemeProvider>
+        </Progressbar>
+      </body>
+    </html>
   );
 }

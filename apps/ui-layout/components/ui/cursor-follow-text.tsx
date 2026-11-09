@@ -1,6 +1,7 @@
 'use client';
 import { cn } from '@/lib/utils';
-import React, { useState, useEffect, useRef } from 'react';
+import type React from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface AnimatedTextProps {
   text: string;

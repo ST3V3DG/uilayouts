@@ -1,8 +1,7 @@
 'use client';
-import React, { useEffect, useRef, useState } from 'react';
 import { ScrollArea } from '@/components/website/ui/scroll-area';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { IRecentPage, useRecentPagesStore } from '@/hooks/useZustStore';
+import { groupedDocsNavigationCategories } from '@/lib/grouped-docs';
 import {
   Atom,
   Blocks,
@@ -14,9 +13,10 @@ import {
   Target,
   X,
 } from 'lucide-react';
-import { IRecentPage, useRecentPagesStore } from '@/hooks/useZustStore';
 import { useTheme } from 'next-themes';
-import { groupedDocsNavigationCategories } from '@/lib/grouped-docs';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import React, { useEffect, useRef, useState } from 'react';
 
 export const basePath = [
   {
@@ -44,6 +44,12 @@ export const basePath = [
     tags: ['mcp', 'mcp', 'mcp', 'mcp'],
   },
   {
+    href: '/changelog',
+    name: 'Changelog',
+    icon: <PenTool />,
+    tags: ['changelog', 'release notes', 'updates', 'major updates'],
+  },
+  {
     href: '/llms.txt',
     name: 'LLMs',
     icon: <Target />,
@@ -69,14 +75,14 @@ function DocsSidebar() {
                     className={`flex gap-2 group font-medium items-center py-1 transition-all ${
                       link.href === pathname
                         ? 'active-nav'
-                        : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
+                        : 'text-muted-foreground hover:text-foreground'
                     }`}
                   >
                     {React.cloneElement(link?.icon, {
                       className: `${
                         link.href === pathname
-                          ? 'dark:text-black dark:bg-white bg-black text-white'
-                          : 'dark:bg-zinc-900 dark:text-white group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black'
+                          ? 'bg-primary text-primary-foreground'
+                          : 'bg-secondary text-secondary-foreground group-hover:bg-primary group-hover:text-primary-foreground'
                       } h-7 w-7 border transition-all rounded-md p-1`,
                     })}
                     {link.name}
@@ -129,17 +135,15 @@ function DocsSidebar() {
                 </div>
               )} */}
             <div className='pb-16'>
-              {Object.entries(groupedDocsNavigationCategories).map(
-                ([group, items], index) => (
-                  <ItemsWithName
-                    group={group}
-                    items={items}
-                    key={index}
-                    pathname={pathname}
-                    addVisitedPage={addVisitedPage}
-                  />
-                )
-              )}
+              {Object.entries(groupedDocsNavigationCategories).map(([group, items], index) => (
+                <ItemsWithName
+                  group={group}
+                  items={items}
+                  key={index}
+                  pathname={pathname}
+                  addVisitedPage={addVisitedPage}
+                />
+              ))}
             </div>
           </ScrollArea>
         </div>
@@ -163,14 +167,11 @@ export const ItemsWithName = ({
 
   const groupRef = useRef<HTMLDivElement>(null);
   const showExpandButton = items.length > 2;
-  const itemsToShow =
-    expandedItems || !showExpandButton ? items : items.slice(0, 2);
+  const itemsToShow = expandedItems || !showExpandButton ? items : items.slice(0, 2);
   const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
 
   useEffect(() => {
-    const activeItemIndex = items.findIndex(
-      (item: { href: string }) => item.href === pathname
-    );
+    const activeItemIndex = items.findIndex((item: { href: string }) => item.href === pathname);
 
     if (activeItemIndex !== -1 && itemRefs.current[activeItemIndex]) {
       itemRefs.current[activeItemIndex]?.scrollIntoView({
@@ -183,7 +184,7 @@ export const ItemsWithName = ({
   return (
     <div ref={groupRef} key={group}>
       <div
-        className={`xl:text-lg relative flex w-full items-center justify-between pr-4 cursor-pointer  dark:text-neutral-100 font-medium capitalize my-1`}
+        className={`xl:text-lg relative flex w-full items-center justify-between pr-4 cursor-pointer text-foreground font-medium capitalize my-1`}
       >
         {group}
         {/* {showExpandButton && (
@@ -203,7 +204,7 @@ export const ItemsWithName = ({
                   />
                 </button>
               </TooltipTrigger>
-              <TooltipContent className='dark:bg-primary-base bg-neutral-50 text-primary border 2xl:text-base text-sm rounded-md px-2 py-1 -translate-y-1'>
+              <TooltipContent className='bg-card text-primary border 2xl:text-base text-sm rounded-md px-2 py-1 -translate-y-1'>
                 <p className='capitalize'>
                   {expandedItems ? 'Collapse' : 'Expand'}
                 </p>
@@ -223,28 +224,19 @@ export const ItemsWithName = ({
             ref={(el) => {
               itemRefs.current[index] = el;
             }}
-            className={`2xl:text-base xl:text-base text-sm flex items-center gap-1 dark:hover:text-white py-px pl-2 border-l transition-all ${
+            className={`2xl:text-base xl:text-base text-sm flex items-center gap-1 py-px pl-2 border-l transition-all ${
               link.href === pathname
-                ? 'dark:border-white border-black text-black dark:text-white font-semibold'
-                : 'dark:text-slate-400 2xl:font-normal font-medium dark:border-neutral-800 hover:border-black/60 dark:hover:border-white/50 text-slate-500 hover:text-slate-900'
+                ? 'border-foreground text-foreground font-semibold'
+                : 'text-muted-foreground 2xl:font-normal font-medium border-border hover:border-foreground/60 hover:text-foreground'
             }`}
           >
-            <Link
-              href={link.href}
-              onClick={() => addVisitedPage(link.href, link.name)}
-            >
+            <Link href={link.href} onClick={() => addVisitedPage(link.href, link.name)}>
               {link.name}
             </Link>
             {link?.updated && (
-              <span className='2xl:text-xs italic text-[0.74em]  text-blue-500'>
-                (Updated)
-              </span>
+              <span className='2xl:text-xs italic text-[0.74em]  text-blue-500'>(Updated)</span>
             )}
-            {link?.new && (
-              <span className='2xl:text-xs text-[0.74em] text-green-500'>
-                (New)
-              </span>
-            )}
+            {link?.new && <span className='2xl:text-xs text-[0.74em] text-green-500'>(New)</span>}
           </li>
         ))}
       </ul>

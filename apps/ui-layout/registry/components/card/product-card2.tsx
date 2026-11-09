@@ -1,17 +1,11 @@
 'use client';
-import React, { ReactNode, useState } from 'react';
-import Image from 'next/image';
-import {
-  CheckIcon,
-  ChevronDownIcon,
-  ChevronUpIcon,
-  Heart,
-  ShoppingCart,
-} from 'lucide-react';
-import * as Select from '@radix-ui/react-select';
-import { cn } from '@/lib/utils';
-import { motion } from 'motion/react';
 import { CardArr } from '@/components/website/constant';
+import { cn } from '@/lib/utils';
+import * as Select from '@radix-ui/react-select';
+import { CheckIcon, ChevronDownIcon, ChevronUpIcon, Heart, ShoppingCart } from 'lucide-react';
+import { motion } from 'motion/react';
+import Image from 'next/image';
+import React, { ReactNode, useState } from 'react';
 
 function Card2() {
   const [selectedImage, setSelectedImage] = useState(CardArr[1].img);
@@ -62,16 +56,14 @@ function Card2() {
             />
           ))}
         </div>
-        <article className='text-black pt-2 p-2'>
+        <article className='text-foreground pt-2 p-2'>
           <div className='flex justify-between'>
-            <h1 className='font-semibold text-xl text-blue-500'>
-              Nike Air Max
-            </h1>
+            <h1 className='font-semibold text-xl text-blue-500'>Nike Air Max</h1>
             <span className='font-medium text-xl text-blue-500'>$39</span>
           </div>
           <p className='text-xs'>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore
-            porro quos quae autem vel praesentium.
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore porro quos quae autem
+            vel praesentium.
           </p>
           <div className='py-1'>
             <p className='text-sm'>Select Size:</p>
@@ -81,13 +73,13 @@ function Card2() {
                 aria-label='Food'
               >
                 <Select.Value placeholder='Select a size' />
-                <Select.Icon className='text-black'>
+                <Select.Icon className='text-foreground'>
                   <ChevronDownIcon />
                 </Select.Icon>
               </Select.Trigger>
               <Select.Portal>
-                <Select.Content className='overflow-hidden bg-white  text-black rounded-md shadow-[0px_10px_38px_-10px_rgba(22,23,24,0.35),0px_10px_20px_-15px_rgba(22,23,24,0.2)]'>
-                  <Select.ScrollUpButton className='flex items-center justify-center h-[25px] bg-white text-black cursor-default'>
+                <Select.Content className='overflow-hidden bg-background  text-foreground rounded-md shadow-[0px_10px_38px_-10px_rgba(22,23,24,0.35),0px_10px_20px_-15px_rgba(22,23,24,0.2)]'>
+                  <Select.ScrollUpButton className='flex items-center justify-center h-[25px] bg-background text-foreground cursor-default'>
                     <ChevronUpIcon />
                   </Select.ScrollUpButton>
                   <Select.Viewport className='p-[5px]'>
@@ -110,9 +102,7 @@ function Card2() {
                   key={data.color}
                   onClick={() => handleColorButtonClick(data.img, data.color)}
                   className={` relative w-6 h-6 border  rounded-full grid place-content-center transition-all ${
-                    selectedColor === data.color
-                      ? ' border-black'
-                      : 'border-neutral-200'
+                    selectedColor === data.color ? ' border-foreground' : 'border-border'
                   }`}
                 >
                   <span
@@ -133,23 +123,21 @@ function Card2() {
     </div>
   );
 }
-const SelectItem = React.forwardRef(
-  ({ children, className, ...props }: any, forwardedRef) => {
-    return (
-      <Select.Item
-        className={cn(
-          'text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] pr-[35px] pl-[25px] relative select-none data-[disabled]:text-mauve8 data-disabled:pointer-events-none data-highlighted:outline-hidden data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1',
-          className
-        )}
-        {...props}
-        ref={forwardedRef}
-      >
-        <Select.ItemText>{children}</Select.ItemText>
-        <Select.ItemIndicator className='absolute left-0 w-[25px] inline-flex items-center justify-center'>
-          <CheckIcon />
-        </Select.ItemIndicator>
-      </Select.Item>
-    );
-  }
-);
+const SelectItem = React.forwardRef(({ children, className, ...props }: any, forwardedRef) => {
+  return (
+    <Select.Item
+      className={cn(
+        'text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] pr-[35px] pl-[25px] relative select-none data-[disabled]:text-mauve8 data-disabled:pointer-events-none data-highlighted:outline-hidden data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1',
+        className
+      )}
+      {...props}
+      ref={forwardedRef}
+    >
+      <Select.ItemText>{children}</Select.ItemText>
+      <Select.ItemIndicator className='absolute left-0 w-[25px] inline-flex items-center justify-center'>
+        <CheckIcon />
+      </Select.ItemIndicator>
+    </Select.Item>
+  );
+});
 export default Card2;

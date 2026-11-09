@@ -1,20 +1,21 @@
 'use client';
 import { useTheme } from 'next-themes';
-import React from 'react';
 import Link from 'next/link';
-
-import { SearchDialog } from './searchbar';
-import MobileHeader from './mobile-header';
-import ThemeSwitch from './theme-switch';
-import HomeGitHubButton from './home/github-repo-button';
+import React from 'react';
 import { Container } from '../ui/container';
 import { GapPattern } from '../ui/gap-pattern';
+import HomeGitHubButton from './home/github-repo-button';
+import MobileHeader from './mobile-header';
+import { SearchDialog } from './searchbar';
+import { ThemeCustomizer } from './theme-customizer';
+import ThemeSwitch from './theme-switch';
+
 // import MobileHeader from './moibile-header'
 
 function Header() {
   return (
     <>
-      <header className='sticky left-0 top-0 z-20 w-full pt-1 dark:bg-neutral-950 bg-background'>
+      <header className='sticky left-0 top-0 z-20 w-full pt-1 bg-background'>
         <div className='flex items-center justify-between gap-2 px-2 2xl:container xl:w-[96%] lg:w-[98%] w-[98%] py-1'>
           <div className='hidden lg:flex gap-6 items-center'>
             <Link href='/'>
@@ -42,14 +43,16 @@ function Header() {
             <a
               href={'https://tools.ui-layouts.com/'}
               target='_blank'
-              className={`flex gap-2 group font-medium items-center py-1  transition-all text-slate-600 hover:text-slate-900  dark:text-slate-200 dark:hover:text-white`}
+              className={`flex gap-2 group font-medium items-center py-1 transition-all text-muted-foreground hover:text-foreground`}
+              rel='noreferrer noopener'
             >
               Tools
             </a>
             <a
               href={'https://cursify.ui-layouts.com'}
               target='_blank'
-              className={`flex gap-2 group font-medium items-center py-1  transition-all text-slate-600 hover:text-slate-900  dark:text-slate-300 dark:hover:text-white`}
+              className={`flex gap-2 group font-medium items-center py-1 transition-all text-muted-foreground hover:text-foreground`}
+              rel='noreferrer noopener'
             >
               Cursify
             </a>
@@ -73,7 +76,8 @@ function Header() {
             <a
               href={'https://pro.ui-layouts.com/blocks'}
               target='_blank'
-              className={`flex gap-2 group font-medium items-center py-1 transition-all text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white`}
+              className={`flex gap-2 group font-medium items-center py-1 transition-all text-muted-foreground hover:text-foreground`}
+              rel='noreferrer noopener'
             >
               Blocks
               <span className='text-xs font-normal inline-block -translate-y-2 -translate-x-2 italic text-blue-600'>
@@ -90,6 +94,7 @@ function Header() {
               target='_blank'
               href='https://x.com/naymur_dev'
               className='border shrink-0 bg-primary  text-primary-foreground text-2xl w-12 grid place-content-center rounded-md'
+              rel='noreferrer noopener'
             >
               <svg
                 width='120'
@@ -103,7 +108,8 @@ function Header() {
               </svg>
             </a>
 
-            <ThemeSwitch className='dark:bg-zinc-900 bg-neutral-50 border w-12 rounded-md h-11 shrink-0' />
+            <ThemeCustomizer className='bg-secondary border w-12 rounded-md h-11 shrink-0' />
+            <ThemeSwitch className='bg-secondary border w-12 rounded-md h-11 shrink-0' />
           </div>
         </div>
         <GapPattern className='absolute left-0 top-0 2xl:h-15 lg:h-15 h-14 border-t-0 -z-1' />

@@ -1,6 +1,7 @@
 'use client';
 import { cn } from '@/lib/utils';
-import React, { useEffect, useState, type JSX } from 'react';
+import type React from 'react';
+import { type JSX, useEffect, useState } from 'react';
 
 function Blocks({
   activeDivs,
@@ -35,10 +36,7 @@ function Blocks({
                 key={rowIndex}
                 className={cn(
                   `h-[6vh] w-full border border-[#5dcece09] ${
-                    // @ts-ignore
-                    activeDivs[columnIndex]?.has(rowIndex)
-                      ? `${activeDivsClass}`
-                      : ''
+                    activeDivs[columnIndex]?.has(rowIndex) ? `${activeDivsClass}` : ''
                   }`,
                   divClass
                 )}
@@ -59,12 +57,7 @@ function Blocks({
   }, [activeDivs, activeDivsClass, divClass, containerRef]);
 
   return (
-    <div
-      className={cn(
-        'flex h-full overflow-hidden top-0 -inset-0 left-0 absolute',
-        classname
-      )}
-    >
+    <div className={cn('flex h-full overflow-hidden top-0 -inset-0 left-0 absolute', classname)}>
       {blocks}
     </div>
   );

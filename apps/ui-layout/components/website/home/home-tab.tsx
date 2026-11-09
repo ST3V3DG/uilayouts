@@ -1,8 +1,10 @@
 // thanks to maximeheckel
-import React, { useState } from 'react';
-import { TabsProvider, TabsBtn, TabsContent } from '@/components/ui/tab';
+
 import preview from '@/assets/preview/Preview';
+import { TabsBtn, TabsContent, TabsProvider } from '@/components/ui/tab';
 import Image from 'next/image';
+import React, { useState } from 'react';
+
 function HomeTab() {
   return (
     <>
@@ -22,7 +24,7 @@ function HomeTab() {
         </div>
 
         <TabsContent value='accordion' yValue={false}>
-          <div className='dark:bg-black bg-white  mx-auto w-full  aspect-video  dark:text-white text-black p-4 border  shadow-md rounded-xl space-y-2'>
+          <div className='bg-card mx-auto w-full aspect-video text-foreground p-4 border shadow-md rounded-xl space-y-2'>
             <Image
               className='rounded-xl h-full object-contain'
               src={preview.galleryNew}
@@ -33,7 +35,7 @@ function HomeTab() {
           </div>
         </TabsContent>
         <TabsContent value='globe' yValue={false}>
-          <div className='dark:bg-black bg-white  mx-auto w-full aspect-video  dark:text-white text-black p-4 border shadow-md rounded-xl space-y-2'>
+          <div className='bg-card mx-auto w-full aspect-video text-foreground p-4 border shadow-md rounded-xl space-y-2'>
             <Image
               className='rounded-xl h-full object-contain'
               src={preview.globe}
@@ -44,7 +46,7 @@ function HomeTab() {
           </div>
         </TabsContent>
         <TabsContent value='mousetrail' yValue={false}>
-          <div className='dark:bg-black bg-white  mx-auto w-full aspect-video  dark:text-white text-black p-4 border shadow-md rounded-xl space-y-2'>
+          <div className='bg-card mx-auto w-full aspect-video text-foreground p-4 border shadow-md rounded-xl space-y-2'>
             <Image
               className='rounded-xl h-full object-contain'
               src={preview.mousetrail}

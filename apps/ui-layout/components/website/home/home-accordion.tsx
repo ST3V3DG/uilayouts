@@ -1,7 +1,7 @@
 'use client';
-import React, { useState } from 'react';
-import { AnimatePresence, motion, useAnimate } from 'motion/react';
 import { Plus } from 'lucide-react';
+import { AnimatePresence, motion, useAnimate } from 'motion/react';
+import React, { useState } from 'react';
 
 const tabs = [
   {
@@ -54,19 +54,17 @@ function HomeAccordion() {
           {tabs.map((tab, index) => (
             <motion.div
               key={index}
-              className={`overflow-hidden ${
-                index !== tabs.length - 1 ? 'border-b' : ''
-              }`}
+              className={`overflow-hidden ${index !== tabs.length - 1 ? 'border-b' : ''}`}
               onClick={() => handleClick(index)}
             >
               <button
-                className={`p-3 px-2 w-full cursor-pointer items-center transition-all font-semibold dark:text-white text-black   flex gap-2 
+                className={`p-3 px-2 w-full cursor-pointer items-center transition-all font-semibold text-foreground flex gap-2
                `}
               >
                 <Plus
                   className={`${
                     activeIndex === index ? 'rotate-45' : 'rotate-0 '
-                  } transition-transform ease-in-out w-5 h-5 dark:text-neutral-200 text-neutral-600`}
+                  } transition-transform ease-in-out w-5 h-5 text-muted-foreground`}
                 />
                 {tab.title}
               </button>
@@ -82,9 +80,7 @@ function HomeAccordion() {
                       delay: 0.14,
                     }}
                   >
-                    <p
-                      className={`dark:text-white text-black p-3 pt-0 w-[90%]`}
-                    >
+                    <p className={`text-foreground p-3 pt-0 w-[90%]`}>
                       {tab.description}
                     </p>
                   </motion.div>

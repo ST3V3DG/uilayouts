@@ -1,12 +1,12 @@
 'use client';
-import { motion } from 'motion/react';
-import { Edit } from 'lucide-react';
-import Image from 'next/image';
 import {
   DirectionalDrawer,
   DrawerContent,
   DrawerTrigger,
 } from '@/components/ui/directional-drawer';
+import { Edit } from 'lucide-react';
+import { motion } from 'motion/react';
+import Image from 'next/image';
 
 export default function DirectionalDrawerDefault() {
   return (
@@ -24,7 +24,7 @@ export default function DirectionalDrawerDefault() {
             <DrawerTrigger>
               <motion.button
                 whileTap={{ scale: 0.8 }}
-                className='absolute right-2 bottom-2 p-4 dark:bg-black bg-white rounded-lg shadow-black'
+                className='absolute right-2 bottom-2 p-4 bg-background rounded-lg shadow-black'
               >
                 <Edit />
               </motion.button>
@@ -34,9 +34,7 @@ export default function DirectionalDrawerDefault() {
                 {/* Header / Body */}
                 <div className='p-6 flex flex-col gap-4 grow'>
                   <div>
-                    <h1 className='font-semibold text-xl'>
-                      Update Profile Image
-                    </h1>
+                    <h1 className='font-semibold text-xl'>Update Profile Image</h1>
                     <p className='text-sm text-muted-foreground mt-1'>
                       Upload a new profile image or remove the current one.
                     </p>
@@ -44,16 +42,14 @@ export default function DirectionalDrawerDefault() {
 
                   {/* Avatar Preview */}
                   <div className='flex justify-center'>
-                    <div className='h-32 w-32 rounded-xl dark:bg-neutral-800 bg-muted grid place-content-center text-xl font-medium'>
+                    <div className='h-32 w-32 rounded-xl bg-muted grid place-content-center text-xl font-medium'>
                       JP
                     </div>
                   </div>
 
                   {/* File Input */}
                   <div>
-                    <label className='text-sm font-medium mb-1 block'>
-                      Profile Picture
-                    </label>
+                    <label className='text-sm font-medium mb-1 block'>Profile Picture</label>
                     <input
                       type='file'
                       id='formFile'
@@ -64,7 +60,7 @@ export default function DirectionalDrawerDefault() {
                   {/* Submit */}
                   <button
                     type='submit'
-                    className='w-full rounded-md bg-black text-white dark:bg-white dark:text-black p-2 font-medium'
+                    className='w-full rounded-md bg-foreground text-background p-2 font-medium'
                   >
                     Save Changes
                   </button>

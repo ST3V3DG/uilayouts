@@ -1,21 +1,15 @@
 'use client';
-import {
-  ArrowRight,
-  Blocks,
-  Component,
-  LayoutPanelTop,
-  Verified,
-} from 'lucide-react';
-import React from 'react';
-import NewItemsLoading from './new-items-loading';
-import Image from 'next/image';
-import AllComponents from './all-components';
-import AllBlocks from './all-blocks';
-import Link from 'next/link';
-import { cn } from '@/lib/utils';
-import Contributors from './contributor';
 import { GapPattern } from '@/components/ui/gap-pattern';
 import { Marquee } from '@/components/ui/marquee';
+import { cn } from '@/lib/utils';
+import { ArrowRight, Blocks, Component, LayoutPanelTop, Verified } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
+import AllBlocks from './all-blocks';
+import AllComponents from './all-components';
+import Contributors from './contributor';
+import NewItemsLoading from './new-items-loading';
 
 const allProjects = [
   {
@@ -28,7 +22,7 @@ const allProjects = [
           width='208'
           height='48'
           viewBox='0 0 208 48'
-          className='w-full dark:fill-[#cecece] fill-[#303030] dark:stroke-[#cecece] stroke-[#303030]'
+          className='w-full fill-primary stroke-primary'
           fill='none'
           xmlns='http://www.w3.org/2000/svg'
         >
@@ -63,7 +57,7 @@ const allProjects = [
           width='261'
           height='79'
           viewBox='0 0 261 79'
-          className='w-full dark:fill-[#2784fd] fill-[#2784fd]'
+          className='w-full fill-primary'
           fill='none'
           xmlns='http://www.w3.org/2000/svg'
         >
@@ -87,7 +81,7 @@ const allProjects = [
           width='282'
           height='81'
           viewBox='0 0 282 81'
-          className='w-full  fill-green-500  stroke-green-500'
+          className='w-full fill-primary stroke-primary'
           fill='none'
           xmlns='http://www.w3.org/2000/svg'
         >
@@ -149,169 +143,7 @@ export const profiles: Profile[] = [
     translateX: '-translate-x-16',
   },
 ];
-const allReviews = [
-  {
-    name: 'Victor',
-    username: '@victor_bigfield',
-    body: 'love this minimalist style',
-    img: 'https://pbs.twimg.com/profile_images/1975096625908330496/ZbxREwTa_400x400.jpg',
-    url: 'https://x.com/victor_bigfield/status/2023364369115922822',
-    bluetick: true,
-  },
-  {
-    name: 'OrcDev',
-    username: '@orcdev',
-    body: "let's go! new blood ⚔️",
-    img: 'https://pbs.twimg.com/profile_images/1756766826736893952/6Gvg6jha_400x400.jpg',
-    url: 'https://x.com/orcdev/status/2023364747773583716',
-    bluetick: true,
-  },
-  {
-    name: 'Vijoy Bansal',
-    username: '@iamvijaybansal',
-    body: 'Looking good',
-    img: 'https://pbs.twimg.com/profile_images/1912549376255541248/9hcavuow_400x400.jpg',
-    url: 'https://x.com/iamvijaybansal/status/2023711286748737926',
-  },
-  {
-    name: 'Terry Carson',
-    username: '@mrterrycarson',
-    body: 'Great looking and very nice one to have. Thanks for the work. 👍',
-    img: 'https://pbs.twimg.com/profile_images/833004663142117377/SjMv4aVQ_400x400.jpg',
-    bluetick: true,
-    url: 'https://x.com/mrterrycarson/status/2023463108598186400',
-  },
-  {
-    name: 'Pankaj Kumar',
-    username: '@pankajkumar_dev',
-    body: 'Great work dude',
-    img: 'https://pbs.twimg.com/profile_images/1890456101507985409/OfN0Ljnv_400x400.jpg',
-    bluetick: true,
-    url: 'https://x.com/pankajkumar_dev/status/2023387010896114130',
-  },
-  {
-    name: 'Kartik',
-    username: '@code_kartik',
-    body: 'this is really good man. great work',
-    img: 'https://pbs.twimg.com/profile_images/2002424842470203392/4ZusYS4Y_400x400.jpg',
-    url: 'https://x.com/code_kartik/status/2023366982574444938',
-    bluetick: true,
-  },
-  {
-    name: 'Victor',
-    username: '@victor_bigfield',
-    body: 'Great job',
-    img: 'https://pbs.twimg.com/profile_images/1975096625908330496/ZbxREwTa_400x400.jpg',
-    url: 'https://x.com/victor_bigfield/status/2023622658665664512',
-    bluetick: true,
-  },
 
-  {
-    name: 'Daniele Packard',
-    username: '@daniele_packard',
-    body: 'Looks very slick - congrats!',
-    img: 'https://pbs.twimg.com/profile_images/1405592040482557953/z7CVJ6S__400x400.jpg',
-    url: 'https://x.com/daniele_packard/status/2023371798943801679',
-    bluetick: true,
-  },
-
-  {
-    name: 'Karan',
-    username: '@karankendre',
-    body: "Let's gooo",
-    img: 'https://pbs.twimg.com/profile_images/2013089198891487232/bDaheG7c_400x400.jpg',
-    url: 'https://x.com/karankendre/status/2023358830109933698',
-    bluetick: true,
-  },
-  {
-    name: 'Sayan',
-    username: '@thesayannayak',
-    body: 'This is really good !!',
-    img: 'https://pbs.twimg.com/profile_images/2005944394793553920/_bh9Oy_F_400x400.jpg',
-    url: 'https://x.com/thesayannayak/status/2023353700400730257',
-    bluetick: true,
-  },
-  {
-    name: 'Dikshit',
-    username: '@mahanot_dikshit',
-    body: 'Damn! Every component looks so fking clean 🔥🔥.',
-    img: 'https://pbs.twimg.com/profile_images/2026927974885502978/1gsg2Vif_400x400.jpg',
-    url: 'https://x.com/mahanot_dikshit/status/2023353268966195503',
-    bluetick: true,
-  },
-  {
-    name: 'Abdullah Mukadam',
-    username: '@abd_mukadam',
-    body: 'Great work bro 💯',
-    img: 'https://pbs.twimg.com/profile_images/1954474570976559105/FI8Owtet_400x400.jpg',
-    url: 'https://x.com/abd_mukadam/status/2023426054443213290',
-  },
-  {
-    name: 'Vanshika',
-    username: '@vanyaSile',
-    body: 'Woah! Good work 👏',
-    img: 'https://pbs.twimg.com/profile_images/1995909741743321088/RIbQIVVx_400x400.jpg',
-    url: 'https://x.com/vanyaSile/status/2023371872776421637',
-    bluetick: true,
-  },
-  {
-    name: 'Byron Dittman',
-    username: '@freestacktpl',
-    body: 'This is a great resource, thanks for sharing! The 3D effects look especially cool. Definitely saving this for my next project.',
-    img: 'https://pbs.twimg.com/profile_images/2009873016377757696/OU5pg0vH_400x400.jpg',
-    url: 'https://x.com/freestacktpl/status/2009520122659062175',
-    bluetick: true,
-  },
-  {
-    name: 'ctran.eth',
-    username: '@ctranbtw',
-    body: 'Really sharp rollout, UI-Layouts nails that balance between speed and polish..',
-    img: 'https://pbs.twimg.com/profile_images/1540521701636820992/4lxSJG0X_400x400.jpg',
-    url: 'https://x.com/ctranbtw/status/2016686705210716473',
-    bluetick: true,
-  },
-  {
-    name: 'Saïd Aitmbarek',
-    username: '@SaidAitmbarek',
-    body: 'dope platform for inspiration',
-    img: 'https://pbs.twimg.com/profile_images/1891564978177454080/YzRSDzkw_400x400.jpg',
-    url: 'https://x.com/SaidAitmbarek/status/2016982912978108603',
-    bluetick: true,
-  },
-  {
-    name: 'RicoUI',
-    username: '@ricouii',
-    body: 'Thanks to my friend’s recommendation for the treasure trove ui-layouts, the aesthetics and design are exceptionally excellent',
-    img: 'https://pbs.twimg.com/profile_images/1890332571105693696/PUB5_Lvj_400x400.jpg',
-    url: 'https://x.com/ricouii/status/1956992888023417163',
-    bluetick: true,
-  },
-  {
-    name: 'HarjjotSinghh',
-    username: '@HarjjotSinghh',
-    body: 'this is unreasonably cool actually.',
-    reddit: true,
-    url: 'https://www.reddit.com/r/tailwindcss/comments/1r8tvp3/introducing_uilayouts_blocks/',
-    bluetick: true,
-  },
-  {
-    name: 'Ashishgogula',
-    username: '@Ashishgogula',
-    body: 'Impressive!',
-    reddit: true,
-    url: 'https://www.reddit.com/r/shadcn/comments/1r73or3/introducing_uilayouts_blocks/',
-    bluetick: true,
-  },
-  {
-    name: 'techlove99',
-    username: '@techlove99',
-    body: 'This is good. You deserve a big hug for making it open source',
-    reddit: true,
-    url: 'https://www.reddit.com/r/react/comments/1rce23g/i_made_75_creative_blocks_for_developers/',
-  },
-];
-
-// ReviewCard Component
 const ReviewCard = ({
   name,
   username,
@@ -349,7 +181,7 @@ const ReviewCard = ({
       className='w-10 h-10 rounded-full object-cover'
     />
   ) : (
-    <div className='w-10 h-10 bg-linear-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm'>
+    <div className='w-10 h-10 bg-linear-to-br from-primary to-primary/70 rounded-full flex items-center justify-center text-primary-foreground font-bold text-sm'>
       {name.charAt(0).toUpperCase()}
     </div>
   );
@@ -359,35 +191,306 @@ const ReviewCard = ({
       href={url}
       target='_blank'
       rel='noopener noreferrer'
-      className='shrink-0 w-80 dark:bg-neutral-900 bg-neutral-50 border p-4 relative transition-all duration-300 hover:scale-105 mx-2'
+      className='shrink-0 w-80 flex flex-col justify-center h-32 bg-card border p-4 relative transition-all duration-300 hover:scale-105 mx-2'
     >
       <div className='flex items-center mb-3'>
         {avatarContent}
         <div className='ml-3 flex-1'>
           <div className='flex items-center gap-1'>
             <span className='font-semibold text-sm'>{name}</span>
-            {bluetick && !reddit && (
-              <Verified className='w-3 h-3 text-blue-500 fill-current' />
-            )}
+            {bluetick && !reddit && <Verified className='w-3 h-3 text-primary fill-current' />}
           </div>
           <div className='text-xs text-muted-foreground'>{username}</div>
         </div>
         <div className='ml-auto'>{platformIcon}</div>
       </div>
-      <p className='text-sm leading-relaxed text-gray-600 dark:text-gray-300 line-clamp-3'>
+      <p className='text-sm leading-relaxed text-muted-foreground line-clamp-3'>
         {body}
       </p>
     </a>
   );
 };
 
-// const trustedCompanies = [
-//   {
-//     name: 'Paypal',
-//     url: 'https://www.paypal.com/',
-//     img: 'https://upload.wikimedia.org/wikipedia/commons/0/0e/PayPal_2024_%28Icon%29.svg',
-//   },
-// ];
+const allReviews = [
+  {
+    id: 1,
+    name: 'SoraiaDev',
+    username: '@SoraiaDev',
+    body: 'king of design 🙇‍♀️',
+    img: '/review/soraiadev.png',
+    url: 'https://x.com/SoraiaDev/status/2031127211609043288',
+    bluetick: true,
+  },
+  {
+    id: 2,
+    name: 'Victor',
+    username: '@victor_bigfield',
+    body: 'love this minimalist style',
+    img: '/review/victor.jpg',
+    url: 'https://x.com/victor_bigfield/status/2023364369115922822',
+    bluetick: true,
+  },
+  {
+    id: 2,
+    name: 'OrcDev',
+    username: '@orcdev',
+    body: "let's go! new blood ",
+    img: '/review/orcdev.jpg',
+    url: 'https://x.com/orcdev/status/2023364747773583716',
+    bluetick: true,
+  },
+  {
+    id: 3,
+    name: 'Vijoy Bansal',
+    username: '@iamvijaybansal',
+    body: 'Looking good',
+    img: '/review/vijoy.jpg',
+    url: 'https://x.com/iamvijaybansal/status/2023711286748737926',
+  },
+  {
+    id: 4,
+    name: 'Terry Carson',
+    username: '@mrterrycarson',
+    body: 'Great looking and very nice one to have. Thanks for the work. ',
+    img: '/review/terry.jpg',
+    bluetick: true,
+    url: 'https://x.com/mrterrycarson/status/2023463108598186400',
+  },
+  {
+    id: 5,
+    name: 'Pankaj Kumar',
+    username: '@pankajkumar_dev',
+    body: 'Great work dude',
+    img: '/review/pankaj.jpg',
+    bluetick: true,
+    url: 'https://x.com/pankajkumar_dev/status/2023387010896114130',
+  },
+  {
+    id: 6,
+    name: 'Kartik',
+    username: '@code_kartik',
+    body: 'this is really good man. great work',
+    img: '/review/kartik.jpg',
+    url: 'https://x.com/code_kartik/status/2023366982574444938',
+    bluetick: true,
+  },
+  {
+    id: 7,
+    name: 'Daniele Packard',
+    username: '@daniele_packard',
+    body: 'Looks very slick - congrats!',
+    img: '/review/daniele.jpg',
+    url: 'https://x.com/daniele_packard/status/2023371798943801679',
+    bluetick: true,
+  },
+
+  {
+    id: 8,
+    name: 'Karan',
+    username: '@karankendre',
+    body: "Let's gooo",
+    img: '/review/karan.jpg',
+    url: 'https://x.com/karankendre/status/2023358830109933698',
+    bluetick: true,
+  },
+  {
+    id: 9,
+    name: 'Sayan',
+    username: '@thesayannayak',
+    body: 'This is really good !!',
+    img: '/review/sayan.jpg',
+    url: 'https://x.com/thesayannayak/status/2023353700400730257',
+    bluetick: true,
+  },
+  {
+    id: 10,
+    name: 'Dikshit',
+    username: '@mahanot_dikshit',
+    body: 'Damn! Every component looks so fking clean ',
+    img: '/review/dikshit.jpg',
+    url: 'https://x.com/mahanot_dikshit/status/2023353268966195503',
+    bluetick: true,
+  },
+  {
+    id: 11,
+    name: 'Abdullah Mukadam',
+    username: '@abd_mukadam',
+    body: 'Great work bro ',
+    img: '/review/abdullah.jpg',
+    url: 'https://x.com/abd_mukadam/status/2023426054443213290',
+  },
+  {
+    id: 12,
+    name: 'Vanshika',
+    username: '@vanyaSile',
+    body: 'Woah! Good work ',
+    img: '/review/vanshika.jpg',
+    url: 'https://x.com/vanyaSile/status/2023371872776421637',
+    bluetick: true,
+  },
+
+  {
+    id: 13,
+    name: 'Byron Dittman',
+    username: '@freestacktpl',
+    body: 'This is a great resource, thanks for sharing!',
+    img: '/review/byron.jpg',
+    url: 'https://x.com/freestacktpl/status/2009520122659062175',
+    bluetick: true,
+  },
+  {
+    id: 14,
+    name: 'ctran.eth',
+    username: '@ctranbtw',
+    body: 'Really sharp rollout, UI-Layouts nails that balance between speed and polish..',
+    img: '/review/ctran.jpg',
+    url: 'https://x.com/ctranbtw/status/2016686705210716473',
+    bluetick: true,
+  },
+  {
+    id: 15,
+    name: 'Saïd Aitmbarek',
+    username: '@SaidAitmbarek',
+    body: 'dope platform for inspiration',
+    img: '/review/said.jpg',
+    url: 'https://x.com/SaidAitmbarek/status/2016982912978108603',
+    bluetick: true,
+  },
+  {
+    id: 16,
+    name: 'RicoUI',
+    username: '@ricouii',
+    body: "Thanks to my friend's recommendation for the treasure trove ui-layouts.",
+    img: '/review/rico.jpg',
+    url: 'https://x.com/ricouii/status/1956992888023417163',
+    bluetick: true,
+  },
+  {
+    id: 20,
+    name: 'Byron Dittman',
+    username: '@freestacktpl',
+    body: 'The 3D effects look especially cool. Definitely saving this for my next project.',
+    img: '/review/byron.jpg',
+    url: 'https://x.com/freestacktpl/status/2009520122659062175',
+    bluetick: true,
+  },
+  {
+    id: 17,
+    name: 'HarjjotSinghh',
+    username: '@HarjjotSinghh',
+    body: 'this is unreasonably cool actually.',
+    reddit: true,
+    url: 'https://www.reddit.com/r/tailwindcss/comments/1r8tvp3/introducing_uilayouts_blocks/',
+    bluetick: true,
+  },
+  {
+    id: 18,
+    name: 'Ashishgogula',
+    username: '@Ashishgogula',
+    body: 'Impressive!',
+    reddit: true,
+    url: 'https://www.reddit.com/r/shadcn/comments/1r73or3/introducing_uilayouts_blocks/',
+    bluetick: true,
+  },
+  {
+    id: 21,
+    name: 'RicoUI',
+    username: '@ricouii',
+    body: 'the aesthetics and design are exceptionally excellent',
+    img: '/review/rico.jpg',
+    url: 'https://x.com/ricouii/status/1956992888023417163',
+    bluetick: true,
+  },
+  {
+    id: 19,
+    name: 'techlove99',
+    username: '@techlove99',
+    body: 'This is good. You deserve a big hug for making it',
+    reddit: true,
+    url: 'https://www.reddit.com/r/react/comments/1rce23g/i_made_75_creative_blocks_for_developers/',
+  },
+  {
+    id: 20,
+    name: 'HarjjotSinghh',
+    username: '@HarjjotSinghh',
+    img: '/review/harjjotsinghh.png',
+    body: 'this looks like a gem! why not steal it?',
+    reddit: true,
+    url: 'https://www.reddit.com/r/tailwindcss/comments/1rw6quj/introducing_mvpstudio_an_tailwindcss_template',
+  },
+  {
+    id: 21,
+    name: 'Some-Court6437',
+    username: '@Some-Court6437',
+    img: '/review/reddituser.png',
+    body: "this is actually pretty solid. the shadcn registry integration is chef's kiss",
+    reddit: true,
+    url: 'https://www.reddit.com/r/tailwindcss/comments/1r8tvp3/introducing_uilayouts_blocks',
+  },
+  {
+    id: 22,
+    name: 'Ashishgogula',
+    username: '@Ashishgogula',
+    img: '/review/ashishgogula.png',
+    body: 'Impressive!',
+    reddit: true,
+    url: 'https://www.reddit.com/r/shadcn/comments/1r73or3/introducing_uilayouts_blocks/',
+  },
+  {
+    id: 23,
+    name: 'revolveK123',
+    username: '@revolveK123',
+    img: '/review/reddituser2.png',
+    body: 'Cool!!',
+    reddit: true,
+    url: 'https://www.reddit.com/r/tailwindcss/comments/1rw6quj/introducing_mvpstudio_an_tailwindcss_template',
+  },
+  {
+    id: 24,
+    name: 'Cobmojo',
+    username: '@Cobmojo',
+    img: '/review/reddituser3.png',
+    body: 'Looks great!!',
+    reddit: true,
+    url: 'https://www.reddit.com/r/shadcn/comments/1r73or3/introducing_uilayouts_blocks/',
+  },
+  {
+    id: 25,
+    name: 'im-here-to-lose-time',
+    username: '@im-here-to-lose-time',
+    img: '/review/reddituser2.png',
+    body: 'Splendid! Nice work',
+    reddit: true,
+    url: 'https://www.reddit.com/r/shadcn/comments/1r73or3/introducing_uilayouts_blocks/',
+  },
+  {
+    id: 26,
+    name: 'arreth',
+    username: '@arreth',
+    img: '/review/reddituser2.png',
+    body: 'Dang, these are gorgeous tbh. Nice work!',
+    reddit: true,
+    url: 'https://www.reddit.com/r/tailwindcss/comments/1qatjh8/i_built_56_creative_footer_components/',
+  },
+  {
+    id: 27,
+    name: 'No-Bus-8809',
+    username: '@No-Bus-8809',
+    img: '/review/no-bus-8809.png',
+    body: 'These are pretty sweet.',
+    reddit: true,
+    url: 'https://www.reddit.com/r/shadcn/comments/1q77viw/i_built_18_creative_animated_hero_section/',
+  },
+  {
+    id: 28,
+    name: 'far-carpenter-649',
+    username: '@far-carpenter-649',
+    img: '/review/far-carpenter.png',
+    body: 'awesome, I like that',
+    reddit: true,
+    url: 'https://www.reddit.com/r/shadcn/comments/1q77viw/i_built_18_creative_animated_hero_section/',
+  },
+];
 
 function HeroSec({ blocksData }: { blocksData: any[] }) {
   return (
@@ -403,27 +506,29 @@ function HeroSec({ blocksData }: { blocksData: any[] }) {
               </span>
               <br />
               <span className=''>& Blocks for</span>
-              <span className='dark:bg-neutral-800 ml-2 bg-neutral-50 mt-3 relative  w-fit leading-[100%] inline-block px-1.5 py-0.5 border before:absolute before:top-0 before:left-0 before:w-full before:h-full before:content-[""] before:opacity-[0.09] before:z-10 before:pointer-events-none before:bg-[url("/noise.gif")]'>
-                <span className='bg-linear-to-t from-blue-400 to-blue-600 bg-clip-text text-transparent font-semibold pr-1'>
+              <span className='bg-card ml-2 mt-3 relative  w-fit leading-[100%] inline-block px-1.5 py-0.5 border before:absolute before:top-0 before:left-0 before:w-full before:h-full before:content-[""] before:opacity-[0.09] before:z-10 before:pointer-events-none before:bg-[url("/noise.gif")]'>
+                <span className='bg-linear-to-t from-primary/70 to-primary bg-clip-text text-transparent font-semibold pr-1'>
                   Developer
                 </span>
               </span>{' '}
             </h1>
             <p className='mx-auto 2xl:w-[600px] lg:w-[450px] 2xl:text-lg  sm:w-[80%] text-center sm:text-base text-sm'>
-              UI Layouts isn’t just a library. It’s your complete front-end
-              universe with components, effects, design tools, and ready-to-use
-              blocks, everything you need to build modern interfaces, faster.
+              UI Layouts isn’t just a library. It’s your complete front-end universe with
+              components, effects, design tools, and ready-to-use blocks, everything you need to
+              build modern interfaces, faster.
             </p>
             <div className='flex gap-2 justify-center items-center'>
               <a
                 href='https://pro.ui-layouts.com/blocks'
-                className='flex items-center gap-2 w-fit sm:text-xl text-sm shadow-lg shadow-orange-600 text-white bg-linear-to-b from-orange-500  to-orange-600 sm:px-4 px-2 py-3'
+                className='flex items-center gap-2 w-fit sm:text-xl text-sm
+                shadow-[inset_3px_4px_5px_0px_rgba(183,183,183,0.5),inset_-2px_-2px_5px_0px_rgba(255,255,255,0.5)]
+                text-primary-foreground bg-linear-to-b from-primary to-primary/85 sm:px-4 px-2 py-3'
               >
                 <Blocks className='sm:w-6 sm:h-6 h-5 w-5' /> Premium Blocks
               </a>
               <a
                 href='/components'
-                className='flex items-center gap-2 w-fit sm:text-xl text-sm dark:shadow-none shadow-lg shadow-neutral-300 text-primary dark:border dark:bg-neutral-900 sm:px-4 px-2 py-3'
+                className='flex items-center gap-2 w-fit sm:text-xl text-sm shadow-lg shadow-border text-primary border bg-card sm:px-4 px-2 py-3'
               >
                 <Component className='sm:w-6 sm:h-6 h-5 w-5' /> Browse Component
               </a>
@@ -435,7 +540,7 @@ function HeroSec({ blocksData }: { blocksData: any[] }) {
                     key={profile.href}
                     href={profile.href}
                     target='_block'
-                    className={`dark:bg-neutral-800 bg-neutral-50 p-1 shrink-0 relative z-1 hover:z-2 ${profile.translateX}`}
+                    className={`bg-card p-1 shrink-0 relative z-1 hover:z-2 ${profile.translateX}`}
                   >
                     <Image
                       src={profile.src}
@@ -520,9 +625,7 @@ function HeroSec({ blocksData }: { blocksData: any[] }) {
                     ></path>
                   </svg>
                 </div>
-                <div className='sm:text-sm text-xs font-medium'>
-                  Trusted by 1000+ users
-                </div>
+                <div className='sm:text-sm text-xs font-medium'>Trusted by 1000+ users</div>
               </div>
             </div>
           </article>
@@ -531,7 +634,7 @@ function HeroSec({ blocksData }: { blocksData: any[] }) {
           {/* Twitter Feedback Section */}
           <div className='relative py-10'>
             <div className='relative flex h-full w-full flex-col items-center justify-center overflow-hidden'>
-              <Marquee pauseOnHover className='[--duration:60s]'>
+              <Marquee pauseOnHover className='[--duration:80s]'>
                 {allReviews.map((review) => (
                   <ReviewCard key={review.username} {...review} />
                 ))}
@@ -539,68 +642,6 @@ function HeroSec({ blocksData }: { blocksData: any[] }) {
               <div className='pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-linear-to-r from-white dark:from-neutral-950'></div>
               <div className='pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-linear-to-l from-white dark:from-neutral-950'></div>
             </div>
-          </div>
-          {/* <div className='flex flex-wrap justify-center items-center md:p-5 p-2 lg:gap-10 gap-5'>
-            <a
-              href='https://peerlist.io/naymurr/project/blocks--uilayouts'
-              target='_blank'
-              rel='noreferrer'
-            >
-              <img
-                src='https://peerlist.io/api/v1/projects/embed/PRJHQ7M7MEJJNABQ8FD9EO8BJOD9Q8?showUpvote=false&theme=light'
-                alt='Blocks | UI-Layouts'
-                style={{ width: 'auto', height: '72px' }}
-              />
-            </a>
-            <a
-              href='https://www.producthunt.com/products/ui-layouts?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-ui-layouts-blocks'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <img
-                alt='UI-Layouts Blocks - 100+ Crafted Creative blocks for React and Next.js projects | Product Hunt'
-                width='250'
-                height='54'
-                src='https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1080712&amp;theme=light&amp;t=1771315535340'
-              />
-            </a>
-          </div> */}
-          <GapPattern />
-          <div className='p-5 flex justify-center items-center gap-5'>
-            <a
-              href='https://sellwithboost.com'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <img
-                src='https://sellwithboost.com/badge/listing.svg'
-                alt='Listed on Sell With boost'
-                style={{ height: '40px', width: 'auto' }}
-              />
-            </a>
-            <a
-              href='https://peerlist.io/naymurr/project/ui-layouts--open-source'
-              target='_blank'
-              rel='noreferrer'
-            >
-              <img
-                src='https://peerlist.io/api/v1/projects/embed/PRJHDNDE9QQON6MRQ17GA6MDDLDKAL?showUpvote=true&theme=light'
-                alt='Ui Layouts — Open Source'
-                style={{ width: 'auto', height: '72px' }}
-              />
-            </a>
-            <a
-              href='https://www.producthunt.com/products/ui-layouts/launches/ui-layouts?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-ui-layouts'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <img
-                alt="Ui-Layouts - Not another component library, It's your frontend universe  | Product Hunt"
-                width='250'
-                height='54'
-                src='https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1069263&amp;theme=light&amp;t=1774859806932'
-              />
-            </a>
           </div>
           <GapPattern />
           <div className='grid grid-cols-3 relative'>
@@ -617,7 +658,7 @@ function HeroSec({ blocksData }: { blocksData: any[] }) {
                     href={project.link}
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='group flex flex-col relative items-center overflow-hidden justify-center dark:bg-black p-6 transition'
+                    className='group flex flex-col relative items-center overflow-hidden justify-center bg-card p-6 transition'
                   >
                     <svg
                       className='absolute top-0 left-0 z-2 w-full h-full mix-blend-multiply opacity-50'
@@ -625,11 +666,7 @@ function HeroSec({ blocksData }: { blocksData: any[] }) {
                     >
                       <defs>
                         <filter id='noise6'>
-                          <feTurbulence
-                            type='fractalNoise'
-                            baseFrequency='0.6'
-                            numOctaves='4'
-                          />
+                          <feTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='4' />
                         </filter>
                       </defs>
                       <rect width='100%' height='100%' filter='url(#noise6)' />
@@ -639,15 +676,7 @@ function HeroSec({ blocksData }: { blocksData: any[] }) {
                     </div>
                     <div className='absolute bottom-0 left-0 right-0 top-0 dark:bg-[linear-gradient(to_right,#2120202e_1px,transparent_1px),linear-gradient(to_bottom,#2120202e_1px,transparent_1px)] bg-[linear-gradient(to_right,#acacac2d_1px,transparent_1px),linear-gradient(to_bottom,#acacac2d_1px,transparent_1px)] bg-size-[50px_50px] mask-[radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]'></div>
 
-                    {project?.projectsName === 'tools' && (
-                      <div className='absolute inset-0 z-0 mask-[radial-gradient(ellipse_115%_60%_at_50%_100%,#000_70%,transparent_110%)] dark:bg-[radial-gradient(125%_125%_at_50%_10%,#000000_40%,#303030_100%)] bg-[radial-gradient(125%_125%_at_50%_10%,#ffffff_40%,#cecece_100%)]' />
-                    )}
-                    {project?.projectsName === 'cursify' && (
-                      <div className='absolute inset-0 z-0 mask-[radial-gradient(ellipse_115%_60%_at_50%_100%,#000_70%,transparent_110%)] dark:bg-[radial-gradient(125%_125%_at_50%_10%,#000000_40%,#00c950_100%)] bg-[radial-gradient(125%_125%_at_50%_10%,#ffffff_40%,#00c950_100%)]' />
-                    )}
-                    {project?.projectsName === 'blocks' && (
-                      <div className='absolute inset-0 z-0 mask-[radial-gradient(ellipse_115%_60%_at_50%_100%,#000_70%,transparent_110%)] dark:bg-[radial-gradient(125%_125%_at_50%_10%,#000000_40%,#2784fd_100%)] bg-[radial-gradient(125%_125%_at_50%_10%,#ffffff_40%,#3d6aff_100%)]' />
-                    )}
+                    <div className='absolute inset-0 z-0 mask-[radial-gradient(ellipse_115%_60%_at_50%_100%,#000_70%,transparent_110%)] bg-[radial-gradient(125%_125%_at_50%_10%,var(--background)_40%,var(--primary)_100%)]' />
                   </a>
                 </div>
               </div>

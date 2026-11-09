@@ -4,6 +4,7 @@ interface ComponentCodePreviewProps {
   tabclassname?: string;
   copyclass?: string;
 }
+
 import { getComponentCode } from '@/lib/get-component-code';
 import { PreCode } from './pre-code';
 
@@ -17,8 +18,6 @@ export default async function CodeSnippets({
   const codeContent = { value: fileContent, lang: 'tsx', meta: '' };
 
   return (
-    <>
       <PreCode codeblock={codeContent} classname={classname} />
-    </>
   );
 }

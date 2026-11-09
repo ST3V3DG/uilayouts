@@ -1,12 +1,12 @@
 'use client';
-import Image from 'next/image';
 import {
-  SliderBtnGroup,
   ProgressSlider,
   SliderBtn,
+  SliderBtnGroup,
   SliderContent,
   SliderWrapper,
 } from '@/components/ui/progressive-carousel';
+import Image from 'next/image';
 
 const items = [
   {
@@ -52,13 +52,13 @@ export default function HorizontalProgressive() {
           ))}
         </SliderContent>
 
-        <SliderBtnGroup className='absolute bottom-0 h-fit cursor-pointer dark:text-white text-black dark:bg-black/40 bg-white/40  backdrop-blur-md overflow-hidden grid grid-cols-2 md:grid-cols-4  rounded-md'>
+        <SliderBtnGroup className='absolute bottom-0 h-fit cursor-pointer text-foreground dark:bg-black/40 bg-white/40  backdrop-blur-md overflow-hidden grid grid-cols-2 md:grid-cols-4  rounded-md'>
           {items.map((item, index) => (
             <SliderBtn
               key={item.sliderName}
               value={item?.sliderName}
               className='text-left  p-3 border-r'
-              progressBarClass='dark:bg-black bg-white h-full'
+              progressBarClass='bg-background h-full'
             >
               <h2 className='relative px-4 rounded-full w-fit dark:bg-white dark:text-black text-white bg-neutral-900 mb-2'>
                 {item.title}

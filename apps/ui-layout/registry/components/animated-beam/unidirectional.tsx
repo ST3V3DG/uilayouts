@@ -1,9 +1,8 @@
 'use client';
 
+import { AnimatedBeam, Circle, Icons } from '@/components/ui/animated-beam';
 import { cn } from '@/lib/utils';
 import React, { forwardRef, useRef } from 'react';
-import { AnimatedBeam, Circle } from '@/components/ui/animated-beam';
-import { Icons } from '@/components/ui/animated-beam';
 
 export default function AnimatedBeamUnidirectional() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -12,7 +11,7 @@ export default function AnimatedBeamUnidirectional() {
 
   return (
     <div
-      className='relative flex w-full max-w-[500px] mx-auto items-center justify-center overflow-hidden rounded-lg border dark:bg-neutral-800 bg-neutral-50 lg:p-10 sm:p-4 p-2 md:shadow-xl'
+      className='relative flex w-full max-w-[500px] mx-auto items-center justify-center overflow-hidden rounded-lg border bg-muted lg:p-10 sm:p-4 p-2 md:shadow-xl'
       ref={containerRef}
     >
       <div className='flex h-full w-full flex-col items-stretch justify-between gap-10'>

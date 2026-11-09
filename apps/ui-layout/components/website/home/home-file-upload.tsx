@@ -1,14 +1,14 @@
 'use client';
 
 import {
-  FileUploader,
   FileInput,
+  FileUploader,
   FileUploaderContent,
   FileUploaderItem,
 } from '@/components/ui/file-upload';
 import Image from 'next/image';
 import { useState } from 'react';
-import { DropzoneOptions } from 'react-dropzone';
+import type { DropzoneOptions } from 'react-dropzone';
 
 const FileSvgDraw = () => {
   return (
@@ -58,7 +58,7 @@ const HomeFileUpload = () => {
       dropzoneOptions={dropzone}
       className='relative  rounded-lg p-2 w-[90%] h-full content-center mx-auto'
     >
-      <FileInput className='outline-dashed bg-primary-base outline-2 outline-primary/40'>
+      <FileInput className='outline-dashed bg-card outline-2 outline-primary/40'>
         <div className='flex items-center justify-center flex-col pt-3 pb-4 w-full '>
           <FileSvgDraw />
         </div>

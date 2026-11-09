@@ -3,11 +3,7 @@
 import { Button } from '@/components/website/ui/button';
 import { Input } from '@/components/website/ui/input';
 import { Label } from '@/components/website/ui/label';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/website/ui/popover';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/website/ui/popover';
 import { cn } from '@/lib/utils';
 import { Copy, Pipette } from 'lucide-react';
 import { HexColorPicker } from 'react-colorful';
@@ -69,11 +65,7 @@ export function ColorPicker({
           </Button>
         </PopoverTrigger>
         <PopoverContent className='w-full p-3 bg-primary-foreground'>
-          <HexColorPicker
-            color={color}
-            onChange={onChange}
-            className='w-full!'
-          />
+          <HexColorPicker color={color} onChange={onChange} className='w-full!' />
           <div className='mt-2 flex w-full gap-2'>
             <Input
               value={color}
@@ -84,7 +76,7 @@ export function ColorPicker({
               variant='outline'
               size='icon'
               onClick={copyToClipboard}
-              className='h-10 w-12 shrink border-neutral-300 bg-neutral-100 text-neutral-900 hover:bg-neutral-200'
+              className='h-10 w-12 shrink border bg-muted text-foreground hover:bg-secondary'
               style={{ borderRadius: '6px' }}
             >
               <Copy className='h-4 w-4' />
@@ -98,7 +90,7 @@ export function ColorPicker({
                 variant='outline'
                 size='icon'
                 onClick={useEyeDropper}
-                className='h-10 w-10 border-neutral-300 bg-neutral-100 text-neutral-900 hover:bg-neutral-200'
+                className='h-10 w-10 border bg-muted text-foreground hover:bg-secondary'
                 style={{ borderRadius: '6px' }}
               >
                 <Pipette className='h-4 w-4' />

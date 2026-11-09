@@ -1,6 +1,7 @@
 'use client';
-import React, { useState } from 'react';
 import { FramerModal, ModalContent } from '@/components/ui/dialog';
+import type React from 'react';
+import { useState } from 'react';
 
 const DialogDefault: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -17,18 +18,14 @@ const DialogDefault: React.FC = () => {
       <FramerModal open={modalOpen} setOpen={setModalOpen}>
         <ModalContent>
           <div className='flex flex-col space-y-1.5 text-center sm:text-left'>
-            <h2 className='text-lg font-semibold leading-none tracking-tight'>
-              Edit profile
-            </h2>
+            <h2 className='text-lg font-semibold leading-none tracking-tight'>Edit profile</h2>
             <p className='text-sm text-muted-foreground'>
               Make changes to your profile here. Click save when you're done.
             </p>
           </div>
           <div className='grid gap-4 py-4'>
             <div className='grid grid-cols-4 items-center gap-4'>
-              <label className='text-sm font-medium leading-none text-right'>
-                Name
-              </label>
+              <label className='text-sm font-medium leading-none text-right'>Name</label>
               <input
                 className='flex h-9 w-full rounded-md border bg-transparent px-3 py-1 text-sm shadow-xs transition-colors placeholder:text-muted-foreground focus-visible:outline-hidden focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50 col-span-3'
                 id='name'
@@ -36,9 +33,7 @@ const DialogDefault: React.FC = () => {
               />
             </div>
             <div className='grid grid-cols-4 items-center gap-4'>
-              <label className='text-sm font-medium leading-none text-right'>
-                Username
-              </label>
+              <label className='text-sm font-medium leading-none text-right'>Username</label>
               <input
                 className='flex h-9 w-full rounded-md border bg-transparent px-3 py-1 text-sm shadow-xs transition-colors placeholder:text-muted-foreground focus-visible:outline-hidden focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50 col-span-3'
                 id='username'
@@ -49,7 +44,7 @@ const DialogDefault: React.FC = () => {
           <div className='mt-4'>
             <button
               onClick={() => setModalOpen(false)}
-              className='w-full p-3 bg-black dark:bg-white text-white dark:text-black rounded-md'
+              className='w-full p-3 bg-foreground text-background rounded-md'
               type='button'
             >
               Got it, thanks!

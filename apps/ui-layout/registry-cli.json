@@ -399,6 +399,19 @@
       ]
     },
     {
+      "name": "liquid-glass",
+      "type": "registry:component",
+      "devDependencies": [],
+      "dependencies": ["motion"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "./components/ui/liquid-glass.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "liquid-gradient",
       "type": "registry:component",
       "devDependencies": [],
@@ -853,7 +866,82 @@
         }
       ]
     },
-
+    {
+      "name": "shiki-code",
+      "type": "registry:component",
+      "devDependencies": [],
+      "dependencies": ["shiki"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "./components/ui/shiki-code.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "./components/website/code-components/copy-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "tree-code-viewer",
+      "type": "registry:component",
+      "devDependencies": [],
+      "dependencies": ["shiki"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "./components/ui/tree-view-code.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "./components/website/code-components/client-pre-code.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "./components/website/code-components/copy-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "code-tabs-mdx",
+      "type": "registry:component",
+      "devDependencies": [],
+      "dependencies": ["shiki"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "./components/website/code-components/code-tabs-mdx.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "./lib/shiki-highlighter.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "./components/website/code-components/copy-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+     {
+      "name": "mac-genie",
+      "type": "registry:component",
+      "devDependencies": [],
+       "dependencies": ["html-to-image","motion"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "./registry/components/mac/genie-effect.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "./components/ui/magnified-doc.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
     {
       "name": "carousel",
       "type": "registry:component",
@@ -996,7 +1084,7 @@
         }
       ]
     },
-        {
+    {
       "name": "hero-digital-success",
       "type": "registry:block",
       "devDependencies": [],
@@ -1515,7 +1603,7 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "../../packages/blocks/src/faq-section/faq-founder.tsx",
+          "path": "../../packages/blocks/src/team-section/team-clippath.tsx",
           "type": "registry:block"
         },
         {

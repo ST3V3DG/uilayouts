@@ -1,10 +1,10 @@
 'use client';
-import React from 'react';
-import Image from 'next/image';
 import { Marquee } from '@/components/ui/marquee';
-import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
+import React from 'react';
 
 // const allBlocks = [
 //   {
@@ -154,9 +154,9 @@ function AllBlocks({ blocksData }: { blocksData: any[] }) {
             100+ Free Ready-to-Use Blocks.
           </h2>
           <p className='lg:max-w-2xl max-w-xl mx-auto lg:px-0 px-5 text-center'>
-            Ready-to-use blocks are pre-built components that you can use to
-            build your website or application. They are designed to be easy to
-            use and can be customized to fit your needs.
+            Ready-to-use blocks are pre-built components that you can use to build your website or
+            application. They are designed to be easy to use and can be customized to fit your
+            needs.
           </p>
         </article>
         <div className='grid md:grid-cols-3 grid-cols-2'>
@@ -167,17 +167,14 @@ function AllBlocks({ blocksData }: { blocksData: any[] }) {
                 <Link
                   href={component?.url}
                   className={cn(
-                    'relative transition-all p-5 border-b border-l last:border-r dark:border-neutral-700',
+                    'relative transition-all p-5 border-b border-l last:border-r',
                     isFirstItemOfRow && 'border-l-0'
                   )}
                 >
                   <>
                     {component?.imgSrc && (
                       <div
-                        className={cn(
-                          'relative h-fit aspect-video px-6 pt-6',
-                          component?.imgclass
-                        )}
+                        className={cn('relative h-fit aspect-video px-6 pt-6', component?.imgclass)}
                       >
                         <svg
                           className='absolute inset-0 w-full h-full mix-blend-overlay opacity-50'
@@ -192,11 +189,7 @@ function AllBlocks({ blocksData }: { blocksData: any[] }) {
                               />
                             </filter>
                           </defs>
-                          <rect
-                            width='100%'
-                            height='100%'
-                            filter='url(#noise6)'
-                          />
+                          <rect width='100%' height='100%' filter='url(#noise6)' />
                         </svg>
                         <Image
                           src={component.imgSrc}
@@ -221,16 +214,17 @@ function AllBlocks({ blocksData }: { blocksData: any[] }) {
             );
           })}
         </div>
-        <div className='absolute -bottom-5 left-0 w-full h-60 bg-linear-to-t dark:from-neutral-950 from-white dark:via-neutral-950 via-white '></div>
-        <div className='absolute top-0 left-0 w-full h-96 bg-linear-to-b dark:from-neutral-950 from-white dark:via-neutral-950 via-white '></div>
+        <div className='absolute -bottom-5 left-0 w-full h-60 bg-linear-to-t from-background via-background '></div>
+        <div className='absolute top-0 left-0 w-full h-96 bg-linear-to-b from-background via-background '></div>
         <a
           href='https://pro.ui-layouts.com/blocks'
           target='_blank'
-          className='flex sm:text-xl relative z-2 w-fit py-2 px-3 dark:bg-neutral-900 bg-neutral-100 justify-center group mx-auto font-medium items-center gap-2  rounded-md border dark:border-[#1d1d1d]'
+          className='flex sm:text-xl relative z-2 w-fit py-2 px-3 bg-secondary justify-center group mx-auto font-medium items-center gap-2 rounded-md border'
+          rel='noreferrer noopener'
         >
           <span>Browse all </span>
           <span className='flex items-center gap-2'>
-            <span className='dark:text-zinc-400 text-zinc-500'>Blocks</span>{' '}
+            <span className='text-muted-foreground'>Blocks</span>{' '}
             <ArrowRight className=' group-hover:translate-x-1 transition-all' />
           </span>
         </a>

@@ -1,9 +1,9 @@
 'use client';
 
+import { cn } from '@/lib/utils';
 import type React from 'react';
 import { useEffect, useRef } from 'react';
-import { createSwapy, type SlotItemMapArray } from 'swapy';
-import { cn } from '@/lib/utils';
+import { type SlotItemMapArray, createSwapy } from 'swapy';
 
 type AnimationType = 'dynamic' | 'spring' | 'none';
 type SwapMode = 'hover' | 'drop';
@@ -25,13 +25,7 @@ type SwapyLayoutProps = {
   children: React.ReactNode;
 };
 
-export const SwapyLayout = ({
-  id,
-  onSwap,
-  config = {},
-  className,
-  children,
-}: SwapyLayoutProps) => {
+export const SwapyLayout = ({ id, onSwap, config = {}, className, children }: SwapyLayoutProps) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const swapyRef = useRef<ReturnType<typeof createSwapy> | null>(null);
 
@@ -62,7 +56,7 @@ export const DragHandle = ({ className }: { className?: string }) => {
     <div
       data-swapy-handle
       className={cn(
-        'absolute top-2 left-2 cursor-grab  text-neutral-500  rounded-md bg-transparent  active:cursor-grabbing  ',
+        'absolute top-2 left-2 cursor-grab text-muted-foreground rounded-md bg-transparent active:cursor-grabbing',
         className
       )}
     >
@@ -101,7 +95,7 @@ export const SwapySlot = ({
   return (
     <div
       className={cn(
-        'data-swapy-highlighted:bg-neutral-200 dark:data-swapy-highlighted:bg-neutral-800',
+        'data-swapy-highlighted:bg-muted',
         className
       )}
       data-swapy-slot={id}
@@ -135,8 +129,7 @@ export const SwapyItem = ({
   children: React.ReactNode;
   dragItemOpacity?: number;
 }) => {
-  const opacityClass =
-    dragOpacityClassMap[dragItemOpacity] ?? 'data-swapy-dragging:opacity-50';
+  const opacityClass = dragOpacityClassMap[dragItemOpacity] ?? 'data-swapy-dragging:opacity-50';
   return (
     <div className={cn(opacityClass, className)} data-swapy-item={id}>
       {children}

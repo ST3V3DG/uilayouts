@@ -1,7 +1,9 @@
 'use client';
-import React, { useEffect, useRef, useState } from 'react';
-import createGlobe from 'cobe';
 import { cn } from '@/lib/utils';
+import createGlobe from 'cobe';
+import type React from 'react';
+import { useEffect, useRef, useState } from 'react';
+
 interface EarthProps {
   className?: string;
   theta?: number;
@@ -30,8 +32,7 @@ const Earth: React.FC<EarthProps> = ({
 
   useEffect(() => {
     let width = 0;
-    const onResize = () =>
-      canvasRef.current && (width = canvasRef.current.offsetWidth);
+    const onResize = () => canvasRef.current && (width = canvasRef.current.offsetWidth);
     window.addEventListener('resize', onResize);
     onResize();
     let phi = 0;
@@ -53,18 +54,19 @@ const Earth: React.FC<EarthProps> = ({
       glowColor: glowColor,
       opacity: 1,
       offset: [0, 0],
-      markers: [
-        // longitude latitude
-      ],
-      onRender: (state: Record<string, any>) => {
-        // Called on every animation frame.
-        // `state` will be an empty object, return updated params.\
-        state.phi = phi;
-        phi += 0.003;
-      },
+      markers: [],
     });
 
+    let animationFrameId: number;
+    const animate = () => {
+      phi += 0.003;
+      globe.update({ phi });
+      animationFrameId = requestAnimationFrame(animate);
+    };
+    animationFrameId = requestAnimationFrame(animate);
+
     return () => {
+      cancelAnimationFrame(animationFrameId);
       globe.destroy();
     };
   }, []);

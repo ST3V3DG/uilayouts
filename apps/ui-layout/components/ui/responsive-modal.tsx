@@ -1,17 +1,11 @@
 'use client';
 
-import React, {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  ReactNode,
-} from 'react';
-import { createPortal } from 'react-dom';
-import { AnimatePresence, motion } from 'motion/react';
-import { X } from 'lucide-react';
-import { Drawer as VaulDrawer } from 'vaul';
 import { cn } from '@/lib/utils';
+import { X } from 'lucide-react';
+import { AnimatePresence, motion } from 'motion/react';
+import React, { createContext, type ReactNode, useContext, useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { Drawer as VaulDrawer } from 'vaul';
 
 interface DrawerContextProps {
   open: boolean;
@@ -23,9 +17,7 @@ const DrawerContext = createContext<DrawerContextProps | undefined>(undefined);
 export const useResponsiveModal = () => {
   const context = useContext(DrawerContext);
   if (!context) {
-    throw new Error(
-      'useResponsiveModal must be used within a ResponsiveModalProvider'
-    );
+    throw new Error('useResponsiveModal must be used within a ResponsiveModalProvider');
   }
   return context;
 };
@@ -80,7 +72,7 @@ export function ResponsiveModal({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className='fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-xs cursor-zoom-out'
+                className='fixed inset-0 z-50 flex items-center justify-center bg-background/50 backdrop-blur-xs cursor-zoom-out'
                 onClick={() => setOpen(false)}
               >
                 <motion.div
@@ -90,7 +82,7 @@ export function ResponsiveModal({
                   transition={{ type: 'spring', duration: 0.5 }}
                   onClick={(e) => e.stopPropagation()}
                   className={cn(
-                    'relative w-full max-w-md border bg-white dark:bg-neutral-900 rounded-lg cursor-default',
+                    'relative w-full max-w-md border bg-card rounded-lg cursor-default',
                     classname
                   )}
                 >
@@ -120,18 +112,12 @@ export function ResponsiveModal({
       {desktopModal}
 
       {!isDesktop && (
-        <VaulDrawer.Root
-          shouldScaleBackground
-          open={open}
-          onOpenChange={setOpen}
-        >
+        <VaulDrawer.Root shouldScaleBackground open={open} onOpenChange={setOpen}>
           <VaulDrawer.Portal>
-            <VaulDrawer.Overlay className='fixed inset-0 z-50 bg-white/50 dark:bg-black/50 backdrop-blur-xs' />
-            <VaulDrawer.Content className='fixed bottom-0 left-0 z-50 w-full max-h-[96%] bg-white dark:bg-neutral-900'>
-              <div className='mx-auto w-16 h-[0.30rem] shrink-0 rounded-full bg-neutral-600 my-4' />
-              <div className='w-full mx-auto max-h-[96vh] overflow-auto px-4 pb-2'>
-                {content}
-              </div>
+            <VaulDrawer.Overlay className='fixed inset-0 z-50 bg-background/50 backdrop-blur-xs' />
+            <VaulDrawer.Content className='fixed bottom-0 left-0 z-50 w-full max-h-[96%] bg-card'>
+              <div className='mx-auto w-16 h-[0.30rem] shrink-0 rounded-full bg-muted-foreground my-4' />
+              <div className='w-full mx-auto max-h-[96vh] overflow-auto px-4 pb-2'>{content}</div>
             </VaulDrawer.Content>
           </VaulDrawer.Portal>
         </VaulDrawer.Root>
@@ -155,10 +141,7 @@ interface ResponsiveModalTriggerProps {
   asChild?: boolean;
 }
 
-export function ResponsiveModalTrigger({
-  children,
-  asChild = false,
-}: ResponsiveModalTriggerProps) {
+export function ResponsiveModalTrigger({ children, asChild = false }: ResponsiveModalTriggerProps) {
   const { setOpen } = useResponsiveModal();
 
   if (asChild) {

@@ -1,15 +1,15 @@
 // thanks to maximeheckel
-import React, { useState } from 'react';
 
-import Image from 'next/image';
 import { TabsBtn, TabsContent, TabsProvider } from '@/components/ui/tab';
+import Image from 'next/image';
+import React, { useState } from 'react';
 
 function Tab() {
   return (
     <div className='border bg-white/10 dark:bg-black/40 backdrop-blur-xs rounded-md p-4  relative'>
       <TabsProvider defaultValue={'design'}>
         <div className='flex justify-center mt-2'>
-          <div className='flex items-center w-fit dark:bg-[#1d2025] bg-neutral-200 p-1 dark:text-white text-black rounded-md border'>
+          <div className='flex items-center w-fit dark:bg-[#1d2025] bg-muted p-1 text-foreground rounded-md border'>
             <TabsBtn value='design'>
               <span className='relative z-2 uppercase'>design</span>
             </TabsBtn>

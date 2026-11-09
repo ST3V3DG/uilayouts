@@ -1,9 +1,8 @@
-import type { MetadataRoute } from 'next';
-import { getAllComponentsArray } from '@/configs/docs';
 import { getBlocksDesignMeta } from '@/blocks-docs';
+import { getAllComponentsArray } from '@/configs/docs';
+import type { MetadataRoute } from 'next';
 
-const baseUrl =
-  process.env.NEXT_PUBLIC_CLIENT_URL ?? 'https://www.ui-layouts.com';
+const baseUrl = process.env.NEXT_PUBLIC_CLIENT_URL ?? 'https://www.ui-layouts.com';
 const normalizedBaseUrl = baseUrl.replace(/\/+$/, '');
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -17,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/get-started',
     '/work-with-us',
     '/mcp',
+    '/changelog',
   ];
 
   return [

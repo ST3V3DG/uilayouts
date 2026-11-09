@@ -13,26 +13,24 @@ export default function MyDrawer() {
         </Drawer.Trigger>
         <Drawer.Portal>
           <Drawer.Overlay className='fixed inset-0 bg-black/40' />
-          <Drawer.Content className='bg-neutral-100 flex flex-col rounded-t-[10px] h-full mt-24 max-h-[96%] fixed bottom-0 left-0 right-0'>
-            <div className='p-4 bg-white rounded-t-[10px] flex-1'>
-              <div className='mx-auto w-12 h-1.5 shrink-0 rounded-full bg-neutral-300 mb-8' />
+          <Drawer.Content className='bg-muted flex flex-col rounded-t-[10px] h-full mt-24 max-h-[96%] fixed bottom-0 left-0 right-0'>
+            <div className='p-4 bg-background rounded-t-[10px] flex-1'>
+              <div className='mx-auto w-12 h-1.5 shrink-0 rounded-full bg-border mb-8' />
               <div className='max-w-md mx-auto'>
-                <Drawer.Title className='font-medium mb-4'>
-                  Drawer for React.
-                </Drawer.Title>
-                <p className='text-neutral-600 mb-2'>
-                  This component can be used as a Dialog replacement on mobile
-                  and tablet devices.
+                <Drawer.Title className='font-medium mb-4'>Drawer for React.</Drawer.Title>
+                <p className='text-muted-foreground mb-2'>
+                  This component can be used as a Dialog replacement on mobile and tablet devices.
                 </p>
-                <p className='text-neutral-600 mb-2'>
+                <p className='text-muted-foreground mb-2'>
                   It comes unstyled and has gesture-driven animations.
                 </p>
-                <p className='text-neutral-600 mb-6'>
+                <p className='text-muted-foreground mb-6'>
                   It uses{' '}
                   <a
                     href='https://www.radix-ui.com/docs/primitives/components/dialog'
                     className='underline'
                     target='_blank'
+                    rel='noreferrer noopener'
                   >
                     Radix&rsquo;s Dialog primitive
                   </a>{' '}
@@ -41,68 +39,70 @@ export default function MyDrawer() {
                     href='https://twitter.com/devongovett/status/1674470185783402496'
                     className='underline'
                     target='_blank'
+                    rel='noreferrer noopener'
                   >
                     this tweet.
                   </a>
                 </p>
                 <Drawer.NestedRoot>
-                  <Drawer.Trigger className='rounded-md mb-6 w-full bg-neutral-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-neutral-800 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-600'>
+                  <Drawer.Trigger className='rounded-md mb-6 w-full bg-card text-card-foreground px-3.5 py-2.5 text-sm font-semibold shadow-xs hover:bg-card/80 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-border'>
                     Open Second Drawer
                   </Drawer.Trigger>
                   <Drawer.Portal>
                     <Drawer.Overlay className='fixed inset-0 bg-black/40' />
-                    <Drawer.Content className='bg-neutral-100 flex flex-col rounded-t-[10px] h-full mt-24 max-h-[94%] fixed bottom-0 left-0 right-0'>
-                      <div className='p-4 bg-white rounded-t-[10px] flex-1'>
-                        <div className='mx-auto w-12 h-1.5 shrink-0 rounded-full bg-neutral-300 mb-8' />
+                    <Drawer.Content className='bg-muted flex flex-col rounded-t-[10px] h-full mt-24 max-h-[94%] fixed bottom-0 left-0 right-0'>
+                      <div className='p-4 bg-background rounded-t-[10px] flex-1'>
+                        <div className='mx-auto w-12 h-1.5 shrink-0 rounded-full bg-border mb-8' />
                         <div className='max-w-md mx-auto'>
                           <Drawer.Title className='font-medium mb-4'>
                             This drawer is nested.
                           </Drawer.Title>
-                          <p className='text-neutral-600 mb-2'>
+                          <p className='text-muted-foreground mb-2'>
                             Place a{' '}
                             <span className='font-mono text-[15px] font-semibold'>
                               `Drawer.NestedRoot`
                             </span>{' '}
-                            inside another drawer and it will be nested
-                            automatically for you.
+                            inside another drawer and it will be nested automatically for you.
                           </p>
-                          <p className='text-neutral-600 mb-2'>
+                          <p className='text-muted-foreground mb-2'>
                             You can view more examples{' '}
                             <a
                               href='https://github.com/emilkowalski/vaul#examples'
                               className='underline'
                               target='_blank'
+                              rel='noreferrer noopener'
                             >
                               here
                             </a>
                             .
                             <Drawer.NestedRoot>
-                              <Drawer.Trigger className='rounded-md mb-6 w-full bg-neutral-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-neutral-800 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-600'>
+                              <Drawer.Trigger className='rounded-md mb-6 w-full bg-card text-card-foreground px-3.5 py-2.5 text-sm font-semibold shadow-xs hover:bg-card/80 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-border'>
                                 Open third Drawer
                               </Drawer.Trigger>
                               <Drawer.Portal>
                                 <Drawer.Overlay className='fixed inset-0 bg-black/40' />
-                                <Drawer.Content className='bg-neutral-100 flex flex-col rounded-t-[10px] h-full mt-24 max-h-[94%] fixed bottom-0 left-0 right-0'>
-                                  <div className='p-4 bg-white rounded-t-[10px] flex-1'>
-                                    <div className='mx-auto w-12 h-1.5 shrink-0 rounded-full bg-neutral-300 mb-8' />
+                                <Drawer.Content className='bg-muted flex flex-col rounded-t-[10px] h-full mt-24 max-h-[94%] fixed bottom-0 left-0 right-0'>
+                                  <div className='p-4 bg-background rounded-t-[10px] flex-1'>
+                                    <div className='mx-auto w-12 h-1.5 shrink-0 rounded-full bg-border mb-8' />
                                     <div className='max-w-md mx-auto'>
                                       <Drawer.Title className='font-medium mb-4'>
                                         This drawer is nested.
                                       </Drawer.Title>
-                                      <p className='text-neutral-600 mb-2'>
+                                      <p className='text-muted-foreground mb-2'>
                                         Place a{' '}
                                         <span className='font-mono text-[15px] font-semibold'>
                                           `Drawer.NestedRoot`
                                         </span>{' '}
-                                        inside another drawer and it will be
-                                        nested automatically for you.
+                                        inside another drawer and it will be nested automatically
+                                        for you.
                                       </p>
-                                      <p className='text-neutral-600 mb-2'>
+                                      <p className='text-muted-foreground mb-2'>
                                         You can view more examples{' '}
                                         <a
                                           href='https://github.com/emilkowalski/vaul#examples'
                                           className='underline'
                                           target='_blank'
+                                          rel='noreferrer noopener'
                                         >
                                           here
                                         </a>
@@ -110,12 +110,13 @@ export default function MyDrawer() {
                                       </p>
                                     </div>
                                   </div>
-                                  <div className='p-4 bg-neutral-100 border-t border-neutral-200 mt-auto'>
+                                  <div className='p-4 bg-muted border-t border-border mt-auto'>
                                     <div className='flex gap-6 justify-end max-w-md mx-auto'>
                                       <a
-                                        className='text-xs text-neutral-600 flex items-center gap-0.25'
+                                        className='text-xs text-muted-foreground flex items-center gap-0.25'
                                         href='https://github.com/emilkowalski/vaul'
                                         target='_blank'
+                                        rel='noreferrer noopener'
                                       >
                                         GitHub
                                         <svg
@@ -136,9 +137,10 @@ export default function MyDrawer() {
                                         </svg>
                                       </a>
                                       <a
-                                        className='text-xs text-neutral-600 flex items-center gap-0.25'
+                                        className='text-xs text-muted-foreground flex items-center gap-0.25'
                                         href='https://twitter.com/emilkowalski_'
                                         target='_blank'
+                                        rel='noreferrer noopener'
                                       >
                                         Twitter
                                         <svg
@@ -166,12 +168,13 @@ export default function MyDrawer() {
                           </p>
                         </div>
                       </div>
-                      <div className='p-4 bg-neutral-100 border-t border-neutral-200 mt-auto'>
+                      <div className='p-4 bg-muted border-t border-border mt-auto'>
                         <div className='flex gap-6 justify-end max-w-md mx-auto'>
                           <a
-                            className='text-xs text-neutral-600 flex items-center gap-0.25'
+                            className='text-xs text-muted-foreground flex items-center gap-0.25'
                             href='https://github.com/emilkowalski/vaul'
                             target='_blank'
+                            rel='noreferrer noopener'
                           >
                             GitHub
                             <svg
@@ -192,9 +195,10 @@ export default function MyDrawer() {
                             </svg>
                           </a>
                           <a
-                            className='text-xs text-neutral-600 flex items-center gap-0.25'
+                            className='text-xs text-muted-foreground flex items-center gap-0.25'
                             href='https://twitter.com/emilkowalski_'
                             target='_blank'
+                            rel='noreferrer noopener'
                           >
                             Twitter
                             <svg
@@ -221,12 +225,13 @@ export default function MyDrawer() {
                 </Drawer.NestedRoot>
               </div>
             </div>
-            <div className='p-4 bg-neutral-100 border-t border-neutral-200 mt-auto'>
+            <div className='p-4 bg-muted border-t border-border mt-auto'>
               <div className='flex gap-6 justify-end max-w-md mx-auto'>
                 <a
-                  className='text-xs text-neutral-600 flex items-center gap-0.25'
+                  className='text-xs text-muted-foreground flex items-center gap-0.25'
                   href='https://github.com/emilkowalski/vaul'
                   target='_blank'
+                  rel='noreferrer noopener'
                 >
                   GitHub
                   <svg
@@ -247,9 +252,10 @@ export default function MyDrawer() {
                   </svg>
                 </a>
                 <a
-                  className='text-xs text-neutral-600 flex items-center gap-0.25'
+                  className='text-xs text-muted-foreground flex items-center gap-0.25'
                   href='https://twitter.com/emilkowalski_'
                   target='_blank'
+                  rel='noreferrer noopener'
                 >
                   Twitter
                   <svg

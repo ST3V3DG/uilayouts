@@ -1,12 +1,9 @@
 import path from 'path';
-import remarkGfm from 'remark-gfm';
 import createMDX from '@next/mdx';
 import rehypeSlug from 'rehype-slug';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import remarkGfm from 'remark-gfm';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __dirname = process.cwd();
 
 const withMDX = createMDX({
   extension: /\.mdx?$/,
@@ -22,13 +19,11 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  experimental: {
-    turbo: {
-      rules: {
-        '*.html': {
-          loaders: ['raw-loader'],
-          as: '*.js',
-        },
+  turbopack: {
+    rules: {
+      '*.html': {
+        loaders: ['raw-loader'],
+        as: '*.js',
       },
     },
   },
@@ -68,10 +63,7 @@ const nextConfig = {
       },
     ],
   },
-  webpack: (
-    config: { resolve: { alias: any }; module: { rules: any } },
-    { isServer }: any
-  ) => {
+  webpack: (config: { resolve: { alias: any }; module: { rules: any } }, { isServer }: any) => {
     config.module.rules.push({
       test: /\.txt$/,
       type: 'asset/source',
@@ -86,14 +78,11 @@ const nextConfig = {
       ...config.resolve.alias,
       '@repo/ui': path.resolve(__dirname, '../../packages/ui/src'),
       '@repo/blocks': path.resolve(__dirname, '../../packages/blocks/src'),
-      '@repo/blocks/assets': path.resolve(
-        __dirname,
-        '../../packages/blocks/assets'
-      ),
+      '@repo/blocks/assets': path.resolve(__dirname, '../../packages/blocks/assets'),
     };
     return config;
   },
   // Add other Next.js config options here
 };
-// @ts-ignore
+// @ts-expect-error
 export default withMDX(nextConfig);

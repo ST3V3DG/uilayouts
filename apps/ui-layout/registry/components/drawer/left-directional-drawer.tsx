@@ -1,15 +1,15 @@
 'use client';
-import { Drawer } from 'vaul';
-import { motion } from 'motion/react';
-import { useState } from 'react';
-import { Edit, X } from 'lucide-react';
-import { useMediaQuery } from '@/hooks/use-media-query';
-import Image from 'next/image';
 import {
   DirectionalDrawer,
   DrawerContent,
   DrawerTrigger,
 } from '@/components/ui/directional-drawer';
+import { useMediaQuery } from '@/hooks/use-media-query';
+import { Edit, X } from 'lucide-react';
+import { motion } from 'motion/react';
+import Image from 'next/image';
+import { useState } from 'react';
+import { Drawer } from 'vaul';
 export default function LeftDirectionalDrawer() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
@@ -33,16 +33,14 @@ export default function LeftDirectionalDrawer() {
 
               {/* Avatar Preview */}
               <div className='flex justify-center'>
-                <div className='h-32 w-32 rounded-xl dark:bg-neutral-800 bg-muted grid place-content-center text-xl font-medium'>
+                <div className='h-32 w-32 rounded-xl bg-muted grid place-content-center text-xl font-medium'>
                   JP
                 </div>
               </div>
 
               {/* File Input */}
               <div>
-                <label className='text-sm font-medium mb-1 block'>
-                  Profile Picture
-                </label>
+                <label className='text-sm font-medium mb-1 block'>Profile Picture</label>
                 <input
                   type='file'
                   id='formFile'
@@ -53,7 +51,7 @@ export default function LeftDirectionalDrawer() {
               {/* Submit */}
               <button
                 type='submit'
-                className='w-full rounded-md bg-black text-white dark:bg-white dark:text-black p-2 font-medium'
+                className='w-full rounded-md bg-foreground text-background p-2 font-medium'
               >
                 Save Changes
               </button>
@@ -73,7 +71,7 @@ export default function LeftDirectionalDrawer() {
           <motion.button
             whileTap={{ scale: 0.8 }}
             onClick={() => setSidebarOpen(true)}
-            className='absolute left-2 bottom-2 p-4 dark:bg-black bg-white rounded-lg shadow-black'
+            className='absolute left-2 bottom-2 p-4 bg-background rounded-lg shadow-black'
           >
             <Edit />
           </motion.button>

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useSpring } from 'motion/react';
-import React, { useState, MouseEvent, useRef } from 'react';
+import React, { type MouseEvent, useRef, useState } from 'react';
 
 interface ImageItem {
   img: string;
@@ -10,13 +10,11 @@ interface ImageItem {
 }
 
 function ImageReveal2() {
-  const [img, setImg] = useState<{ src: string; alt: string; opacity: number }>(
-    {
-      src: '',
-      alt: '',
-      opacity: 0,
-    }
-  );
+  const [img, setImg] = useState<{ src: string; alt: string; opacity: number }>({
+    src: '',
+    alt: '',
+    opacity: 0,
+  });
 
   const imageRef = useRef<HTMLImageElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -72,18 +70,14 @@ function ImageReveal2() {
   };
 
   return (
-    <section
-      ref={containerRef}
-      onMouseMove={handleMove}
-      className='relative w-4/5 mx-auto p-4'
-    >
+    <section ref={containerRef} onMouseMove={handleMove} className='relative w-4/5 mx-auto p-4'>
       {list.map((item) => (
         <div
           key={item.label}
           onMouseEnter={() => handleImageInteraction(item, 1)}
           onMouseMove={() => handleImageInteraction(item, 1)}
           onMouseLeave={() => handleImageInteraction(item, 0)}
-          className='w-full py-5 cursor-pointer text-center flex justify-between items-center text-primary border-b dark:border-neutral-800 border-neutral-50 last:border-none'
+          className='w-full py-5 cursor-pointer text-center flex justify-between items-center text-primary border-b border-border last:border-none'
         >
           <p className='text-5xl'>{item.label}</p>
           <span>

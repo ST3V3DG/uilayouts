@@ -1,7 +1,7 @@
 'use client';
-import React, { SetStateAction } from 'react';
-import { useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
+import type React from 'react';
+import { type SetStateAction, useState } from 'react';
 
 export const items = [
   {
@@ -99,24 +99,15 @@ function Gallery({ items, setIndex, index }: GaleryProps) {
             <AnimatePresence mode='wait'>
               {index === i && (
                 <motion.article
-                  //@ts-ignore
                   variants={article}
                   initial='hidden'
                   animate='show'
                   className='absolute flex rounded-xl  flex-col justify-end h-full top-0 p-3 space-y-2 overflow-hidden bg-linear-to-t dark:from-neutral-900/60 from-neutral-100/60  from-20% to-transparent to-80% '
                 >
-                  <motion.h1
-                    // @ts-ignore
-                    variants={article}
-                    className='text-2xl font-semibold'
-                  >
+                  <motion.h1 variants={article} className='text-2xl font-semibold'>
                     {item?.title}
                   </motion.h1>
-                  <motion.p
-                    // @ts-ignore
-                    variants={article}
-                    className='leading-[120%]'
-                  >
+                  <motion.p variants={article} className='leading-[120%]'>
                     {item?.description}
                   </motion.p>
                 </motion.article>

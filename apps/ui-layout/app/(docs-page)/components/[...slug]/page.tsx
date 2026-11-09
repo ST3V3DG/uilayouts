@@ -1,15 +1,15 @@
-import { notFound } from 'next/navigation';
-import { Metadata } from 'next';
-import { getDocBySlug, getAllDocs } from '@/lib/docs';
+import { BreadcrumbStructuredData } from '@/components/seo/breadcrumb-structured-data';
+import { StructuredData } from '@/components/seo/structured-data';
+import { GapPattern } from '@/components/ui/gap-pattern';
+import { ComponentPagination } from '@/components/website/code-components/pagination';
+import CopyPage from '@/components/website/copy-page';
+import Footer from '@/components/website/footer';
+import TableOfContents from '@/components/website/tableof-compoents';
+import { getAllDocs, getDocBySlug } from '@/lib/docs';
 import { absoluteUrl, cn } from '@/lib/utils';
 import { Component } from 'lucide-react';
-import TableOfContents from '@/components/website/tableof-compoents';
-import { ComponentPagination } from '@/components/website/code-components/pagination';
-import Footer from '@/components/website/footer';
-import CopyPage from '@/components/website/copy-page';
-import { GapPattern } from '@/components/ui/gap-pattern';
-import { StructuredData } from '@/components/seo/structured-data';
-import { BreadcrumbStructuredData } from '@/components/seo/breadcrumb-structured-data';
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
 export const dynamic = 'force-static';
 export const dynamicParams = false;
@@ -82,9 +82,7 @@ export async function generateMetadata(props: {
   };
 }
 
-export default async function DocPage(props: {
-  params: Promise<{ slug?: string[] }>;
-}) {
+export default async function DocPage(props: { params: Promise<{ slug?: string[] }> }) {
   const params = await props.params;
   const slug = params.slug?.join('/') || '';
   const doc = await getDocBySlug(slug);
@@ -116,9 +114,9 @@ export default async function DocPage(props: {
       />
       <div className='lg:px-0 lg:pt-0 pt-6 px-3 mt-0 flex w-full lg:gap-10 '>
         <div className='w-full relative xl:pl-0 lg:pl-4 pl-0'>
-          <section className='3xl:max-w-5xl 2xl:max-w-210 xl:max-w-190 lg:max-w-140 max-w-5xl mx-auto prose prose-zinc pb-5 dark:prose-invert prose-h1:text-2xl prose-h1:font-semibold prose-h2:text-3xl prose-h2:mt-4 prose-h2:mb-0 prose-h2:pt-12 prose-h3:py-1 prose-h2:font-medium prose-h3:text-2xl prose-h3:mt-4 prose-h3:mb-2 prose-h3:font-medium prose-strong:font-medium prose-table:block prose-table:overflow-y-auto lg:pt-4'>
-            <article className='mb-4 mt-0 dark:bg-neutral-800 rounded-lg bg-neutral-100 p-4 border'>
-              <div className='space-y-2 rounded-md dark:text-white text-black'>
+          <section className='3xl:max-w-5xl 2xl:max-w-210 xl:max-w-190 lg:max-w-140 max-w-5xl mx-auto prose prose-zinc pb-5 dark:prose-invert prose-h1:text-2xl prose-h1:font-semibold prose-h2:text-3xl prose-h2:mt-4 prose-h2:mb-4 prose-h2:pt-4 prose-h3:py-1 prose-h2:font-medium prose-h3:text-2xl prose-h3:text-primary/70 prose-h3:mt-4 prose-h3:mb-2 prose-h3:font-medium prose-strong:font-medium prose-table:block prose-table:overflow-y-auto lg:pt-4'>
+            <article className='mb-4 mt-0 rounded-lg bg-muted p-4 border'>
+              <div className='space-y-2 rounded-md text-foreground'>
                 <div className='flex items-center gap-2 justify-between'>
                   <h1
                     className={cn(
@@ -132,9 +130,7 @@ export default async function DocPage(props: {
                   </h1>
                   <CopyPage />
                 </div>
-                <p className='sm:text-sm text-xs pt-2'>
-                  {doc.content.metadata.description}
-                </p>
+                <p className='sm:text-sm text-xs pt-2'>{doc.content.metadata.description}</p>
               </div>
             </article>
             <Content />

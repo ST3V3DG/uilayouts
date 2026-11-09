@@ -1,14 +1,6 @@
-import { createHighlighter, Highlighter } from 'shiki';
-const SAFE_LANGS = new Set([
-  'ts',
-  'tsx',
-  'js',
-  'jsx',
-  'json',
-  'css',
-  'html',
-  'bash',
-]);
+import { type Highlighter, createHighlighter } from 'shiki';
+
+const SAFE_LANGS = new Set(['ts', 'tsx', 'js', 'jsx', 'json', 'css', 'html', 'bash']);
 
 function normalizeLang(lang?: string) {
   if (!lang) return 'txt';
@@ -27,8 +19,6 @@ function getHighlighterInstance() {
   return highlighterPromise;
 }
 export async function highlightCode(code: string, lang = 'ts') {
-  // console.log('checking code', code);
-
   const highlighter = await getHighlighterInstance();
   const safeLang = normalizeLang(lang);
 

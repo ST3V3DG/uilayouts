@@ -1,16 +1,10 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { Copy, Check, CheckCheck } from 'lucide-react';
+import { Check, CheckCheck, Copy } from 'lucide-react';
 import { useState } from 'react';
 
-export function CopyButton({
-  code,
-  classname,
-}: {
-  code: string;
-  classname?: string;
-}) {
+export function CopyButton({ code, classname }: { code: string; classname?: string }) {
   const [hasCheckIcon, setHasCheckIcon] = useState(false);
 
   const onCopy = () => {
@@ -26,7 +20,7 @@ export function CopyButton({
     <>
       <div
         className={cn(
-          'absolute right-2 top-2 cursor-pointer dark:hover:shadow-[0px_1px_10px_5px_#3f7ef3] hover:shadow-[0px_1px_10px_5px_#9abaf7] dark:hover:border-blue-500 hover:border-blue-300  dark:bg-zinc-800 backdrop-blur-2xl bg-white rounded-md border-2',
+          'absolute right-2 top-2 cursor-pointer dark:hover:shadow-[0px_1px_10px_5px_#3f7ef3] hover:shadow-[0px_1px_10px_5px_#9abaf7] dark:hover:border-blue-500 hover:border-blue-300  backdrop-blur-2xl bg-card rounded-md border-2',
           classname
         )}
         onClick={onCopy}

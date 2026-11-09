@@ -1,13 +1,7 @@
 'use client';
-import React, {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  ReactNode,
-} from 'react';
-import { AnimatePresence, motion } from 'motion/react';
 import { X } from 'lucide-react';
+import { AnimatePresence, motion } from 'motion/react';
+import React, { createContext, type ReactNode, useContext, useEffect, useState } from 'react';
 
 interface ModalContextProps {
   open: boolean;
@@ -37,8 +31,7 @@ export function FramerModal({
 }: FramerModalProps) {
   const [internalOpen, setInternalOpen] = useState(false);
   const open = controlledOpen !== undefined ? controlledOpen : internalOpen;
-  const setOpen =
-    controlledSetOpen !== undefined ? controlledSetOpen : setInternalOpen;
+  const setOpen = controlledSetOpen !== undefined ? controlledSetOpen : setInternalOpen;
   useEffect(() => {
     if (open) {
       document.body.classList.add('overflow-hidden');
@@ -65,7 +58,7 @@ export function FramerModal({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className='fixed inset-0 z-50 top-0 left-0 right-0 bottom-0 flex flex-col items-center w-full h-screen justify-center dark:bg-black/90 bg-white/90 backdrop-blur-xs cursor-zoom-out border'
+            className='fixed inset-0 z-50 top-0 left-0 right-0 bottom-0 flex flex-col items-center w-full h-screen justify-center bg-background/90 backdrop-blur-xs cursor-zoom-out border'
             onClick={() => setOpen(false)}
           >
             <motion.div
@@ -75,10 +68,7 @@ export function FramerModal({
               onClick={(e) => e.stopPropagation()}
               className=' w-full max-w-md rounded-xl bg-white/5 p-6 backdrop-blur-2xl border'
             >
-              <button
-                className='absolute top-2 right-2'
-                onClick={() => setOpen(false)}
-              >
+              <button className='absolute top-2 right-2' onClick={() => setOpen(false)}>
                 <X />
               </button>
               {children}

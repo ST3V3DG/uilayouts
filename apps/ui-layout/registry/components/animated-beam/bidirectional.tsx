@@ -1,26 +1,25 @@
 'use client';
 
+import { AnimatedBeam, Icons } from '@/components/ui/animated-beam';
 import { cn } from '@/lib/utils';
-import React, { forwardRef, useRef } from 'react';
-import { AnimatedBeam } from '@/components/ui/animated-beam';
-import { Icons } from '@/components/ui/animated-beam';
+import type React from 'react';
+import { forwardRef, useRef } from 'react';
 
-const Circle = forwardRef<
-  HTMLDivElement,
-  { className?: string; children?: React.ReactNode }
->(({ className, children }, ref) => {
-  return (
-    <div
-      ref={ref}
-      className={cn(
-        'z-10 flex h-12 w-12 items-center justify-center rounded-full border-2 bg-white p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]',
-        className
-      )}
-    >
-      {children}
-    </div>
-  );
-});
+const Circle = forwardRef<HTMLDivElement, { className?: string; children?: React.ReactNode }>(
+  ({ className, children }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className={cn(
+          'z-10 flex h-12 w-12 items-center justify-center rounded-full border-2 bg-white p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]',
+          className
+        )}
+      >
+        {children}
+      </div>
+    );
+  }
+);
 
 export default function AnimatedBeamBidirectional() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -29,7 +28,7 @@ export default function AnimatedBeamBidirectional() {
 
   return (
     <div
-      className='relative flex w-full max-w-[500px] mx-auto items-center justify-center overflow-hidden rounded-lg border dark:bg-neutral-800 bg-neutral-50 lg:p-10 sm:p-4 p-2 md:shadow-xl'
+      className='relative flex w-full max-w-[500px] mx-auto items-center justify-center overflow-hidden rounded-lg border bg-muted lg:p-10 sm:p-4 p-2 md:shadow-xl'
       ref={containerRef}
     >
       <div className='flex h-full w-full flex-col items-stretch justify-between gap-10'>

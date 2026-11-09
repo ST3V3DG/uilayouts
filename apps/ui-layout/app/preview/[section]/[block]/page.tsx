@@ -1,6 +1,6 @@
-import { notFound } from 'next/navigation';
-import { Metadata } from 'next';
 import { blocksDesign } from '@/blocks-docs'; // Update path
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import PreviewHeightReporter from '../../../../components/website/blocks-components/preview-height-reporter';
 
@@ -43,16 +43,14 @@ export default async function BlocksPage(props: {
   if (!blockData) return notFound();
 
   return (
-    <>
-      <PreviewHeightReporter>
-        <Suspense
-          fallback={
-            <div className='min-h-screen w-full h-full bg-neutral-200 dark:bg-neutral-900 animate-pulse'></div>
-          }
-        >
-          <blockData.componentSrc />
-        </Suspense>
-      </PreviewHeightReporter>
-    </>
+    <PreviewHeightReporter>
+      <Suspense
+        fallback={
+          <div className='min-h-screen w-full h-full bg-neutral-200 dark:bg-neutral-900 animate-pulse'></div>
+        }
+      >
+        <blockData.componentSrc />
+      </Suspense>
+    </PreviewHeightReporter>
   );
 }

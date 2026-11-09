@@ -1,9 +1,9 @@
 'use client';
-import React, { useState } from 'react';
-import Image from 'next/image';
+import { CardArr } from '@/components/website/constant';
 import { Heart } from 'lucide-react';
 import { motion } from 'motion/react';
-import { CardArr } from '@/components/website/constant';
+import Image from 'next/image';
+import React, { useState } from 'react';
 
 function Card1() {
   const [selectedImage, setSelectedImage] = useState(CardArr[0].img);
@@ -30,7 +30,7 @@ function Card1() {
             clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)',
           }}
         />
-        <div className='text-black pt-2'>
+        <div className='text-foreground pt-2'>
           <div className='flex justify-between'>
             <h1 className='font-semibold text-xl'>Nike Air Max</h1>
             <motion.button
@@ -51,8 +51,8 @@ function Card1() {
             </motion.button>
           </div>
           <p className='text-xs'>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore
-            porro quos quae autem vel praesentium.
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore porro quos quae autem
+            vel praesentium.
           </p>
           <div className='flex justify-between py-1'>
             <span className='font-semibold text-xl'>$39</span>
@@ -62,9 +62,7 @@ function Card1() {
                   key={data.color}
                   onClick={() => handleColorButtonClick(data.img, data.color)}
                   className={` relative w-6 h-6 border  rounded-full grid place-content-center transition-all ${
-                    selectedColor === data.color
-                      ? ' border-black'
-                      : 'border-neutral-200'
+                    selectedColor === data.color ? ' border-foreground' : 'border-border'
                   }`}
                 >
                   <span
@@ -77,9 +75,7 @@ function Card1() {
               ))}
             </div>
           </div>
-          <button className='text-white w-full bg-black py-3 rounded-md'>
-            Add to cart
-          </button>
+          <button className='text-white w-full bg-black py-3 rounded-md'>Add to cart</button>
         </div>
       </div>
     </div>

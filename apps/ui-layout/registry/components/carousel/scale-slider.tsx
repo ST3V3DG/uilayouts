@@ -1,6 +1,4 @@
 'use client';
-import React from 'react';
-import { EmblaOptionsType } from 'embla-carousel';
 import {
   Carousel,
   Slider,
@@ -9,7 +7,9 @@ import {
   SliderNextButton,
   SliderPrevButton,
 } from '@/components/ui/carousel';
+import type { EmblaOptionsType } from 'embla-carousel';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import React from 'react';
 
 function ScaleSlider() {
   const OPTIONS: EmblaOptionsType = { loop: true };

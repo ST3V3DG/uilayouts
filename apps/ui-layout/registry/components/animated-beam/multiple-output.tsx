@@ -1,15 +1,10 @@
 'use client';
 
+import { AnimatedBeam, Circle, Icons } from '@/components/ui/animated-beam';
 import { cn } from '@/lib/utils';
 import React, { forwardRef, useRef } from 'react';
-import { AnimatedBeam, Circle } from '@/components/ui/animated-beam';
-import { Icons } from '@/components/ui/animated-beam';
 
-export default function AnimatedBeamMultipleOutput({
-  className,
-}: {
-  className?: string;
-}) {
+export default function AnimatedBeamMultipleOutput({ className }: { className?: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const div1Ref = useRef<HTMLDivElement>(null);
   const div2Ref = useRef<HTMLDivElement>(null);
@@ -22,7 +17,7 @@ export default function AnimatedBeamMultipleOutput({
   return (
     <div
       className={cn(
-        'relative flex w-full max-w-[500px] mx-auto items-center justify-center overflow-hidden rounded-lg border dark:bg-neutral-800 bg-neutral-50 lg:p-10 sm:p-4 p-2 md:shadow-xl',
+        'relative flex w-full max-w-[500px] mx-auto items-center justify-center overflow-hidden rounded-lg border bg-muted lg:p-10 sm:p-4 p-2 md:shadow-xl',
         className
       )}
       ref={containerRef}
@@ -58,42 +53,12 @@ export default function AnimatedBeamMultipleOutput({
       </div>
 
       {/* AnimatedBeams */}
-      <AnimatedBeam
-        containerRef={containerRef}
-        fromRef={div1Ref}
-        toRef={div6Ref}
-        duration={3}
-      />
-      <AnimatedBeam
-        containerRef={containerRef}
-        fromRef={div2Ref}
-        toRef={div6Ref}
-        duration={3}
-      />
-      <AnimatedBeam
-        containerRef={containerRef}
-        fromRef={div3Ref}
-        toRef={div6Ref}
-        duration={3}
-      />
-      <AnimatedBeam
-        containerRef={containerRef}
-        fromRef={div4Ref}
-        toRef={div6Ref}
-        duration={3}
-      />
-      <AnimatedBeam
-        containerRef={containerRef}
-        fromRef={div5Ref}
-        toRef={div6Ref}
-        duration={3}
-      />
-      <AnimatedBeam
-        containerRef={containerRef}
-        fromRef={div6Ref}
-        toRef={div7Ref}
-        duration={3}
-      />
+      <AnimatedBeam containerRef={containerRef} fromRef={div1Ref} toRef={div6Ref} duration={3} />
+      <AnimatedBeam containerRef={containerRef} fromRef={div2Ref} toRef={div6Ref} duration={3} />
+      <AnimatedBeam containerRef={containerRef} fromRef={div3Ref} toRef={div6Ref} duration={3} />
+      <AnimatedBeam containerRef={containerRef} fromRef={div4Ref} toRef={div6Ref} duration={3} />
+      <AnimatedBeam containerRef={containerRef} fromRef={div5Ref} toRef={div6Ref} duration={3} />
+      <AnimatedBeam containerRef={containerRef} fromRef={div6Ref} toRef={div7Ref} duration={3} />
     </div>
   );
 }

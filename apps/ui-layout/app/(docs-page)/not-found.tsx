@@ -1,6 +1,6 @@
 'use client';
 
-import { SearchItem } from '@/components/website/searchbar';
+import type { SearchItem } from '@/components/website/searchbar';
 import { basePath } from '@/components/website/sidebar';
 import { DocsNavigationCategories } from '@/configs/docs';
 import { ArrowBigLeft } from 'lucide-react';
@@ -18,9 +18,7 @@ export default function NotFound() {
 
   // Function to check for matches in searchdata
   const checkForMatches = (searchTerm: string): SearchItem[] => {
-    return searchdata.filter((item) =>
-      item.name.toLowerCase().includes(searchTerm)
-    );
+    return searchdata.filter((item) => item.name.toLowerCase().includes(searchTerm));
   };
 
   // Function to split a search term into chunks of a specific size

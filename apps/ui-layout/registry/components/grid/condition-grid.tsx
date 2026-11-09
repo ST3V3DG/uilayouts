@@ -1,8 +1,9 @@
 'use client';
-import React from 'react';
+import { MoveUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import Image from 'next/image';
-import { MoveUpRight } from 'lucide-react';
+import React from 'react';
+
 interface ProjectsTypes {
   id: string;
   img: string;
@@ -70,7 +71,7 @@ export default function ConditionGrid() {
                     className='h-full w-full object-cover rounded-xl'
                   />
                 </div>
-                <div className='absolute lg:bottom-2 bottom-0 text-black w-full p-4 flex justify-between items-center'>
+                <div className='absolute lg:bottom-2 bottom-0 text-foreground w-full p-4 flex justify-between items-center'>
                   <h3 className='lg:text-xl text-sm bg-black text-white rounded-xl p-2 px-4'>
                     {project.title}
                   </h3>

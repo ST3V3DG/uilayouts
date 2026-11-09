@@ -1,5 +1,6 @@
 import MotionDrawer from '@/components/ui/motion-drawer';
 import React from 'react';
+
 interface ListItem {
   name: string;
   url: string;
@@ -21,17 +22,17 @@ function RightMotionDrawerExample() {
         direction='right'
         buttonOpeningVariants='stay'
         width={300}
-        className='text-black'
+        className='text-foreground'
       >
         <nav className='space-y-4'>
           <h2 className='text-xl font-bold mb-4'>Menu</h2>
-          <a href='#' className='block p-2 hover:bg-neutral-100 rounded-sm'>
+          <a href='#' className='block p-2 hover:bg-muted rounded-sm'>
             Home
           </a>
-          <a href='#' className='block p-2 hover:bg-neutral-100 rounded-sm'>
+          <a href='#' className='block p-2 hover:bg-muted rounded-sm'>
             About
           </a>
-          <a href='#' className='block p-2 hover:bg-neutral-100 rounded-sm'>
+          <a href='#' className='block p-2 hover:bg-muted rounded-sm'>
             Contact
           </a>
         </nav>
